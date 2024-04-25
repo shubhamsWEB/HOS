@@ -1,0 +1,21 @@
+.title {
+    font-weight: bold;
+    font-family: "DM Sans", sans-serif !important;
+}
+.subtitle {
+        font-family: "DM Sans", sans-serif !important;
+}
+.icons {
+    // padding:5px;
+    background:#FAF9F7;
+    border-radius:50%;
+    // margin:auto;
+    width:70px;
+    height:70px;
+
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}

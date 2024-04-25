@@ -1,0 +1,35 @@
+/* video {
+    object-fit: cover;
+    position: absolute;
+    height: 600px;
+    width: 100%;
+    top: 0;
+    left: 0;
+  } */
+  /* .video-container {
+    height: 500px;
+    width:100%;
+    max-width:1000px;
+    
+    position: relative;
+    overflow: hidden;
+   
+  }
+  .video-container:after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(black, .2);
+    z-index: 1;
+  } */
+  .main {
+    font-family: "Playfair Display", serif !important;
+}
+
+.sub {
+    font-family: "DM Sans", sans-serif !important;
+}

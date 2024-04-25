@@ -1,0 +1,61 @@
+.collections-grid {
+    /* margin-top: -32px;
+    width: calc(100% + 32px);
+    margin-left: -32px; */
+    animation: split linear forwards;
+    animation-timeline: view();
+    animation-range: entry -50px;
+}
+
+.collections-grid .MuiGrid-item {
+    /* padding-left: 32px;
+    padding-top: 32px; */
+    animation: split2 linear forwards;
+    animation-timeline: view();
+    animation-range: entry -50px;
+}
+
+@keyframes split {
+    from {
+        /* margin-top: 0; */
+        width: 100%;
+        /* margin-left: 0; */
+    }
+
+    to {
+        margin-top: -32px;
+        width: calc(100% + 32px);
+        margin-left: -32px;
+    }
+}
+
+@keyframes split2 {
+    from {
+        padding-left: 0;
+        padding-top: 0;
+    }
+
+    to {
+        padding-left: 32px;
+        padding-top: 32px;
+    }
+}
+
+.main {
+    font-family: "Playfair Display", serif !important;
+}
+
+.sub {
+    font-family: "DM Sans", sans-serif !important;
+}
+
+.img {
+    margin-bottom: 18px;
+}
+
+.grid {
+    background: lightgray;
+    /* min-height: 300px; */
+    border-radius: 5px;
+    padding: 18px
+}

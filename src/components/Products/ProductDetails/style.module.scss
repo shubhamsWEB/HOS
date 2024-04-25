@@ -1,0 +1,13 @@
+.sub {
+    font-family: "DM Sans", sans-serif !important;
+}
+.subMain {
+    font-family: "DM Sans", sans-serif !important;
+    font-weight: bold;
+}
+.btn {
+    font-family: "DM Sans", sans-serif !important;
+    &:hover {
+        background: #101010;
+    }
+}

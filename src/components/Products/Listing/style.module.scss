@@ -1,0 +1,59 @@
+.productName {
+    font-family: "DM Sans", sans-serif !important;
+    font-weight: 700;
+}
+.icons {
+    // padding:5px;
+    background:#fff;
+    border-radius:50%;
+    // margin:auto;
+    width:30px;
+    height:30px;
+    border:1px solid black;
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.selectedIcon {
+    color: #fff !important;
+}
+.selected {
+    background: black !important;
+}
+.btn {
+    margin-top: 1em;
+     border-color: black;
+     color: #fff;
+     background:black !important
+}
+.btn:hover {
+    background: #8888;
+}
+.appdownload {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #222222;
+    position: absolute;
+    flex-direction: column;
+    z-index: 100;
+    left: 1rem;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    box-shadow: 1px 2px 8px 1px #00000070;
+    padding: 5px;
+    &:focus {
+      outline: none;
+    }
+    label{
+      margin-top: .2rem;
+      margin-bottom: .2rem;
+      color: #fff;
+      cursor: pointer;
+      &#first-title {
+        font-size: .8rem;
+      }  
+    }
+     
+  }
