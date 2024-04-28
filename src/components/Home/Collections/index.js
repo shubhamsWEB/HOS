@@ -27,14 +27,14 @@ function Collection() {
                     <Typography variant='h4' className='main'>Sansa Gold</Typography>
                     <Typography variant='caption' className='sub'>Introducing our new mesmerizing jewelry collection. Embrace your inner allure with the timeless elegance and radiant beauty of ancient Egypt, now available exclusively on AXELS Jewelry.</Typography>
                 </Box></Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6}>
                 <Box className="grid">
                     <Typography variant='subtitle2' className='main' sx={{ letterSpacing: '2px', mb: 4 }}>COLLECTION</Typography>
                     <Image src="/assets/Vector1.png" width={65} height={65} alt="Sansa Gems" />
                     <Typography variant='h4' className='main'>Sansa Gems</Typography>
                     <Typography variant='caption' className='sub'>Get 20% off with our code: LUXE20.</Typography>
                 </Box></Grid>
-            <Grid item xs={12} sm={4}><Box className="grid">
+            <Grid item xs={12} sm={6}><Box className="grid">
                 <Typography variant='subtitle2' className='main' sx={{ letterSpacing: '2px', mb: 4 }}>COLLECTION</Typography>
                 <Image src="/assets/Vector1.png" width={65} height={65} alt="Sansa Accessories" />
                 <Typography variant='h4' className='main'>Sansa Accessories</Typography>

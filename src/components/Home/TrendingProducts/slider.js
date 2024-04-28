@@ -13,15 +13,15 @@ function SliderComp() {
         // centerMode: true,
         centerPadding: "60px",
         speed: 500,
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1,
         autoplay: true,
     };
     return (
-        <Box sx={{width:'100%'}} id="shubham">
+        <Box>
         <Slider {...settings}>
             {[0, 1, 2, 3, 4, 5].map(item => {
-                return (<Box key={item}>
+                return (<Box key={item} sx={{p:1}}>
                     <Card data={products[item]} />
                 </Box>)
             })}

@@ -7,7 +7,7 @@ import DesignServicesRoundedIcon from '@mui/icons-material/DesignServicesRounded
 import styles from './style.module.scss';
 function Banner() {
     return (
-        <Grid container>
+        <Grid container spacing={2}>
             <Grid item xs={6} sm={3} sx={{ textAlign: 'center' }}>
                 <Box>
                 <Box className={`${styles.icons}`}><DiamondOutlinedIcon fontSize='large' sx={{color:"#D8B985"}}/></Box>

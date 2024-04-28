@@ -34,7 +34,7 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+       HOUSE OF SANSA
       </Typography>
       <Divider />
       <List>
@@ -56,17 +56,22 @@ function DrawerAppBar(props) {
       <CssBaseline />
       <AppBar component="nav" sx={{ background: pathName === '/' ? 'transparent' : '#fff', boxShadow: 0,px:{xs:2,sm:14}}}>
         <Toolbar sx={{ width: '100%',paddingLeft:'100px',padding:'0px !important' }}>
-          <Grid container>
-            <Grid item xs={4}>
-              <IconButton
+          <Grid container sx={{display: { xs: 'grid',sm:'none' } }}>
+            <Grid item xs={12} sx={{display:"flex",alignItems:'center'}}>
+            <IconButton
                 color="inherit"
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
                 sx={{ mr: 2, display: { sm: 'none' } }}
               >
-                <MenuIcon />
+                <MenuIcon sx={{color:'#101010'}}/>
               </IconButton>
+              <Typography variant='h5' sx={{color:"#101010",textAlign:'center',width:'100%'}}>HOUSE OF SANSA</Typography>
+            </Grid>
+          </Grid>
+          <Grid container  sx={{display: { xs: 'none',sm:'flex' } }}>
+            <Grid item xs={4}>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 {navItems.map((item) => (
                   <Button key={item.id} sx={{ color: pathName === '/' ? '#fff' : '#000' }} className={styles.links}>

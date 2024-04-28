@@ -41,7 +41,6 @@ export const slides = unsplashPhotos.map((photo) => {
   };
 });
 
-console.log("🚀 ~ slides[0]:", slides[0]);
 export const advancedSlides = [
   { ...slides[0], title: "Puppy in sunglasses", description: "Mollie Sivaram" },
   {

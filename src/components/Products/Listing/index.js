@@ -11,7 +11,7 @@ function Listing() {
         <Grid container spacing={{xs:2,sm:4}}>
             {products.map(item => {
                 return (
-                    <Grid item xs={6} sm={3} key={item.id} onClick={() => router.push(`/products/${item.id}`)}>
+                    <Grid item xs={12} sm={3} key={item.id} onClick={() => router.push(`/products/${item.id}`)}>
                         <Card data={item}/>
                     </Grid>
                 )

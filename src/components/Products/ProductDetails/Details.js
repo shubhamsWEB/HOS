@@ -24,7 +24,7 @@ function Details({ data }) {
                     <ButtonGroup options={sizeOptions} />
                 </Box>
                 <Box sx={{display:'flex',gap:'10px',alignItems:'center',mt:2}}>
-                    <Rating value={'4'} size='small' readOnly />
+                    <Rating value={4} size='small' readOnly />
                     <Typography variant='subtitle2'>(64 Reviews)</Typography>
                     <FavoriteBorderIcon />
                     <ShareOutlinedIcon />
