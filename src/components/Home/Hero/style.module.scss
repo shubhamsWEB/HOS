@@ -1,5 +1,9 @@
 .main {
     font-family: "Playfair Display", serif  !important;
+    @media screen and (max-width: 480px) {
+        font-size: 56px !important;
+        
+      }
 }
 .sub {
     font-family: "DM Sans", sans-serif !important;

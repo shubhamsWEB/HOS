@@ -22,7 +22,7 @@ function NewArrival() {
             <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
                 <Box sx={{display:'flex',flexDirection:"column",alignItems:"center",textAlign:'center'}}>
                 <Typography variant='h2' sx={{color:'#fff'}} className={styles.main}>New Arrival</Typography>
-                <Typography variant='p' px={30} sx={{color:'#fff'}} className={styles.sub}>Discover Sparkel With Style and Luxury</Typography>
+                <Typography variant='p' px={{xs:2,sm:30}} sx={{color:'#fff'}} className={styles.sub}>Discover Sparkel With Style and Luxury</Typography>
                 <Button variant="outlined" sx={{ marginTop: 2,color:'#fff',border:'1px solid black' }}>Shop Now</Button>
                 </Box>
             </Box>

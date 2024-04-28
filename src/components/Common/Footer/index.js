@@ -3,7 +3,7 @@ import { Grid, Box, Typography, TextField, Divider } from '@mui/material';
 import styles from './style.module.scss';
 function Footer() {
     return (
-        <Box p={4} px={14} sx={{background:'#222222',color:'#fff'}}>
+        <Box p={4} px={{xs:2,sm:14}} sx={{background:'#222222',color:'#fff'}}>
             <Grid container spacing={4} alignItems="center">
                 <Grid item sm={6}>
                     <Typography variant='subtitle1' className={styles.subtitle}>NEWSLETTER</Typography>

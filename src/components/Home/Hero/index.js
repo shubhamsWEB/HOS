@@ -30,9 +30,9 @@ function Hero() {
         <source src='./assets/main.mp4' type='video/mp4' />
       </video>
       <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',width:'100%' }}>
-        <Box sx={{ display: 'flex', flexDirection: "column", alignItems: "center", textAlign: 'center' }}>
-          <Typography variant='h1' px={30} sx={{ color: '#fff' }} className={styles.main}>Discover Sparkel With Style and Luxury</Typography>
-          <Typography variant='p' px={30} sx={{ color: '#fff' }} className={styles.sub}>Whether casual or formal, find the perfect jewelry for every occasion with us.</Typography>
+        <Box sx={{ display: 'flex', flexDirection: "column", alignItems: "center", textAlign: 'center' }} px={{xs:2,sm:30}}>
+          <Typography variant='h1' sx={{ color: '#fff' }} className={styles.main}>Discover Sparkel With Style and Luxury</Typography>
+          <Typography variant='p' sx={{ color: '#fff' }} className={styles.sub}>Whether casual or formal, find the perfect jewelry for every occasion with us.</Typography>
           <Button variant="outlined" sx={{ marginTop: 2,border:'1px solid black',color:'#fff' }}>Shop Now</Button>
         </Box>
       </Box>

@@ -10,17 +10,17 @@ export default function Home() {
   return (
     <>
       <HeroComponent />
-      <Box p={5} px={20}>
+      <Box p={5} px={{ xs: 2, sm: 20 }}>
         <Collection />
       </Box>
       <NewArrival />
-      <Box p={5} px={20}>
+      <Box p={5} px={{ xs: 2, sm: 20 }}>
         <Banner />
       </Box>
-      <Box p={5} px={20} sx={{background:'#FAF9F7'}}>
-      <TrendingProducts/>
+      <Box p={5} px={{ xs: 2, sm: 20 }} sx={{ background: '#FAF9F7' }}>
+        <TrendingProducts />
       </Box>
-      <Box p={5} px={20}>
+      <Box p={5} px={{ xs: 2, sm: 20 }}>
         <Faq />
       </Box>
     </>
