@@ -12,14 +12,14 @@ import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import {advancedSlides,slides} from '../../../constants/slides';
-function ImageViewer() {
+function ImageViewer({images}) {
     const [basicExampleOpen, setBasicExampleOpen] = React.useState(false);
     const [advancedExampleOpen, setAdvancedExampleOpen] = React.useState(true);
     return (
         <Lightbox
             open={advancedExampleOpen}
             close={() => setAdvancedExampleOpen(false)}
-            slides={advancedSlides}
+            slides={images}
             plugins={[Inline,Fullscreen, Thumbnails, Video, Zoom]}
             inline={{
                 style: {

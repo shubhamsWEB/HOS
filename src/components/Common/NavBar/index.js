@@ -54,7 +54,7 @@ function DrawerAppBar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ background: pathName === '/' ? 'transparent' : '#fff', boxShadow: 0,px:{xs:2,sm:14}}}>
+      <AppBar component="nav" sx={{ background: '#fff', boxShadow: 0,px:{xs:2,sm:14}}}>
         <Toolbar sx={{ width: '100%',paddingLeft:'100px',padding:'0px !important' }}>
           <Grid container sx={{display: { xs: 'grid',sm:'none' } }}>
             <Grid item xs={12} sx={{display:"flex",alignItems:'center'}}>

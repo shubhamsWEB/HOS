@@ -1,32 +1,22 @@
 export const products = [
     {
         id:1,
-        title:'The Lucinda Ring',
-        images:['/assets/ring3.png','/assets/ring3.webp']
+        title:'Celestial Sparkle Earrings',
+        images:['/assets/p1/RG0001.png','/assets/p1/RG0002.png','/assets/p1/RGV.jpg']
     },
     {
         id:2,
-        title:'The Yana Ring',
-        images:['/assets/ring2.png','/assets/ring2.webp']
+        title:'Dewdrop Delight Pendant',
+        images:['/assets/p2/RG0001.png','/assets/p2/RG0002.png','/assets/p2/RGV.jpg']
     },
     {
         id:3,
-        title:'The Atlantis Ring',
-        images:['/assets/ring4.png','/assets/ring4.webp']
+        title:'Trinity Radiance Ring',
+        images:['/assets/p3/RG0001.png','/assets/p3/RG0002.png','/assets/p3/RGV.jpg']
     },
     {
         id:4,
-        title:'The Diamond Ring',
-        images:['/assets/ring.webp','/assets/ring1.jpg']
-    },
-    {
-        id:5,
-        title:'The Yana Ring',
-        images:['/assets/ring2.png','/assets/ring2.webp']
-    },
-    {
-        id:6,
-        title:'The Lucinda Ring',
-        images:['/assets/ring3.png','/assets/ring3.webp']
+        title:'Ethereal Glow Studs',
+        images:['/assets/YG.png']
     },
 ]

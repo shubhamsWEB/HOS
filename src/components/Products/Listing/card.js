@@ -10,8 +10,12 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import styles from './style.module.scss';
 import Badge from './badge';
+import {useRouter} from 'next/navigation';
+
 function Card({ data }) {
     const sliderRef = useRef(null);
+    const router = useRouter()
+
     const [showIcons, setIcons] = React.useState(false);
     const handleMouseEnter = () => {
         if (sliderRef.current) {
@@ -35,7 +39,7 @@ function Card({ data }) {
         arrows: false,
         pauseOnHover: false,
         autoplay: false,
-        autoplaySpeed: 200,
+        autoplaySpeed: 800,
         infinite: false,
         fade: true
     };
@@ -46,12 +50,13 @@ function Card({ data }) {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 sx={{ marginBottom: '-40%', position: 'relative' }}
+                onClick={() => router.push(`/products/${data.id}`)}
             >
-                <Badge text={'-20%'}/>
+                {data.title==='Celestial Sparkle Earrings' && <Badge text={'-20%'}/>}
                 <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
                     {data?.images.map(img => {
                         return (<div key={img}>
-                            <Image src={`${img}`} alt="Ring 1" width={0} height={300} sizes="100vw" className={styles.productImg}/>
+                            <Image src={img} alt="Ring 1" width={0} height={300} sizes="100vw" className={styles.productImg}/>
                         </div>)
                     })}
 
@@ -66,7 +71,7 @@ function Card({ data }) {
             </Box>
             <Box boxShadow={2} p={2} pt={'40%'} sx={{ borderRadius: 2 }}>
                 <Box>
-                    <Typography variant='h6'>Diamond Ring</Typography>
+                    <Typography variant='h6'>{data.title}</Typography>
                     <Button variant="contained" fullWidth className={styles.btn}>Enquire Now</Button>
                 </Box>
             </Box>

@@ -26,8 +26,8 @@ export default function ToggleButtonSizes({ options }) {
             <ToggleButtonGroup size="small" {...control} sx={{gap:'10px'}}>
                 {options.map(opt => {
                     return (
-                        <ToggleButton value={opt.value} key={opt.id} sx={{border:'1px solid #D8C29D !important',borderRadius:0,minWidth:'40px'}}>
-                            {opt.name}
+                        <ToggleButton value={opt} key={opt} sx={{border:'1px solid #D8C29D !important',borderRadius:0,minWidth:'40px'}}>
+                            {opt}
                         </ToggleButton>
                     )
                 })}

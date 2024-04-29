@@ -4,7 +4,7 @@ import Link from '@mui/material/Link';
 function Nav({links}) {
   return (
     <>
-    <Breadcrumbs aria-label="breadcrumb">
+    <Breadcrumbs aria-label="breadcrumb" sx={{justifyContent:'center'}} id='sss'>
         <Link
           underline="hover"
           sx={{ display: 'flex', alignItems: 'center' }}

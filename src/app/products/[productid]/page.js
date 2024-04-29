@@ -3,28 +3,37 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 import { useParams } from 'next/navigation';
 import ProductDetail from '@/components/Products/ProductDetails/Details';
-import ProductInfo from '@/components/Products/ProductDetails/Accordian';
+import ProductInfo from '@/components/Products/ProductDetails/Info';
 import ImageViewer from '@/components/Products/ProductDetails/ImageViewer';
+import { productDetailsMap } from '@/constants/productInfo';
 function ProductDetails() {
     const params = useParams();
+    const product = productDetailsMap[params.productid - 1];
     return (
         <Box mt={8} mb={2} p={2} px={{ xs: 2, sm: 14 }}>
             <Grid container spacing={4}>
                 <Grid item xs={12} sm={6}>
-                    <ImageViewer/>
+                    <ImageViewer images={product.images} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <ProductDetail data={{ id: params.productid }} />
+                    <ProductDetail data={product} />
                 </Grid>
             </Grid>
             <Grid container spacing={3} mt={3}>
-                {[1, 2, 3, 4].map(item => {
+                {Object.keys(product.info).map(function (key, index) {
+                    return (
+                        <Grid item xs={6} key={key}>
+                            <ProductInfo data={product.info[key]} title={key} />
+                        </Grid>
+                    );
+                })}
+                {/* {[1, 2, 3, 4].map(item => {
                     return (
                         <Grid item xs={6} key={item}>
-                            <ProductInfo />
+                            <ProductInfo data={product}/>
                         </Grid>
                     )
-                })}
+                })} */}
             </Grid>
         </Box>
     )
