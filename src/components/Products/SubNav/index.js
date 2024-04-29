@@ -7,7 +7,7 @@ function Filter() {
     return (
         <Box sx={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center',mt:4}}>
             <Typography variant='h2'>Products</Typography>
-            <Breadcrumbs separator="|">
+            <Breadcrumbs separator="|" id="productSubnav">
                 {productsCategory.map(item => {
                     return (<Link
                         underline="hover"

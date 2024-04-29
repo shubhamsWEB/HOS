@@ -19,13 +19,13 @@ function SliderComp() {
     };
     return (
         <Box>
-        <Slider {...settings}>
-            {[0, 1, 2, 3, 4, 5].map(item => {
-                return (<Box key={item} sx={{p:1}}>
-                    <Card data={products[item]} />
-                </Box>)
-            })}
-        </Slider>
+            <Slider {...settings}>
+                {products.map(item => {
+                    return (<Box key={item.id} sx={{ p: 1 }}>
+                        <Card data={item} />
+                    </Box>)
+                })}
+            </Slider>
         </Box>
     )
 }

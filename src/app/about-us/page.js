@@ -1,8 +1,25 @@
 import React from 'react'
-
+import { Box, Divider, Typography } from '@mui/material';
+import Header from '@/components/About/header';
+import Banner from '@/components/About/banner';
+import OurJourney from '@/components/About/journey';
+import OurPromise from '@/components/About/commitment';
+import OurValues from '@/components/About/values';
+import OurTeam from '@/components/About/team';
+// import styles from '@/components/About/style.module.scss';
 function page() {
   return (
-    <div>page</div>
+    <Box mt={8} p={{xs:2,sm:6}} sx={{ position: 'relative' }}>
+      <Header />
+      <Banner />
+      <OurJourney />
+      <Divider />
+      <OurPromise />
+      <Box sx={{ background: '#D9D9D9', height: '500px' }} />
+      <OurValues/>
+      <Divider />
+      <OurTeam/>
+    </Box>
   )
 }
 

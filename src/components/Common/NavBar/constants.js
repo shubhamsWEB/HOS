@@ -2,7 +2,7 @@ export const navItems = [
     {
         id:'categories',
         title: 'Categories',
-        path:'#',
+        path:'/products',
         dropDown:[{
             id:'rings',
             title:'Rings',
@@ -12,7 +12,7 @@ export const navItems = [
     {
         id:'about',
         title: 'About',
-        path:'#',
+        path:'/about-us',
         dropDown:[],
     },
     {

@@ -19,7 +19,7 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { navItems } from './constants';
-import { usePathname } from 'next/navigation';
+import {useRouter } from 'next/navigation';
 import styles from './style.module.scss';
 const drawerWidth = 240;
 
@@ -30,7 +30,7 @@ function DrawerAppBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const pathName = usePathname();
+  const router = useRouter()
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -39,7 +39,7 @@ function DrawerAppBar(props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.id} disablePadding>
+          <ListItem key={item.id} disablePadding onClick={() => router.push(item.path)}>
             <ListItemButton sx={{ textAlign: 'center' }}>
               <ListItemText primary={item.title} />
             </ListItemButton>
@@ -74,7 +74,7 @@ function DrawerAppBar(props) {
             <Grid item xs={4}>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 {navItems.map((item) => (
-                  <Button key={item.id} sx={{ color: '#000' }} className={styles.links}>
+                  <Button key={item.id} sx={{ color: '#000' }} className={styles.links} onClick={() => router.push(item.path)}>
                     {item.title}
                   </Button>
                 ))}
