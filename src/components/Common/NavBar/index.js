@@ -74,7 +74,7 @@ function DrawerAppBar(props) {
             <Grid item xs={4}>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 {navItems.map((item) => (
-                  <Button key={item.id} sx={{ color: pathName === '/' ? '#fff' : '#000' }} className={styles.links}>
+                  <Button key={item.id} sx={{ color: '#000' }} className={styles.links}>
                     {item.title}
                   </Button>
                 ))}
@@ -84,7 +84,7 @@ function DrawerAppBar(props) {
               <Typography
                 variant="h6"
                 component="div"
-                sx={{ display: { xs: 'none', sm: 'block' }, color: pathName === '/' ? '#fff' : '#000',textAlign:'center' }}
+                sx={{ display: { xs: 'none', sm: 'block' }, color:'#000',textAlign:'center' }}
                 className={styles.main}
               >
                 HOUSE OF SANSA
@@ -92,9 +92,9 @@ function DrawerAppBar(props) {
             </Grid>
             <Grid item xs={4}>
               <Box sx={{ display: { xs: 'none', sm: 'block' },textAlign:'right' }}>
-                <PersonOutlineOutlinedIcon sx={{ marginX: 1, color: pathName === '/' ? '#fff' : '#000' }} />
-                <LocalMallOutlinedIcon sx={{ marginX: 1, color: pathName === '/' ? '#fff' : '#000' }} />
-                <SearchOutlinedIcon sx={{ marginX: 1, color: pathName === '/' ? '#fff' : '#000' }} />
+                <PersonOutlineOutlinedIcon sx={{ marginX: 1, color: '#000' }} />
+                <LocalMallOutlinedIcon sx={{ marginX: 1, color: '#000' }} />
+                <SearchOutlinedIcon sx={{ marginX: 1, color: '#000' }} />
               </Box>
             </Grid>
           </Grid>
