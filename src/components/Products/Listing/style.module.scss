@@ -60,8 +60,10 @@
      
   }
 .productImg {
-  width: 100% !important;
+  width: 75% !important;
   border-top-left-radius: 8 !important;
   border-top-right-radius: 8 !important;
-  height:350px
+  // height:270px;
+  aspect-ratio: 1/1;
+  margin: auto;
 }

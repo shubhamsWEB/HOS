@@ -1,14 +1,11 @@
-'use client'
 import React from 'react';
 import { Box, Grid } from '@mui/material';
-import { useParams } from 'next/navigation';
 import ProductDetail from '@/components/Products/ProductDetails/Details';
 import ProductInfo from '@/components/Products/ProductDetails/Info';
 import ImageViewer from '@/components/Products/ProductDetails/ImageViewer';
 import { productDetailsMap } from '@/constants/productInfo';
-function ProductDetails() {
-    const params = useParams();
-    const product = productDetailsMap[params.productid - 1];
+function ProductDetails(props) {
+    const product = productDetailsMap[props.params.productid - 1];
     return (
         <Box mt={8} mb={2} p={2} px={{ xs: 2, sm: 14 }}>
             <Grid container spacing={4}>
@@ -22,18 +19,11 @@ function ProductDetails() {
             <Grid container spacing={3} mt={3}>
                 {Object.keys(product.info).map(function (key, index) {
                     return (
-                        <Grid item xs={6} key={key}>
+                        <Grid item xs={12} sm={6} key={key}>
                             <ProductInfo data={product.info[key]} title={key} />
                         </Grid>
                     );
                 })}
-                {/* {[1, 2, 3, 4].map(item => {
-                    return (
-                        <Grid item xs={6} key={item}>
-                            <ProductInfo data={product}/>
-                        </Grid>
-                    )
-                })} */}
             </Grid>
         </Box>
     )

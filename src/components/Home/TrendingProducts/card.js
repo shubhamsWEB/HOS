@@ -47,13 +47,13 @@ function Card({ data }) {
                 boxShadow={2}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                sx={{ position: 'relative' }}
+                sx={{ position: 'relative',width:'90%' }}
             >
                 <Box  onClick={() => router.push(`/products/${data.id}`)}>
                 <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
                     {data?.images.map(img => {
                         return (<div key={img}>
-                            <Image src={`${img}`} alt="Ring 1" width={0} height={350} sizes="100vw" style={{ width: '100%', borderTopLeftRadius: 8, borderTopRightRadius: 8 }} />
+                            <Image src={`${img}`} alt="Ring 1" width={0} height={300} sizes="100vw" style={{ width: '100%', borderTopLeftRadius: 8, borderTopRightRadius: 8 }} />
                         </div>)
                     })}
                 </Slider>

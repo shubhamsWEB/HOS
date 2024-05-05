@@ -17,7 +17,7 @@ function TrendingProducts() {
                         <Typography variant='subtitle1' className={styles.desc}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </Typography>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={8} px={{ xs: 2,sm: 10 }}>
+                <Grid item xs={12} sm={8} px={{ xs: 0,sm: 10 }}>
                     <Slider />
                 </Grid>
             </Grid>

@@ -33,7 +33,7 @@ function DrawerAppBar(props) {
   const router = useRouter()
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography variant="h6" sx={{ my: 2,cursor:'pointer' }} onClick={() => router.push('/')}>
        HOUSE OF SANSA
       </Typography>
       <Divider />
@@ -85,7 +85,8 @@ function DrawerAppBar(props) {
                 variant="h6"
                 component="div"
                 sx={{ display: { xs: 'none', sm: 'block' }, color:'#000',textAlign:'center' }}
-                className={styles.main}
+                className={styles.logo}
+                onClick={() => router.push('/')}
               >
                 HOUSE OF SANSA
               </Typography>

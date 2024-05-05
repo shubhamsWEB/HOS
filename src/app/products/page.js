@@ -1,27 +1,23 @@
-'use client'
 import React from 'react'
-import { Box, Typography, Divider } from '@mui/material';
-import TopNav from '../../components/Common/Breadcrumbs';
-import Subnav from '../../components/Products/SubNav';
-import Filter from '../../components/Products/ProductFilter';
-import Listing from '../../components/Products/Listing';
-import {getProducts} from '@/redux/features/product-slice';
-import {useDispatch} from 'react-redux';
-function Products() {
-    const dispatch = useDispatch();
-    React.useEffect(() => {
-        dispatch(getProducts())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+import { Box, Divider } from '@mui/material';
+import TopNav from '@/components/Common/Breadcrumbs';
+import Subnav from '@/components/Products/SubNav';
+import Filter from '@/components/Products/ProductFilter';
+import Listing from '@/components/Products/Listing';
+import {fetchProducts} from '@/services/apiRequests/products';
+async function Products(props) {
+    const data = await fetchProducts(
+        // {categories:props?.searchParams?.categories?.toUpperCase()}
+        );
     return (
         <>
             <Box mt={8}>
                 <TopNav data={[{title:'Home',path:'/'},{title:'Products',path:'/products'}]} style={{ background: 'lightgray',p:2,px:14}} />
                 <Subnav />
-                <Box p={2} px={{xs:2,sm:14}}>
+                <Box p={2} px={{xs:2,sm:10}}>
                     <Divider sx={{ marginTop: '30px', marginBottom: '10px' }} />
                     <Filter/>
-                    <Listing/>
+                    <Listing data={data}/>
                 </Box>
             </Box>
         </>

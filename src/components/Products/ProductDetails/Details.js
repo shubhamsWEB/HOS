@@ -3,7 +3,6 @@ import { Typography, Box, Divider, Rating,Button } from '@mui/material';
 import Breadcrumb from '@/components/Common/Breadcrumbs';
 import styles from './style.module.scss';
 import ButtonGroup from './ButtonGroup';
-import { sizeOptions, colorOptions, goldOptions } from '../../../constants/productDetails';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 function Details({ data }) {

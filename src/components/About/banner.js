@@ -3,7 +3,7 @@ import { Box, Typography, Button } from '@mui/material'
 import styles from './style.module.scss'
 function Banner() {
     return (
-        <Box className="video-container" sx={{ position: 'relative' }}>
+        <Box className="video-container" sx={{ position: 'relative',mt:4 }}>
             <video className='videoTag' autoPlay muted loop style={{ width: "100%", height: '500px', objectFit: 'cover' }}>
                 <source src='./assets/main.mp4' type='video/mp4' />
             </video>

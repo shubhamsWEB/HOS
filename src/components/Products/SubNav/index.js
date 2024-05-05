@@ -12,7 +12,7 @@ function Filter() {
                     return (<Link
                         underline="hover"
                         color="inherit"
-                        href="/"
+                        href={item.path}
                         key={item.id}
                     >
                         {item.title}

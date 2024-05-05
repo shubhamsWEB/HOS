@@ -4,14 +4,9 @@ export const productDetailsMap = [
         name: 'Celestial Sparkle Earrings',
         description: ' A timeless and versatile choice. These earrings feature round brilliant cut diamonds that sparkle beautifully in any light. Whether its a special occasion or a daily indulgence, let Celestial Sparkle earrings be your timeless companion, reminding you of the beauty that arises when technology and ethics converge.',
         images: [
-            { src: '/assets/p1/RGV.jpg', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p1/RG0001.png', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p1/RG0002.png', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p1/RG0003.png', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p1/RG0004.png', width: '100%', height: 500, title: '', description: '' },
             {
                 src: '/assets/p1/RG.mp4', width: '100%', height: 500, title: '', description: '', type: 'video', poster:
-                    "/assets/p1/RG0001.png",
+                    "/assets/p1/RG0001.png",autoPlay:true,loop:true,
                 sources: [
                     {
                         src: "/assets/p1/RG.mp4",
@@ -19,6 +14,11 @@ export const productDetailsMap = [
                     },
                 ],
             },
+            { src: '/assets/p1/RGV.jpg', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p1/RG0001.png', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p1/RG0002.png', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p1/RG0003.png', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p1/RG0004.png', width: '100%', height: 500, title: '', description: '' },
         ],
         info: {
             setting: 'These earrings typically feature a basket setting, which secures the diamond from four or six prongs. This allows for maximum sparkle as light reflects from all angles of the diamond.',
@@ -27,8 +27,8 @@ export const productDetailsMap = [
             cut: 'The round brilliant cut is the most popular cut for diamond studs because it maximizes brilliance and fire (play of colors).',
             details: 'Discover brilliance with our lab-grown diamonds! Enjoy peace of mind with our Lifetime 100% buyback option and IGI certification guaranteeing top quality. Plus, unleash your creativity with custom jewelry designs tailored just for you. Elevate your style with self-luxury and sustainability!'
         },
-        colorOptions: ['YG', 'RG', 'WG'],
-        karatOptions:['14k','18k','22k'],
+        colorOptions: ['YG', 'RG'],
+        karatOptions:['14k','22k'],
         sizeOptions:['XS','S','M','L'],
         category:'Earrings',
         tags:['Earrings', 'Gold', 'Golden', 'Drop Earrings']
@@ -38,14 +38,9 @@ export const productDetailsMap = [
         name: 'Dewdrop Delight Pendant',
         description: 'Revel in elegance with our Dewdrop Delight Pendant. Adorned with a leaf-shaped lab-grown diamond, this pendant emanates natural allure and sophistication. Whether its a cherished event or daily wear, let the "Dewdrop Delight" pendant enhance your style, epitomizing the harmony of nature and ethical craftsmanship.',
         images: [
-            { src: '/assets/p2/RGV.jpg', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p2/RG0001.png', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p2/RG0002.png', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p2/RG0003.png', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p2/RG0004.png', width: '100%', height: 500, title: '', description: '' },
             {
                 src: '/assets/p2/RG.mp4', width: '100%', height: 500, title: '', description: '', type: 'video', poster:
-                    "/assets/p2/RG0001.png",
+                    "/assets/p2/RG0001.png",autoPlay:true,loop:true,
                 sources: [
                     {
                         src: "/assets/p2/RG.mp4",
@@ -53,6 +48,11 @@ export const productDetailsMap = [
                     },
                 ],
             },
+            { src: '/assets/p2/RGV.jpg', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p2/RG0001.png', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p2/RG0002.png', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p2/RG0003.png', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p2/RG0004.png', width: '100%', height: 500, title: '', description: '' },
         ],
         info: {
             setting: 'Meticulously crafted, this pendant features a custom leaf-shaped setting, securely cradling the diamond while allowing light to dance through its facets, creating a mesmerizing sparkle.',
@@ -72,14 +72,9 @@ export const productDetailsMap = [
         name: 'Trinity Radiance Ring',
         description: ' Embrace timeless beauty with our Trinity Radiance Ring. Featuring three lab-grown diamonds – one captivating centerpiece flanked by two sparkling companions – this ring exudes elegance and sophistication. Whether its a momentous occasion or everyday luxury, let the Trinity Radiance ring adorn your finger, symbolizing the enduring bond of past, present, and future.',
         images: [
-            { src: '/assets/p3/RGV.jpg', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p3/RG0001.png', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p3/RG0002.png', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p3/RG0003.png', width: '100%', height: 500, title: '', description: '' },
-            { src: '/assets/p3/RG0004.png', width: '100%', height: 500, title: '', description: '' },
             {
                 src: '/assets/p3/RG.mp4', width: '100%', height: 500, title: '', description: '', type: 'video', poster:
-                    "/assets/p3/RG0001.png",
+                    "/assets/p3/RG0001.png",autoPlay:true,loop:true,
                 sources: [
                     {
                         src: "/assets/p3/RG.mp4",
@@ -87,6 +82,11 @@ export const productDetailsMap = [
                     },
                 ],
             },
+            { src: '/assets/p3/RGV.jpg', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p3/RG0001.png', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p3/RG0002.png', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p3/RG0003.png', width: '100%', height: 500, title: '', description: '' },
+            { src: '/assets/p3/RG0004.png', width: '100%', height: 500, title: '', description: '' },
         ],
         info: {
             setting: 'Expertly crafted, this ring showcases a classic yet contemporary setting, with the trio of diamonds nestled in perfect harmony, allowing light to dance through their facets, creating a radiant glow.',

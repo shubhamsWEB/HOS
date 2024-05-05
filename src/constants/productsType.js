@@ -2,26 +2,26 @@ export const productsCategory = [
     {
         id:1,
         title:'Earring',
-        isActive: true
+        isActive: true,
+        path:'/products?categories=Earring'
     },
     {
         id:2,
         title:'Necklace',
-        isActive: false
+        isActive: false,
+        path:'/products?categories=Necklace'
     },
     {
         id:3,
         title:'Bracelet',
-        isActive: false
+        isActive: false,
+        path:'/products?categories=Bracelet'
     },
     {
         id:4,
         title:'Rings',
-        isActive: false
+        isActive: false,
+        path:'/products?categories=Ring'
+
     },
-    {
-        id:5,
-        title:'Watches',
-        isActive: false
-    }
 ]

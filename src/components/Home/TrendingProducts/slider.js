@@ -13,15 +13,42 @@ function SliderComp() {
         // centerMode: true,
         centerPadding: "60px",
         speed: 500,
-        slidesToShow: 2,
         slidesToScroll: 1,
+        slidesToShow: 2,
         autoplay: true,
+        arrows: false,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
     return (
-        <Box>
+        <Box px={{ xs: 2, sm: 4 }}>
             <Slider {...settings}>
                 {products.map(item => {
-                    return (<Box key={item.id} sx={{ p: 1 }}>
+                    return (<Box key={item.id} sx={{p:{xs:0,sm:1}}}>
                         <Card data={item} />
                     </Box>)
                 })}

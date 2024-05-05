@@ -9,7 +9,6 @@ import Fade from '@mui/material/Fade';
 import styles from './style.module.scss';
 export default function AccordionTransition(props) {
   const [expanded, setExpanded] = React.useState(false);
-  console.log("🚀 ~ handleExpansion ~ props:", props);
   const handleExpansion = () => {
     setExpanded((prevExpanded) => !prevExpanded);
   };

@@ -11,7 +11,7 @@ import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import styles from './style.module.scss';
 import Badge from './badge';
 import {useRouter} from 'next/navigation';
-
+import EnduireBtn from '@/components/Common/EnquireBtn';
 function Card({ data }) {
     const sliderRef = useRef(null);
     const router = useRouter()
@@ -56,7 +56,7 @@ function Card({ data }) {
                 <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
                     {data?.images.map(img => {
                         return (<div key={img}>
-                            <Image src={img} alt="Ring 1" width={0} height={300} sizes="100vw" className={styles.productImg}/>
+                            <Image src={img} alt="Ring 1" width={0} height={250} sizes="100vw" className={styles.productImg}/>
                         </div>)
                     })}
 
@@ -65,14 +65,14 @@ function Card({ data }) {
                     <Box sx={{ position: 'absolute', top: 20, right: 8, display: 'flex', gap: '15px', flexDirection: 'column' }}>
                         <Box className={`${styles.icons} ${styles.selected}`}><FavoriteBorderIcon fontSize='small' className={styles.selectedIcon} /></Box>
                         <Box className={styles.icons}><ShareOutlinedIcon fontSize='12px' sx={{ color: "black" }} /></Box>
-                        <Box className={styles.icons}><UnfoldMoreRoundedIcon fontSize='12px' sx={{ transform: 'rotate(45deg)', color: "black" }} /></Box>
+                        {/* <Box className={styles.icons}><UnfoldMoreRoundedIcon fontSize='12px' sx={{ transform: 'rotate(45deg)', color: "black" }} /></Box> */}
                     </Box>
                 )}
             </Box>
             <Box boxShadow={2} p={2} pt={'40%'} sx={{ borderRadius: 2 }}>
                 <Box>
                     <Typography variant='h6'>{data.title}</Typography>
-                    <Button variant="contained" fullWidth className={styles.btn}>Enquire Now</Button>
+                    <EnduireBtn data={data}/>
                 </Box>
             </Box>
         </Box>
