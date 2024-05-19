@@ -10,9 +10,9 @@ function Filter() {
             <Typography variant='subtitle2' sx={{ fontSize: '12px' }}>Showing 1 - 20 of 160 results</Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'center' }}>
                 {/* <Dropdown title="Price" options={priceOptions} /> */}
-                <Dropdown title="Material" options={materialOptions} />
-                <Dropdown title="Brand" options={brandOptions} />
-                <Dropdown title="Size" options={sizeOptions} />
+                <Dropdown title="Metal Color" options={materialOptions} />
+                <Dropdown title="Solitaire size" options={sizeOptions} />
+                <Dropdown title="Solitaire shape" options={sizeOptions} />
                 <Divider orientation="vertical" flexItem />
                 <ViewHeadlineIcon fontSize='small' />
                 <AppsIcon fontSize='small' />

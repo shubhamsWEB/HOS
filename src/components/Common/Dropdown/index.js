@@ -26,6 +26,7 @@ const StyledMenu = styled((props) => (
     />
 ))(({ theme }) => ({
     '& .MuiPaper-root': {
+        maxHeight:170,
         borderRadius: 6,
         marginTop: theme.spacing(1),
         minWidth: 180,
@@ -80,7 +81,7 @@ export default function CustomizedMenus(props) {
                 endIcon={<KeyboardArrowDownIcon />}
                 sx={{border:'none',color:'#000',fontSize:'12px'}}
             >
-                {selectOption ? selectOption.title : title}
+                {selectOption ? <>{title}: <b>{selectOption.title}</b></> : title}
             </Button>
             <StyledMenu
                 id="demo-customized-menu"
@@ -91,6 +92,9 @@ export default function CustomizedMenus(props) {
                 open={open}
                 onClose={handleClose}
             >
+                <MenuItem onClick={() => setOption()} disableRipple>
+                        Select {title}
+                    </MenuItem>
                 {options.map(opt => {
                     return (<MenuItem onClick={() => handleOnSelect(opt)} disableRipple key={opt.id}>
                         {opt.title}

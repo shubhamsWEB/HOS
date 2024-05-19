@@ -13,12 +13,20 @@ function Details({ data }) {
                 <Typography variant='h3'>{data.name}</Typography>
                 <Typography variant='subtitle1' sx={{ color: '#909090' }} className={styles.sub}>{data.description}</Typography>
                 <Divider sx={{ marginTop: '10px' }} />
-                <Box mt={3} sx={{ display: 'flex', gap: '16px', flexDirection: 'column' }}>
-                    <Typography variant='h6' className={styles.subMain}>Gold Karat</Typography>
+                <Box mt={3} sx={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
+                    <Box>
+                    <Typography variant='subtitle1' className={styles.subMain}>Metal Purity</Typography>
                     <ButtonGroup options={data.karatOptions} />
-                    <Typography variant='h6' className={styles.subMain}>Color</Typography>
+                    </Box>
+                    <Box>
+                    <Typography variant='subtitle1' className={styles.subMain}>Metal Color</Typography>
                     <ButtonGroup options={data.colorOptions} />
-                    <Typography variant='h6' className={styles.subMain}>Size</Typography>
+                    </Box>
+                    <Box>
+                    <Typography variant='subtitle1' className={styles.subMain}>Solitaire Size</Typography>
+                    <ButtonGroup options={data.sizeOptions} />
+                    </Box>
+                    <Typography variant='subtitle1' className={styles.subMain}>Ring Size</Typography>
                     <ButtonGroup options={data.sizeOptions} />
                 </Box>
                 <Box sx={{display:'flex',gap:'10px',alignItems:'center',mt:2}}>

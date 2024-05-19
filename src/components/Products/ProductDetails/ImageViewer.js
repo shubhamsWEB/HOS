@@ -26,7 +26,7 @@ function ImageViewer({images}) {
                 style: {
                   width: "100%",
                   maxWidth: "900px",
-                  height:'100%',
+                  height:'95%',
                   aspectRatio: "3 / 3",
                   margin: "0 auto",
                 },

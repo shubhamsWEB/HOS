@@ -14,16 +14,11 @@ export const goldOptions = [
         name:'22KT',
         value:'22KT'
     },
-    {
-        id:4,
-        name:'24KT',
-        value:'24KT',
-    }
 ]
 export const colorOptions = [
     {
         id:1,
-        name:'Gold',
+        name:'Yellow Gold',
         value:'gold'
     },
     {
@@ -40,22 +35,27 @@ export const colorOptions = [
 export const sizeOptions = [
     {
         id:1,
-        name:'XS',
-        value:'xs',
+        name:'1/2ct',
+        value:'1/2',
     },
     {
-        id:1,
-        name:'S',
-        value:'s',
+        id:2,
+        name:'1ct',
+        value:'1',
     },
     {
-        id:1,
-        name:'M',
-        value:'m',
+        id:3,
+        name:'1.5',
+        value:'1.5',
     },
     {
-        id:1,
-        name:'L',
-        value:'l',
+        id:4,
+        name:'1.8ct',
+        value:'1.8',
+    },
+    {
+        id:5,
+        name:'2ct',
+        value:'2',
     },
 ]

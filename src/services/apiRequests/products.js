@@ -1,4 +1,4 @@
-import { getProductsData } from "../config/products";
+import { getProductsData,getAdminProductsData } from "../config/products";
 import RequestHandler from "../requestsHandler";
 
 const fetchProducts = (params) =>
@@ -10,4 +10,13 @@ const fetchProducts = (params) =>
       throw error;
     });
 
-export { fetchProducts };
+const fetchProductsForAdmin = (params) =>
+  new RequestHandler("apiUrl", getAdminProductsData(params))
+    .call()
+    .then((data) => {
+        return({ data })})
+    .catch((error) => {
+      throw error;
+    });
+
+export { fetchProducts,fetchProductsForAdmin };

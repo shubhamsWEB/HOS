@@ -27,9 +27,9 @@ export const productDetailsMap = [
             cut: 'The round brilliant cut is the most popular cut for diamond studs because it maximizes brilliance and fire (play of colors).',
             details: 'Discover brilliance with our lab-grown diamonds! Enjoy peace of mind with our Lifetime 100% buyback option and IGI certification guaranteeing top quality. Plus, unleash your creativity with custom jewelry designs tailored just for you. Elevate your style with self-luxury and sustainability!'
         },
-        colorOptions: ['YG', 'RG'],
-        karatOptions:['14k','22k'],
-        sizeOptions:['XS','S','M','L'],
+        colorOptions: ['Yellow Gold', 'White Gold','Rose Gold'],
+        karatOptions:['14k','18k','22k'],
+        sizeOptions:['1/2ct','1ct','1.5ct','1.8ct','2ct','2.5ct','2.8ct','3ct','3.5ct','3.8ct','4ct','4.5ct','4.8ct','5ct','5.5ct','5.8ct','6ct'],
         category:'Earrings',
         tags:['Earrings', 'Gold', 'Golden', 'Drop Earrings']
     },

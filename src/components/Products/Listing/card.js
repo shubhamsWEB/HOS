@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import styles from './style.module.scss';
 import Badge from './badge';
 import {useRouter} from 'next/navigation';
@@ -45,7 +44,7 @@ function Card({ data }) {
     };
 
     return (
-        <Box>
+        <Box sx={{maxHeight:400}}>
             <Box
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -53,10 +52,12 @@ function Card({ data }) {
                 onClick={() => router.push(`/products/${data.id}`)}
             >
                 {data.title==='Celestial Sparkle Earrings' && <Badge text={'-20%'}/>}
+                <Image src='/assets/ring1.jpg' alt="Ring 1" width={0} height={250} sizes="100vw" className={styles.productImg}/>
+
                 <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
-                    {data?.images.map(img => {
+                    {data?.medias?.mediaLink.map(img => {
                         return (<div key={img}>
-                            <Image src={img} alt="Ring 1" width={0} height={250} sizes="100vw" className={styles.productImg}/>
+                            <Image src='/assets/ring1.jpg' alt="Ring 1" width={0} height={250} sizes="100vw" className={styles.productImg}/>
                         </div>)
                     })}
 
@@ -71,7 +72,7 @@ function Card({ data }) {
             </Box>
             <Box boxShadow={2} p={2} pt={'40%'} sx={{ borderRadius: 2 }}>
                 <Box>
-                    <Typography variant='h6'>{data.title}</Typography>
+                    <Typography variant='h6'>{data.productName}</Typography>
                     <EnduireBtn data={data}/>
                 </Box>
             </Box>

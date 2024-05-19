@@ -20,7 +20,7 @@ export default function ToggleButtonSizes({ options }) {
 
     return (
         <Stack spacing={2} alignItems="left">
-            <ToggleButtonGroup size="small" {...control} sx={{gap:'10px'}}>
+            <ToggleButtonGroup size="small" {...control} sx={{gap:'10px',flexWrap:'wrap'}} >
                 {options.map(opt => {
                     return (
                         <ToggleButton value={opt} key={opt} sx={{border:'1px solid #D8C29D !important',borderRadius:0,minWidth:'40px'}}>

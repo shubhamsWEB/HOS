@@ -1,26 +1,50 @@
 export const sizeOptions = [
     {
         id: 1,
-        title: 'S',
-        value: 's',
+        title: '1/2ct',
+        value: '1/2',
         isSelected: true,
     },
     {
-        id: 1,
-        title: 'M',
-        value: 'm',
+        id: 2,
+        title: '1ct',
+        value: '1',
         isSelected: false,
     },
     {
-        id: 1,
-        title: 'L',
-        value: 'l',
+        id: 3,
+        title: '1.5ct',
+        value: '1.5',
         isSelected: false,
     },
     {
-        id: 1,
-        title: 'XL',
-        value: 'xl',
+        id: 4,
+        title: '1.8ct',
+        value: '1.8',
+        isSelected: false,
+    },
+    {
+        id: 5,
+        title: '2ct',
+        value: '2',
+        isSelected: false,
+    },
+    {
+        id: 6,
+        title: '2.5ct',
+        value: '2.5',
+        isSelected: false,
+    },
+    {
+        id: 7,
+        title: '2.8ct',
+        value: '2.8',
+        isSelected: false,
+    },
+    {
+        id: 8,
+        title: '3ct',
+        value: '3',
         isSelected: false,
     },
 ]
@@ -53,20 +77,20 @@ export const brandOptions = [
 export const materialOptions = [
     {
         id:1,
-        title:'Gold',
-        value:'g',
+        title:'Yellow Gold',
+        value:'YG',
         isSelected:true
     },
     {
         id:1,
-        title:'Silver',
-        value:'s',
+        title:'White Gold',
+        value:'WG',
         isSelected:false
     },
     {
         id:1,
-        title:'Diamond',
-        value:'d',
+        title:'Rose Gold',
+        value:'RG',
         isSelected:false
     },
 ]

@@ -19,9 +19,30 @@ export const productsCategory = [
     },
     {
         id:4,
-        title:'Rings',
+        title:'Ring',
         isActive: false,
         path:'/products?categories=Ring'
+
+    },
+    {
+        id:5,
+        title:'Pendent',
+        isActive: false,
+        path:'/products?categories=Pendent'
+
+    },
+    {
+        id:6,
+        title:'Bangle',
+        isActive: false,
+        path:'/products?categories=Bangle'
+
+    },
+    {
+        id:7,
+        title:'Accessories',
+        isActive: false,
+        path:'/products?categories=Accessories'
 
     },
 ]

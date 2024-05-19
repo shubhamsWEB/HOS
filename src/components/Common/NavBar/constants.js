@@ -3,28 +3,24 @@ export const navItems = [
         id:'categories',
         title: 'Categories',
         path:'/products',
-        dropDown:[{
-            id:'rings',
-            title:'Rings',
-            path:'#'
-        }],
+        dropDown:true
     },
     {
         id:'about',
         title: 'About',
         path:'/about-us',
-        dropDown:[],
+        dropDown:false,
     },
     {
         id:'blog',
         title: 'Blog',
         path:'#',
-        dropDown:[],
+        dropDown:false,
     },
     {
         id:'contact',
         title: 'Contact',
         path:'#',
-        dropDown:[],
+        dropDown:false,
     }
 ]

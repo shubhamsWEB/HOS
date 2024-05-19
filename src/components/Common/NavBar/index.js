@@ -21,6 +21,7 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { navItems } from './constants';
 import {useRouter } from 'next/navigation';
 import styles from './style.module.scss';
+import Menu from './menu';
 const drawerWidth = 240;
 
 function DrawerAppBar(props) {
@@ -75,7 +76,7 @@ function DrawerAppBar(props) {
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 {navItems.map((item) => (
                   <Button key={item.id} sx={{ color: '#000' }} className={styles.links} onClick={() => router.push(item.path)}>
-                    {item.title}
+                    {item.dropDown ? <Menu title={item.title}/> : item.title}
                   </Button>
                 ))}
               </Box>
