@@ -1,8 +1,8 @@
 // @ts-nocheck
 import { PayloadAction } from "@reduxjs/toolkit";
 import { put, takeLatest,call,takeEvery } from "redux-saga/effects";
-import {getProductReducer} from '../../reducers/Products/productSlice';
-import {getAllProducts} from '../../../services/apiHelperClient';
+import {getProductReducer,getAdminProductReducer} from '../../reducers/Products/productSlice';
+import {getAllProducts,getAdminAllProducts} from '../../../services/apiHelperClient';
 // Generator function
 function* doGetProducts({ payload }: PayloadAction<any>) {
   try {
@@ -17,9 +17,23 @@ function* doGetProducts({ payload }: PayloadAction<any>) {
     // yield put(getUserErrorAction(error));
   }
 }
+function* doGetAdminProducts({ payload }: PayloadAction<any>) {
+  try {
+    yield put({ type: "SHOW_LOADER" });
+    const response = yield call(getAdminAllProducts,payload);
+    if(response) {
+      yield put(getAdminProductReducer(response));
+      yield put({ type: "HIDE_LOADER" });
+
+    }
+  } catch (error) {
+    // yield put(getUserErrorAction(error));
+  }
+}
 
 // Generator function
 export function* watchProducts():WatcherSaga {
+  yield takeLatest("FETCH_PRODUCTS_IN_DASHBOARD", doGetAdminProducts);
   yield takeLatest("FETCH_PRODUCTS", doGetProducts);
 }
 export default watchProducts;

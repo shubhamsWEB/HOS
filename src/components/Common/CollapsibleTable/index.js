@@ -104,30 +104,13 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
 
 const rows = [
   createData(1, 'Celestial Sparkle Earrings', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
-  createData(2, 'Celestial Sparkle Earrings', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
-  createData(3, 'Celestial Sparkle Earrings', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
-  createData(4, 'Celestial Sparkle Earrings', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
-  createData(5, 'Celestial Sparkle Earrings', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10)
+  createData(2, 'Celestial Sparkle Earrings 1', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
+  createData(3, 'Celestial Sparkle Earrings 2', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
+  createData(4, 'Celestial Sparkle Earrings 3', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
+  createData(5, 'Celestial Sparkle Earrings 4', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10)
 
 ];
 

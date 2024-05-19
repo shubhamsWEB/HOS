@@ -9,7 +9,6 @@ async function Products(props) {
     const data = await fetchProducts(
         // {categories:props?.searchParams?.categories?.toUpperCase()}
         );
-        console.log("🚀 ~ Products ~ data:", data);
     return (
         <>
             <Box mt={8}>

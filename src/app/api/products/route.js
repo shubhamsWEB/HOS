@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import HandleRequest from "@/services/requestsHandler";
-import {fetchProducts} from '@/services/apiRequests/products';
+import {fetchProductsForAdmin} from '@/services/apiRequests/products';
 
 const setRequestHeader = (request) => {
   const requestHeader = {
@@ -12,6 +12,6 @@ const setRequestHeader = (request) => {
 export async function POST(request) {
     const data = await request.json()
   setRequestHeader(request);
-  const response = await fetchProducts(data);
+  const response = await fetchProductsForAdmin(data);
   return NextResponse.json(response?.data);
 }

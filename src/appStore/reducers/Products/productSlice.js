@@ -15,9 +15,13 @@ export const productSlice = createSlice({
       state.data = content;
       state.paginator = action.payload;
     },
+    getAdminProductReducer: (state,action) => {
+      state.data = action.payload;
+    //   state.paginator = action.payload;
+    },
   },
 });
 
-export const { getProductReducer} = productSlice.actions;
+export const { getProductReducer,getAdminProductReducer} = productSlice.actions;
 
 export default productSlice.reducer;
