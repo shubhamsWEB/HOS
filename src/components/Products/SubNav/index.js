@@ -1,22 +1,23 @@
+'use client'
 import React from 'react'
-import { Box, Typography, Breadcrumbs,Link } from '@mui/material';
+import { Box, Typography, Breadcrumbs,Button } from '@mui/material';
 import { productsCategory } from '../../../constants/productsType'
-// import Link from 'next/link';
-import styles from './style.module.scss';
+import {useRouter} from 'next/navigation';
 function Filter() {
+    const router = useRouter();
     return (
         <Box sx={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center',mt:4}}>
             <Typography variant='h2'>Products</Typography>
             <Breadcrumbs separator="|" id="productSubnav">
                 {productsCategory.map(item => {
-                    return (<Link
+                    return (<Button
                         underline="hover"
                         color="inherit"
-                        href={item.path}
                         key={item.id}
+                        onClick={() => router.push(item.path)}
                     >
                         {item.title}
-                    </Link>)
+                    </Button>)
                 })}
             </Breadcrumbs>
         </Box>

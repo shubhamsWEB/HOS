@@ -4,6 +4,9 @@ export const getAllProducts = async (data) => {
 export const getAdminAllProducts = async (data) => {
     return fetch(`/api/products`,{method:'POST',body:JSON.stringify(data)}).then((res) => res.json());
   };
+export const deleteProduct = async (data) => {
+    return fetch(`/api/products`,{method:'DELETE',body:JSON.stringify(data)}).then((res) => res.json());
+  };
 export const getAllTypes = async (data) => {
     return fetch(`/api/types`,{method:'POST',body:JSON.stringify(data)}).then((res) => res.json());
   };

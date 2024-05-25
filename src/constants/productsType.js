@@ -1,5 +1,11 @@
 export const productsCategory = [
     {
+        id:8,
+        title:'All',
+        isActive: true,
+        path:'/products'
+    },
+    {
         id:1,
         title:'Earring',
         isActive: true,
@@ -21,14 +27,14 @@ export const productsCategory = [
         id:4,
         title:'Ring',
         isActive: false,
-        path:'/products?categories=Ring'
+        path:'/products?categories=Rings'
 
     },
     {
         id:5,
         title:'Pendent',
         isActive: false,
-        path:'/products?categories=Pendent'
+        path:'/products?categories=Pendants'
 
     },
     {

@@ -4,11 +4,7 @@ import TopNav from '@/components/Common/Breadcrumbs';
 import Subnav from '@/components/Products/SubNav';
 import Filter from '@/components/Products/ProductFilter';
 import Listing from '@/components/Products/Listing';
-import {fetchProducts} from '@/services/apiRequests/products';
-async function Products(props) {
-    const data = await fetchProducts(
-        // {categories:props?.searchParams?.categories?.toUpperCase()}
-        );
+function Products() {
     return (
         <>
             <Box mt={8}>
@@ -17,7 +13,7 @@ async function Products(props) {
                 <Box p={2} px={{xs:2,sm:10}}>
                     <Divider sx={{ marginTop: '30px', marginBottom: '10px' }} />
                     <Filter/>
-                    <Listing data={data}/>
+                    <Listing/>
                 </Box>
             </Box>
         </>

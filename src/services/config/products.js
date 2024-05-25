@@ -13,5 +13,9 @@ const addNewProductData = (params) => (({
     method: "post",
     data: {...params}
   }));
+const removeProduct= (params) => (({
+    url: `/admin/new/product/${params.id}`,
+    method: "delete",
+  }));
   
-  export { getProductsData,getAdminProductsData,addNewProductData };
+  export { getProductsData,getAdminProductsData,addNewProductData,removeProduct };
