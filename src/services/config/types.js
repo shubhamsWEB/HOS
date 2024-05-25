@@ -3,5 +3,9 @@ const getTypes = (params) => (({
     method: "get",
     params
   }));
+const getAllTypes = (params) => (({
+    url: `/admin/constants/get/`,
+    method: "get",
+  }));
   
-  export { getTypes };
+  export { getTypes,getAllTypes };

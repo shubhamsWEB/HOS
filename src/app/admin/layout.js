@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 // import Footer from '../components/Common/Footer';
 import Sidenav from '../../components/Dashboard/Sidenav';
 import StoreProvider from "@/appStore/StoreProvider";
+import Loader from '../../components/Common/Loader';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
                 <StoreProvider>
                     <Sidenav>
                         {children}
+                        <Loader/>
                     </Sidenav>
                     </StoreProvider>
             </body>

@@ -42,7 +42,7 @@ function Card({ data }) {
         infinite: false,
         fade: true
     };
-
+    const imageUrls = data?.media?.filter(url => !url.includes('.mp4'));
     return (
         <Box sx={{maxHeight:400}}>
             <Box
@@ -52,12 +52,11 @@ function Card({ data }) {
                 onClick={() => router.push(`/products/${data.id}`)}
             >
                 {data.title==='Celestial Sparkle Earrings' && <Badge text={'-20%'}/>}
-                <Image src='/assets/ring1.jpg' alt="Ring 1" width={0} height={250} sizes="100vw" className={styles.productImg}/>
 
                 <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
-                    {data?.medias?.mediaLink.map(img => {
+                    {imageUrls?.map(img => {
                         return (<div key={img}>
-                            <Image src='/assets/ring1.jpg' alt="Ring 1" width={0} height={250} sizes="100vw" className={styles.productImg}/>
+                            <Image src={img} alt="Ring 1" width={0} height={250} sizes="100vw" className={styles.productImg}/>
                         </div>)
                     })}
 

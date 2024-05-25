@@ -14,7 +14,6 @@ function Products() {
   React.useEffect(() => {
     dispatch({type:'FETCH_PRODUCTS_IN_DASHBOARD',payload:{type:'all'}});
   },[]);
-  console.log("🚀 ~ Products ~ products:", products);
   return (
     <Box>
     <Box sx={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between' }}>

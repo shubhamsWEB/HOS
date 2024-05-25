@@ -8,5 +8,10 @@ const getAdminProductsData = (params) => (({
     method: "get",
     params
   }));
+const addNewProductData = (params) => (({
+    url: `/admin/new/product`,
+    method: "post",
+    data: {...params}
+  }));
   
-  export { getProductsData,getAdminProductsData };
+  export { getProductsData,getAdminProductsData,addNewProductData };

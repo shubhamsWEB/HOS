@@ -4,4 +4,10 @@ export const getAllProducts = async (data) => {
 export const getAdminAllProducts = async (data) => {
     return fetch(`/api/products`,{method:'POST',body:JSON.stringify(data)}).then((res) => res.json());
   };
+export const getAllTypes = async (data) => {
+    return fetch(`/api/types`,{method:'POST',body:JSON.stringify(data)}).then((res) => res.json());
+  };
+export const addNewPorduct = async (data) => {
+    return fetch(`/api/newproduct`,{method:'POST',body:JSON.stringify(data)}).then((res) => res.json());
+  };
   

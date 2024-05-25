@@ -15,30 +15,7 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Image from 'next/image';
-function createData(id, name, category, offers, collection, metalcolor,enquries) {
-  return {
-    id,
-    name,
-    category,
-    offers,
-    collection,
-    metalcolor,
-    enquries,
-    info: [
-      {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
-      },
-      {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
-      },
-    ],
-  };
-}
-
+import {Grid} from '@mui/material';
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
@@ -55,49 +32,47 @@ function Row(props) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row" align="left">
-          <Image src='/assets/ring1.jpg' width={120} height={120} alt="Product Image"/>
-        </TableCell>
-        <TableCell align="center">{row.name}</TableCell>
+        {/* <TableCell component="th" scope="row" align="left">
+          <Image src={row?.media[0]} width={120} height={120} alt="Product Image" />
+        </TableCell> */}
+        <TableCell align="center">{row.productCode}</TableCell>
+        <TableCell align="center">{row.productName}</TableCell>
         <TableCell align="center">{row.category}</TableCell>
-        <TableCell align="center">{row.offers}</TableCell>
+        <TableCell align="center">{row?.offer || "NA"}</TableCell>
         <TableCell align="center">{row.collection}</TableCell>
-        <TableCell align="center">{row.metalcolor}</TableCell>
-        <TableCell align="center">{row.enquries}</TableCell>
+        <TableCell align="center">{row.metalColour}</TableCell>
+        <TableCell align="center">{row?.enquiries || "0"}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+          {open && <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                History
+                Images
               </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.info.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              {row?.media.length > 0 && (
+                <Grid container spacing={4} sx={{ mt: 2 }}>
+                    {row?.media.map((media, index) => (
+                        <Grid item xs={1} key={index}>
+                            {!media.includes('.mp4') ? (
+                                <img
+                                    src={media}
+                                    alt={`Uploaded image ${index + 1}`}
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                />
+                            ) : (
+                                <video
+                                    src={media}
+                                    controls
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                />
+                            )}
+                        </Grid>
+                    ))}
+                </Grid>
+            )}
             </Box>
-          </Collapse>
+          </Collapse>}
         </TableCell>
       </TableRow>
     </React.Fragment>
@@ -105,23 +80,14 @@ function Row(props) {
 }
 
 
-const rows = [
-  createData(1, 'Celestial Sparkle Earrings', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
-  createData(2, 'Celestial Sparkle Earrings 1', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
-  createData(3, 'Celestial Sparkle Earrings 2', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
-  createData(4, 'Celestial Sparkle Earrings 3', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10),
-  createData(5, 'Celestial Sparkle Earrings 4', 'Earrings','-', 'Sansa Gold', 'Yellow Gold',10)
-
-];
-
-export default function CollapsibleTable() {
+export default function CollapsibleTable({ data }) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
-            <TableCell />
-            <TableCell align="left">Image</TableCell>
+            <TableCell sx={{width:'10px'}}/>
+            <TableCell align="center">PID</TableCell>
             <TableCell align="center">Name</TableCell>
             <TableCell align="center">Category</TableCell>
             <TableCell align="center">Offers</TableCell>
@@ -131,8 +97,8 @@ export default function CollapsibleTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
+          {data?.map((row) => (
+            <Row key={row?.productName} row={row} />
           ))}
         </TableBody>
       </Table>

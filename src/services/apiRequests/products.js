@@ -1,4 +1,4 @@
-import { getProductsData,getAdminProductsData } from "../config/products";
+import { getProductsData,getAdminProductsData,addNewProductData } from "../config/products";
 import RequestHandler from "../requestsHandler";
 
 const fetchProducts = (params) =>
@@ -18,5 +18,13 @@ const fetchProductsForAdmin = (params) =>
     .catch((error) => {
       throw error;
     });
+const addNewProduct = (params) =>
+  new RequestHandler("apiUrl", addNewProductData(params))
+    .call()
+    .then((data) => {
+        return({ data })})
+    .catch((error) => {
+      throw error;
+    });
 
-export { fetchProducts,fetchProductsForAdmin };
+export { fetchProducts,fetchProductsForAdmin,addNewProduct };
