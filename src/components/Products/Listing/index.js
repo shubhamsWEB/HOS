@@ -4,7 +4,8 @@ import { Box, Grid, Typography } from '@mui/material';
 import Card from './card';
 import { useDispatch, useSelector } from 'react-redux';
 import withDuck from '@/components/HOC/withDuck';
-import { productsInjectible } from '../../../appStore/saga/products';
+import { productsInjectible } from '@/appStore/saga/products';
+import { loaderInjectible } from '@/appStore/saga/loader';
 import { useSearchParams } from 'next/navigation';
 
 function Listing() {
@@ -13,27 +14,31 @@ function Listing() {
 
     useEffect(() => {
         const categories = searchParams.get('categories') || '';
-        const payload = categories ? { categories } : {};
-        dispatch({ type: "FETCH_PRODUCTS", payload});
-    }, [searchParams.toString()]); // Include searchParams.toString() as a dependency
+        const collections = searchParams.get('collections') || '';
+        let payload = {};
+        if(categories) payload.categories = categories;
+        if(collections) payload.collections = collections;
+        dispatch({ type: "FETCH_PRODUCTS", payload });
+    }, [dispatch, searchParams]);
 
-    const products = useSelector(state => state.products);
+    const {products,loading,state} = useSelector(state => ({products:state.products,loading:state.loader.loading,state}));
+    console.log("🚀 ~ Listing ~ products:", products);
+    console.log("🚀 ~ Listing ~ loading:", loading);
 
     return (
         <Box mt={2} p={1}>
             {products?.data?.length > 0 ?
                 <Grid container spacing={4}>
-                    {products?.data?.map(item => {
-                        return (
-                            <Grid item xs={12} sm={3} key={item.id}>
-                                <Card data={item} />
-                            </Grid>
-                        )
-                    })}
-                </Grid> : <Typography variant='h6' textAlign={'center'}>No Products Available</Typography>
+                    {products?.data?.map(item => (
+                        <Grid item xs={12} sm={3} key={item.id}>
+                            <Card data={item} />
+                        </Grid>
+                    ))}
+                </Grid>
+                :
+                <Typography variant='h6' textAlign='center'>No Products Available</Typography>
             }
         </Box>
-    )
+    );
 }
-
-export default withDuck([productsInjectible])(Listing);
+export default withDuck([productsInjectible,loaderInjectible])(Listing);

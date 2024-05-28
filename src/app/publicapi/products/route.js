@@ -13,5 +13,7 @@ export async function POST(request) {
     const data = await request.json()
 //   setRequestHeader(request);
   const response = await fetchProducts(data);
-  return NextResponse.json(response?.data);
+  const cacheControl = "public, max-age=600"; // Cache for 600 seconds (adjust as needed)
+  return NextResponse.json(response?.data, { headers: { "Cache-Control": cacheControl } });
+
 }

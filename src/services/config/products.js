@@ -3,6 +3,11 @@ const getProductsData = (params) => (({
     method: "get",
     params
   }));
+const getProduct = (params) => (({
+    url: `/public/product/${params.id}`,
+    method: "get",
+    params
+  }));
 const getAdminProductsData = (params) => (({
     url: `/admin/new/product`,
     method: "get",
@@ -18,4 +23,4 @@ const removeProduct= (params) => (({
     method: "delete",
   }));
   
-  export { getProductsData,getAdminProductsData,addNewProductData,removeProduct };
+  export { getProductsData,getAdminProductsData,addNewProductData,removeProduct,getProduct };

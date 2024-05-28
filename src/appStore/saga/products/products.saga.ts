@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { PayloadAction } from "@reduxjs/toolkit";
 import { put, takeLatest,call,takeEvery } from "redux-saga/effects";
-import {getProductReducer,getAdminProductReducer} from '../../reducers/Products/productSlice';
+import {getProductReducer,getAdminProductReducer,deleteProductReducer} from '../../reducers/Products/productSlice';
 import {getAllProducts,getAdminAllProducts,addNewPorduct,deleteProduct} from '../../../services/apiHelperClient';
 // Generator function
 function* doGetProducts({ payload }: PayloadAction<any>) {
@@ -49,6 +49,7 @@ function* doDeleteProduct({ payload }: PayloadAction<any>) {
   try {
     yield put({ type: "SHOW_LOADER" });
   yield call(deleteProduct,payload);
+  yield put(deleteProductReducer(payload))
       yield put({ type: "HIDE_LOADER" });
   } catch (error) {
     // yield put(getUserErrorAction(error));

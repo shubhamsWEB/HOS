@@ -1,8 +1,16 @@
-import { getProductsData,getAdminProductsData,addNewProductData ,removeProduct} from "../config/products";
+import { getProductsData,getAdminProductsData,addNewProductData ,removeProduct,getProduct} from "../config/products";
 import RequestHandler from "../requestsHandler";
 
 const fetchProducts = (params) =>
   new RequestHandler("apiUrl", getProductsData(params))
+    .call()
+    .then((data) => {
+        return({ data })})
+    .catch((error) => {
+      throw error;
+    });
+const fetchProductData = (params) =>
+  new RequestHandler("apiUrl", getProduct(params))
     .call()
     .then((data) => {
         return({ data })})
@@ -35,4 +43,4 @@ const deleteProduct = (params) =>
       throw error;
     });
 
-export { fetchProducts,fetchProductsForAdmin,addNewProduct,deleteProduct };
+export { fetchProducts,fetchProductsForAdmin,addNewProduct,deleteProduct,fetchProductData };

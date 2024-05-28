@@ -1,7 +1,7 @@
 import HandleRequest from "./requestsHandler";
 import { cookies } from "next/headers";
 import {fetchTypes} from '../services/apiRequests/types';
-import {fetchProducts,fetchProductsForAdmin} from '../services/apiRequests/products';
+import {fetchProducts,fetchProductsForAdmin,fetchProductData} from '../services/apiRequests/products';
 function parseJwt(token) {
   return JSON.parse(Buffer.from(token?.split(".")?.[1], "base64").toString());
 }
@@ -23,22 +23,13 @@ export const fetchPublicProductsData = async(params) => {
   const response = await fetchProducts(params);
   return response;
 }
+export const fetchProduct = async(params) => {
+  // HandleRequest.setHeader(authenticationInfo());
+  const response = await fetchProductData(params);
+  return response;
+}
 export const fetchAdminProductsData = async(params) => {
   HandleRequest.setHeader(authenticationInfo());
   const response = await fetchProductsForAdmin(params);
   return response;
 }
-
-
-
-export const fetchProfile = async () => {
-  HandleRequest.setHeader(authenticationInfo());
-  const response = await fetchCommerceCampaignList();
-  return response;
-};
-export const fetchSelfProfile = async () => {
-  const headers =authenticationInfo() 
-  HandleRequest.setHeader(headers);
-  const response = await fetchSelfProfileDetails({ email: headers.email });
-  return response;
-};

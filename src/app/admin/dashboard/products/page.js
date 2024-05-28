@@ -12,7 +12,7 @@ function Products() {
   const router = useRouter();
   const products = useSelector(state => state.products);
   React.useEffect(() => {
-    dispatch({type:'FETCH_PRODUCTS_IN_DASHBOARD',payload:{type:'all'}});
+    dispatch({type:'FETCH_PRODUCTS_IN_DASHBOARD',payload:{}});
   },[]);
   return (
     <Box>

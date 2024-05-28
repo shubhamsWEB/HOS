@@ -4,7 +4,7 @@ import TopNav from '@/components/Common/Breadcrumbs';
 import Subnav from '@/components/Products/SubNav';
 import Filter from '@/components/Products/ProductFilter';
 import Listing from '@/components/Products/Listing';
-function Products() {
+function Products(props) {
     return (
         <>
             <Box mt={8}>

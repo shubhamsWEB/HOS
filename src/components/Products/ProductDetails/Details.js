@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Box, Divider, Rating,Button } from '@mui/material';
+import { Typography, Box, Divider, Rating, Button } from '@mui/material';
 import Breadcrumb from '@/components/Common/Breadcrumbs';
 import styles from './style.module.scss';
 import ButtonGroup from './ButtonGroup';
@@ -10,36 +10,40 @@ function Details({ data }) {
         <Box>
             <Breadcrumb data={[{ title: 'Home', path: '/' }, { title: 'Products', path: '/products' }, { title: 'Details', path: `/products/${data.id}` }]} />
             <Box mt={2}>
-                <Typography variant='h3'>{data.name}</Typography>
-                <Typography variant='subtitle1' sx={{ color: '#909090' }} className={styles.sub}>{data.description}</Typography>
+                <Typography variant='h3'>{data.productName}</Typography>
+                <Typography variant='subtitle1' sx={{ color: '#909090' }} className={styles.sub}>{data.productDescription}</Typography>
                 <Divider sx={{ marginTop: '10px' }} />
                 <Box mt={3} sx={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
                     <Box>
-                    <Typography variant='subtitle1' className={styles.subMain}>Metal Purity</Typography>
-                    <ButtonGroup options={data.karatOptions} />
+                        <Typography variant='subtitle1' className={styles.subMain}>Metal Purity</Typography>
+                        <ButtonGroup options={data.metalPurity?.split(',') || [data.metalPurity]} />
                     </Box>
                     <Box>
-                    <Typography variant='subtitle1' className={styles.subMain}>Metal Color</Typography>
-                    <ButtonGroup options={data.colorOptions} />
+                        <Typography variant='subtitle1' className={styles.subMain}>Metal Color</Typography>
+                        <ButtonGroup options={data.metalColour?.split(',') || [data.metalColour]} />
                     </Box>
                     <Box>
-                    <Typography variant='subtitle1' className={styles.subMain}>Solitaire Size</Typography>
-                    <ButtonGroup options={data.sizeOptions} />
+                        <Typography variant='subtitle1' className={styles.subMain}>Solitaire Size</Typography>
+                        <ButtonGroup options={data.solitaireSize?.split(',') || [data.solitaireSize]} />
                     </Box>
-                    <Typography variant='subtitle1' className={styles.subMain}>Ring Size</Typography>
-                    <ButtonGroup options={data.sizeOptions} />
+                    {data.category === 'Rings' &&
+                        <>
+                            <Typography variant='subtitle1' className={styles.subMain}>Ring Size</Typography>
+                            <ButtonGroup options={data.sizeOptions?.split(',')|| [data.sizeOptions]} />
+                        </>
+                    }
                 </Box>
-                <Box sx={{display:'flex',gap:'10px',alignItems:'center',mt:2}}>
+                <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center', mt: 2 }}>
                     <Rating value={4} size='small' readOnly />
                     <Typography variant='subtitle2'>(64 Reviews)</Typography>
                     <FavoriteBorderIcon />
                     <ShareOutlinedIcon />
                 </Box>
-                <Button fullWidth sx={{background:'#222222', color:'#FFFFFF',mt:3,p:2}} className={styles.btn}>ENQUIRE NOW</Button>
+                <Button fullWidth sx={{ background: '#222222', color: '#FFFFFF', mt: 3, p: 2 }} className={styles.btn}>ENQUIRE NOW</Button>
                 <Box mt={2}>
-                    <Typography variant='subtitle1' className={styles.sub}><b>Product Number: </b> 9248-1753-6392</Typography>
+                    <Typography variant='subtitle1' className={styles.sub}><b>Product Number: </b> {data.productCode}</Typography>
                     <Typography variant='subtitle1' className={styles.sub}><b>Category: </b> {data.category}</Typography>
-                    <Typography variant='subtitle1' className={styles.sub}><b>Tags: </b> {data.tags.join(', ')}</Typography>
+                    {/* <Typography variant='subtitle1' className={styles.sub}><b>Tags: </b> {data.tags.join(', ')}</Typography> */}
                 </Box>
             </Box>
         </Box>

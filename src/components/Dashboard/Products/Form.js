@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField, Grid, Select, MenuItem, TextareaAutosize, Typography, Button, Box, FormControlLabel, Checkbox } from '@mui/material';
 import { useSelector } from 'react-redux';
-import ImageUpload from './ImageUpload';
 
 import CutInfoField from '../../Common/Fields/CutInfoField';
 import DetailsField from '../../Common/Fields/DetailsField';
@@ -26,7 +25,7 @@ import withDuck from '@/components/HOC/withDuck';
 import {productsInjectible} from '../../../appStore/saga/products';
 import {loaderInjectible} from '../../../appStore/saga/loader';
 import {createData} from '../../../utils/createNewProductData';
-function FormComponent() {
+function FormComponent({data}) {
     const options = useSelector(state => state.constantTypes);
     const [uploadedMediaYG, setUploadedMediaYG] = useState([]);
     const [uploadedMediaWG, setUploadedMediaWG] = useState([]);
@@ -35,10 +34,7 @@ function FormComponent() {
     const onSubmit = (values) => {
         const productData = {
             ...values,
-            mediaNew: [...uploadedMediaYG, ...uploadedMediaRG, ...uploadedMediaWG],
-            metalColour:values.metalColour.join(','),
-            metalPurity: values.metalPurity.join(','),
-            solitaireSize:values.solitaireSize.join(',')
+            mediaNew: [...uploadedMediaYG, ...uploadedMediaRG, ...uploadedMediaWG]
         }
         dispatch({type:'ADD_NEW_PRODUCT',payload:createData(productData)})
     }
@@ -46,12 +42,12 @@ function FormComponent() {
         <>
             <Form
                 onSubmit={onSubmit}
-                initialValues={{ inStock: true }} initialValuesEqual={() => true}
-                render={({ handleSubmit, invalid,values }) => (
+                initialValues={{ ...data }} initialValuesEqual={() => true}
+                render={({ handleSubmit, invalid }) => (
                     <>
-                        <Box sx={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between', mb: 2 }}>
-                            <Typography variant='h5'>Add Product Details</Typography>
-                            <Button variant='contained' color='success' onClick={handleSubmit} disabled={invalid}>Add Product</Button>
+                        <Box sx={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between', mb: 2 ,mt:2}}>
+                            <Typography variant='h5'>{data.productName} ({data.productCode})</Typography>
+                            <Button variant='contained' color='success' onClick={handleSubmit} disabled={invalid}>SAVE</Button>
                         </Box>
                         <form onSubmit={handleSubmit}>
                             <Grid container spacing={3}>
@@ -122,24 +118,24 @@ function FormComponent() {
                                     <label>Details</label>
                                     <DetailsField />
                                 </Grid>
-                                <Grid item xs={12} sm={12} sx={{ display: 'flex', flexDirection: 'column' }}>
+                                {/* <Grid item xs={12} sm={12} sx={{ display: 'flex', flexDirection: 'column' }}>
                                     <Typography variant='h5'>Upload Product Images</Typography>
                                     <Field name="images">
                                         {({ input, meta }) => (
                                             <Grid container>
                                                 <Grid item xs={4}>
-                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaYG} setUploadedMedia={setUploadedMediaYG} color="yellow gold" values={values}/>
+                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaYG} setUploadedMedia={setUploadedMediaYG} color="yellow gold" />
                                                 </Grid>
                                                 <Grid item xs={4}>
-                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaRG} setUploadedMedia={setUploadedMediaRG} color="rose gold" values={values}/>
+                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaRG} setUploadedMedia={setUploadedMediaRG} color="rose gold" />
                                                 </Grid>
                                                 <Grid item xs={4}>
-                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaWG} setUploadedMedia={setUploadedMediaWG} color="white gold" values={values}/>
+                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaWG} setUploadedMedia={setUploadedMediaWG} color="white gold" />
                                                 </Grid>
                                             </Grid>
                                         )}
                                     </Field>
-                                </Grid>
+                                </Grid> */}
                             </Grid>
                         </form>
                     </>

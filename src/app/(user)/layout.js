@@ -3,7 +3,7 @@ import "../globals.css";
 import NavBar from '@/components/Common/NavBar';
 import Footer from '@/components/Common/Footer';
 import StoreProvider from "@/appStore/StoreProvider";
-
+import Loader from "@/components/Common/Loader/DiamondLoader";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <StoreProvider>
-          <NavBar />{children}<Footer />
+          <NavBar />{children}<Loader/><Footer />
         </StoreProvider></body>
     </html>
   );

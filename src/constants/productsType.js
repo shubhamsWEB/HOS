@@ -9,19 +9,19 @@ export const productsCategory = [
         id:1,
         title:'Earring',
         isActive: true,
-        path:'/products?categories=Earring'
+        path:'/products?categories=Earrings'
     },
     {
         id:2,
         title:'Necklace',
         isActive: false,
-        path:'/products?categories=Necklace'
+        path:'/products?categories=Necklaces'
     },
     {
         id:3,
         title:'Bracelet',
         isActive: false,
-        path:'/products?categories=Bracelet'
+        path:'/products?categories=Bracelets'
     },
     {
         id:4,
@@ -41,7 +41,7 @@ export const productsCategory = [
         id:6,
         title:'Bangle',
         isActive: false,
-        path:'/products?categories=Bangle'
+        path:'/products?categories=Bangles'
 
     },
     {

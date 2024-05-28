@@ -7,6 +7,7 @@ const doUserLogin = (params) =>
     .then((data) => {
         return({ data })})
     .catch((error) => {
+      console.log("🚀 ~ error:", error);
       throw error;
     });
 

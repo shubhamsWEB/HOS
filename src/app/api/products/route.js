@@ -14,6 +14,7 @@ export async function POST(request) {
   setRequestHeader(request);
   const response = await fetchProductsForAdmin(data);
   return NextResponse.json(response?.data);
+
 }
 export async function DELETE(request) {
     const data = await request.json()

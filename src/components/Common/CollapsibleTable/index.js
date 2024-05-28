@@ -17,7 +17,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Image from 'next/image';
 import { Button, Grid } from '@mui/material';
 function Row(props) {
-  const { row,handleOnDeleteProduct } = props;
+  const { row,handleOnDeleteProduct,handleOnEditProduct } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -49,7 +49,7 @@ function Row(props) {
                   Images
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 2 }}>
-                  <Button variant='contained' color='primary'>Edit</Button>
+                  <Button variant='contained' color='primary' onClick={()=> handleOnEditProduct(row)}>Edit</Button>
                   <Button variant="outlined" color="error" onClick={() => handleOnDeleteProduct(row.id)}>
                     Delete
                   </Button>
@@ -88,7 +88,7 @@ function Row(props) {
 }
 
 
-export default function CollapsibleTable({ data,handleOnDeleteProduct }) {
+export default function CollapsibleTable({ data,handleOnDeleteProduct,handleOnEditProduct }) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -106,7 +106,7 @@ export default function CollapsibleTable({ data,handleOnDeleteProduct }) {
         </TableHead>
         <TableBody>
           {data?.map((row) => (
-            <Row key={row?.productName} row={row} handleOnDeleteProduct={handleOnDeleteProduct}/>
+            <Row key={row?.productName} row={row} handleOnDeleteProduct={handleOnDeleteProduct} handleOnEditProduct={handleOnEditProduct}/>
           ))}
         </TableBody>
       </Table>

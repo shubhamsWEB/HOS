@@ -19,9 +19,13 @@ export const productSlice = createSlice({
       state.data = action.payload;
     //   state.paginator = action.payload;
     },
+    deleteProductReducer: (state,action) => {
+      state.data = state.data.filter(pr => pr.id !==action.payload.id)
+    //   state.paginator = action.payload;
+    },
   },
 });
 
-export const { getProductReducer,getAdminProductReducer} = productSlice.actions;
+export const { getProductReducer,getAdminProductReducer,deleteProductReducer} = productSlice.actions;
 
 export default productSlice.reducer;

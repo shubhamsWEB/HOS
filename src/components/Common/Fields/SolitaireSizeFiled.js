@@ -13,6 +13,8 @@ function solitaireSize({options}) {
                     // onChange={handleChange}
                     {...input}
                     fullWidth
+                    multiple
+                    value={input.value || []}
                 >
                     {options.data.filter((item) => item.cname === 'solitaire_size')[0]?.cvalue.map(cat => {
                         return <MenuItem value={cat} key={cat}>{cat}</MenuItem>

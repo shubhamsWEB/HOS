@@ -3,7 +3,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../utils/firebaseConfig";
 import { Box, Button, Grid, Typography } from "@mui/material";
 
-export default function Upload({uploadedMedia, setUploadedMedia,color}) {
+export default function Upload({uploadedMedia, setUploadedMedia,color,values}) {
     const [files, setFiles] = useState([]); // State to store the selected files
     const [uploading, setUploading] = useState(false); // State to indicate the upload status
 
@@ -18,7 +18,7 @@ export default function Upload({uploadedMedia, setUploadedMedia,color}) {
         setUploading(true); // Set uploading state to true
 
         const uploadPromises = files.map(async (file) => {
-            const storageRef = ref(storage, `media/${file.name}`); // Create a reference to the file in Firebase Storage
+            const storageRef = ref(storage, `media/${values.productCode}/${file.name}`); // Create a reference to the file in Firebase Storage
             await uploadBytes(storageRef, file); // Upload the file to Firebase Storage
             const url = await getDownloadURL(storageRef); // Get the download URL of the uploaded file
             return { type: file.type.startsWith('image') ? 'image' : 'video', mediaLink:url ,color}; // Return object with type and URL

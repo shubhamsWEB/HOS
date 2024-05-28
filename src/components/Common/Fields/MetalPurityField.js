@@ -1,23 +1,25 @@
 import React from 'react'
 import { Field } from 'react-final-form';
-import { Select, MenuItem,Typography } from '@mui/material'
+import { Select, MenuItem, Typography } from '@mui/material'
 function metalColour({options}) {
     const required = value => (value ? undefined : 'Required')
     return (
-        <Field name="metalColour" validate={required}>
+        <Field name="metalPurity" validate={required}>
             {({ input, meta }) => (
                 <>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         // value={age}
-                        label="Metal Colour"
+                        label="Metal Purity"
                         // onChange={handleChange}
                         {...input}
                         fullWidth
+                        multiple
+                        value={input.value || []}
                         sx={{ border: (meta.error && meta.touched) ? '1px solid red' : '', borderRadius: '6px' }}
                     >
-                        {options.data.filter((item) => item.cname === 'metal_colour')[0]?.cvalue.map(cat => {
+                        {options.data.filter((item) => item.cname === 'metal_purity')[0]?.cvalue.map(cat => {
                             return <MenuItem value={cat} key={cat}>{cat}</MenuItem>
                         })}
                     </Select>
