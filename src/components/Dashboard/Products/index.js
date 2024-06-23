@@ -4,7 +4,7 @@ import Table from '../../Common/CollapsibleTable';
 import {useSelector,useDispatch} from 'react-redux';
 import withDuck from '@/components/HOC/withDuck';
 import {productsInjectible} from '../../../appStore/saga/products';
-import Modal from './Modal';
+import Modal from './EditProduct';
 function Products() {
   const products = useSelector(state => state.products);
   const dispatch = useDispatch();

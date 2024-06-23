@@ -1,9 +1,9 @@
 import React from 'react'
 
-function users() {
+function page() {
   return (
-    <div>users</div>
+    <div>page</div>
   )
 }
 
-export default users
+export default page

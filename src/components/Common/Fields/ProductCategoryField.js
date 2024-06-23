@@ -17,7 +17,7 @@ function metalCategory({options}) {
                         fullWidth
                         sx={{ border: (meta.error && meta.touched) ? '1px solid red' : '', borderRadius: '6px' }}
                     >
-                        {options.data.filter((item) => item.cname === 'categories')[0]?.cvalue.map(cat => {
+                        {options.data.filter((item) => item.cname === 'Categories')[0]?.cvalue.map(cat => {
                             return <MenuItem value={cat} key={cat}>{cat}</MenuItem>
                         })}
                     </Select>

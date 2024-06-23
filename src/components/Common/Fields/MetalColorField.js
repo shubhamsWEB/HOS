@@ -19,7 +19,7 @@ function metalColour({options}) {
                         value={input.value || []}
                         sx={{ border: (meta.error && meta.touched) ? '1px solid red' : '', borderRadius: '6px' }}
                     >
-                        {options.data.filter((item) => item.cname === 'metal_colour')[0]?.cvalue.map(cat => {
+                        {options.data.filter((item) => item.cname === 'Metal_Colour')[0]?.cvalue.map(cat => {
                             return <MenuItem value={cat} key={cat} sx={{textTransform:'capitalize'}}>{cat}</MenuItem>
                         })}
                     </Select>

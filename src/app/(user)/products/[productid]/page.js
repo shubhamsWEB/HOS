@@ -8,7 +8,6 @@ import {fetchProduct} from '../../../../services/apiHelperServer';
 import {images} from '../../../../utils/decoratedImageData';
 async function ProductDetails(props) {
     const product = await fetchProduct({id:props.params.productid})
-    // const product = productDetailsMap[0];
     return (
         <Box mt={8} mb={2} p={2} px={{ xs: 2, sm: 14 }}>
             <Grid container spacing={4}>

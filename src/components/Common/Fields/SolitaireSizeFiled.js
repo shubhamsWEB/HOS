@@ -16,7 +16,7 @@ function solitaireSize({options}) {
                     multiple
                     value={input.value || []}
                 >
-                    {options.data.filter((item) => item.cname === 'solitaire_size')[0]?.cvalue.map(cat => {
+                    {options.data.filter((item) => item.cname === 'Solitaire_Size')[0]?.cvalue.map(cat => {
                         return <MenuItem value={cat} key={cat}>{cat}</MenuItem>
                     })}
                 </Select>

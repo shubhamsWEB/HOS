@@ -12,25 +12,25 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { doUserLogin } from '../../../services/apiRequests/login';
-
+import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import withDuck from '@/components/HOC/withDuck';
+import {loginInjectible} from '../../../appStore/saga/login';
+import {loaderInjectible} from '../../../appStore/saga/loader';
 // TODO remove, this demo shouldn't need to reset the theme.
 
 
-export default function SignIn() {
+ function SignIn() {
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    doUserLogin({
-      username: data.get('email'),
-      password: data.get('password'),
-    }).then(res => {
-      console.log("🚀 ~ handleSubmit ~ res:", res);
+    dispatch({
+      type: "LOGIN", payload: {
+        phoneNumber: data.get('phoneNumber'),
+        password: data.get('password'),
+      }
     })
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
   };
 
   return (
@@ -56,9 +56,9 @@ export default function SignIn() {
             required
             fullWidth
             id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            label="Phone Number"
+            name="phoneNumber"
+            // autoComplete="email"
             autoFocus
           />
           <TextField
@@ -100,3 +100,4 @@ export default function SignIn() {
     </Container>
   );
 }
+export default withDuck([loginInjectible,loaderInjectible])(SignIn);

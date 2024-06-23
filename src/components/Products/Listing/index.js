@@ -22,8 +22,6 @@ function Listing() {
     }, [dispatch, searchParams]);
 
     const {products,loading,state} = useSelector(state => ({products:state.products,loading:state.loader.loading,state}));
-    console.log("🚀 ~ Listing ~ products:", products);
-    console.log("🚀 ~ Listing ~ loading:", loading);
 
     return (
         <Box mt={2} p={1}>

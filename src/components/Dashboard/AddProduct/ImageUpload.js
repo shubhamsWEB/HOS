@@ -3,7 +3,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../utils/firebaseConfig";
 import { Box, Button, Grid, Typography } from "@mui/material";
 
-export default function Upload({uploadedMedia, setUploadedMedia,color,values}) {
+export default function Upload({uploadedMedia, setUploadedMedia,color,values,backgroundC}) {
     const [files, setFiles] = useState([]); // State to store the selected files
     const [uploading, setUploading] = useState(false); // State to indicate the upload status
 
@@ -21,7 +21,7 @@ export default function Upload({uploadedMedia, setUploadedMedia,color,values}) {
             const storageRef = ref(storage, `media/${values.productCode}/${file.name}`); // Create a reference to the file in Firebase Storage
             await uploadBytes(storageRef, file); // Upload the file to Firebase Storage
             const url = await getDownloadURL(storageRef); // Get the download URL of the uploaded file
-            return { type: file.type.startsWith('image') ? 'image' : 'video', mediaLink:url ,color}; // Return object with type and URL
+            return { type: file.type.startsWith('image') ? 'image' : 'video', mediaLink:url ,color,metal:color}; // Return object with type and URL
         });
 
         try {
@@ -36,12 +36,12 @@ export default function Upload({uploadedMedia, setUploadedMedia,color,values}) {
     };
 
     return (
-        <Box sx={{ background: '#F5F5F7', p: 4 }}>
+        <Box sx={{ background: backgroundC, p: 4 }}>
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1,width:'100%' }}>
                 <Button variant="outlined">
                     <input type="file" onChange={handleFileChange} multiple accept="image/*, video/*" /> {/* Allow multiple file selection and accept images and videos */}
                 </Button>
-                <Button variant="contained" onClick={handleUpload} disabled={uploading}>
+                <Button variant="contained" onClick={handleUpload} disabled={uploading || files.length === 0}>
                    <Typography variant="caption">{uploading ? "Uploading..." : "Upload"}</Typography>
                 </Button>
             </Box>

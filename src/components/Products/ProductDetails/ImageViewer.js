@@ -14,7 +14,6 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import {advancedSlides,slides} from '../../../constants/slides';
 function ImageViewer({images}) {
-    console.log("🚀 ~ ImageViewer ~ images:", images);
     const [basicExampleOpen, setBasicExampleOpen] = React.useState(false);
     const [advancedExampleOpen, setAdvancedExampleOpen] = React.useState(true);
     return (

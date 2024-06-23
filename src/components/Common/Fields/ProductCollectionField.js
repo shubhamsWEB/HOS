@@ -17,7 +17,7 @@ function productCollection({options}) {
                         fullWidth
                         sx={{ border: (meta.error && meta.touched) ? '1px solid red' : '', borderRadius: '6px' }}
                     >
-                        {options.data.filter((item) => item.cname === 'collections')[0]?.cvalue.map(cat => {
+                        {options.data.filter((item) => item.cname === 'Collections')[0]?.cvalue.map(cat => {
                             return <MenuItem value={cat} key={cat}>{cat}</MenuItem>
                         })}
                     </Select>

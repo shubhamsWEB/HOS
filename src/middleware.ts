@@ -40,6 +40,11 @@ function handleAdminPageRoute(authToken:any, request:any) {
   if (!authToken) {
     return NextResponse.redirect(new URL("/adminlogin", request.url));
   }
+ const [header, payload, signature] = authToken.split('.');
+const decodedPayload = JSON.parse(atob(payload));
+  if (decodedPayload.role!=='ROLE_ADMIN') {
+    return NextResponse.redirect(new URL("/adminlogin", request.url));
+  }
 }
 function unAuthenticatedRoutes(authToken:any, request:any) {
   const requestHeaders = new Headers(request.headers);

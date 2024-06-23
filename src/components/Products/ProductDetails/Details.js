@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Typography, Box, Divider, Rating, Button } from '@mui/material';
 import Breadcrumb from '@/components/Common/Breadcrumbs';
@@ -5,6 +6,7 @@ import styles from './style.module.scss';
 import ButtonGroup from './ButtonGroup';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import EnquireBtn from '@/components/Common/EnquireBtn';
 function Details({ data }) {
     return (
         <Box>
@@ -39,11 +41,10 @@ function Details({ data }) {
                     <FavoriteBorderIcon />
                     <ShareOutlinedIcon />
                 </Box>
-                <Button fullWidth sx={{ background: '#222222', color: '#FFFFFF', mt: 3, p: 2 }} className={styles.btn}>ENQUIRE NOW</Button>
+                <EnquireBtn data={data} style={{ background: '#222222', color: '#FFFFFF', mt: 3, p: 2 }}/>
                 <Box mt={2}>
                     <Typography variant='subtitle1' className={styles.sub}><b>Product Number: </b> {data.productCode}</Typography>
                     <Typography variant='subtitle1' className={styles.sub}><b>Category: </b> {data.category}</Typography>
-                    {/* <Typography variant='subtitle1' className={styles.sub}><b>Tags: </b> {data.tags.join(', ')}</Typography> */}
                 </Box>
             </Box>
         </Box>

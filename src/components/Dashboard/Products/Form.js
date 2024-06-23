@@ -36,7 +36,7 @@ function FormComponent({data}) {
             ...values,
             mediaNew: [...uploadedMediaYG, ...uploadedMediaRG, ...uploadedMediaWG]
         }
-        dispatch({type:'ADD_NEW_PRODUCT',payload:createData(productData)})
+        dispatch({type:'EDIT_PRODUCT',payload:createData(productData)})
     }
     return (
         <>

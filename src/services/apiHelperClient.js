@@ -13,4 +13,15 @@ export const getAllTypes = async (data) => {
 export const addNewPorduct = async (data) => {
     return fetch(`/api/newproduct`,{method:'POST',body:JSON.stringify(data)}).then((res) => res.json());
   };
+export const editPorduct = async (data) => {
+    return fetch(`/api/editproduct`,{method:'POST',body:JSON.stringify(data)}).then((res) => res.json());
+  };
+  
+export const login = async (data) => {
+    return fetch(`/publicapi/login`,{method:'POST',body:JSON.stringify(data)}).then((res) => res.json());
+  };
+  
+export const postEnquire = async (data) => {
+    return fetch(`/publicapi/enquire`,{method:'POST',body:JSON.stringify(data)}).then((res) => res.json());
+  };
   

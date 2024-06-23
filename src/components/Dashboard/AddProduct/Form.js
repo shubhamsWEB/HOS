@@ -126,15 +126,18 @@ function FormComponent() {
                                     <Typography variant='h5'>Upload Product Images</Typography>
                                     <Field name="images">
                                         {({ input, meta }) => (
-                                            <Grid container>
+                                            <Grid container spacing={1} sx={{mt:1}}>
                                                 <Grid item xs={4}>
-                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaYG} setUploadedMedia={setUploadedMediaYG} color="yellow gold" values={values}/>
+                                                    <Typography variant='h6' align='center' color="goldenrod">Yollow Gold Images</Typography>
+                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaYG} setUploadedMedia={setUploadedMediaYG} color="yellow gold" values={values} backgroundC={"rgba(255, 215, 0,.2)"}/>
                                                 </Grid>
                                                 <Grid item xs={4}>
-                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaRG} setUploadedMedia={setUploadedMediaRG} color="rose gold" values={values}/>
+                                                <Typography variant='h6' align='center' color="#b76e79">Rose Gold Images</Typography>
+                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaRG} setUploadedMedia={setUploadedMediaRG} color="rose gold" values={values}  backgroundC={"rgba(183, 110, 121,.2)"}/>
                                                 </Grid>
                                                 <Grid item xs={4}>
-                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaWG} setUploadedMedia={setUploadedMediaWG} color="white gold" values={values}/>
+                                                <Typography variant='h6' align='center' color="silver">White Gold Images</Typography>
+                                                    <ImageUpload inputProps={input} uploadedMedia={uploadedMediaWG} setUploadedMedia={setUploadedMediaWG} color="white gold" values={values} backgroundC={"rgba(192, 192, 192,.2)"}/>
                                                 </Grid>
                                             </Grid>
                                         )}
