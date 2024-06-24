@@ -55,8 +55,8 @@ function Card({ data }) {
 
                 <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
                     {imageUrls?.map(img => {
-                        return (<div key={img}>
-                            <Image src={img} alt="Ring 1" width={0} height={250} sizes="100vw" className={styles.productImg}/>
+                        return (<div key={img} className={styles.imgContainer}>
+                            <Image src={img} alt="Ring 1" width={0} height={0} sizes="100vw" className={styles.productImg}/>
                         </div>)
                     })}
 

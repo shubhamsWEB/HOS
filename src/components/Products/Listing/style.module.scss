@@ -60,10 +60,17 @@
      
   }
 .productImg {
-  width: 78% !important;
+  // width: 78% !important;
+  width: 100% !important;
   border-top-left-radius: 8 !important;
   border-top-right-radius: 8 !important;
+  height: 210px !important;
   // height:270px;
-  aspect-ratio: 1/1;
+  // aspect-ratio: 1/1;
   margin: auto;
+  
+}
+.imgContainer {
+  display: grid !important;
+  place-items: center !important;
 }
