@@ -14,7 +14,7 @@ import EnduireBtn from '@/components/Common/EnquireBtn';
 
 function Card({ data }) {
     const sliderRef = useRef(null);
-    const [showIcons, setIcons] = React.useState(true);
+    const [showIcons, setIcons] = React.useState(false);
     const router = useRouter()
 
     const handleMouseEnter = () => {
