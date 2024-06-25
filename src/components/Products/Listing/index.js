@@ -1,13 +1,13 @@
 'use client'
 import React, { useEffect } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import Card from './card';
+import Card from './card1';
 import { useDispatch, useSelector } from 'react-redux';
 import withDuck from '@/components/HOC/withDuck';
 import { productsInjectible } from '@/appStore/saga/products';
 import { loaderInjectible } from '@/appStore/saga/loader';
 import { useSearchParams } from 'next/navigation';
-
+import Skeleton from '@mui/material/Skeleton';
 function Listing() {
     const dispatch = useDispatch();
     const searchParams = useSearchParams();
@@ -23,7 +23,7 @@ function Listing() {
 
     const {products,loading,state} = useSelector(state => ({products:state.products,loading:state.loader.loading,state}));
 
-    return (
+    return !loading ? (
         <Box mt={2} p={1}>
             {products?.data?.length > 0 ?
                 <Grid container spacing={4}>
@@ -37,6 +37,6 @@ function Listing() {
                 <Typography variant='h6' textAlign='center'>No Products Available</Typography>
             }
         </Box>
-    );
+    ): <Skeleton variant='rectangular' width={320} height={320}><Typography variant='h6' textAlign="center" sx={{ fontStyle: 'italic' }}>{`"Crafted for Brilliance"`}</Typography></Skeleton>;
 }
 export default withDuck([productsInjectible,loaderInjectible])(Listing);

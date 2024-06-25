@@ -27,6 +27,7 @@ import {loaderInjectible} from '../../../appStore/saga/loader';
 import {createData} from '../../../utils/createNewProductData';
 function FormComponent({data}) {
     const options = useSelector(state => state.constantTypes);
+    const [productData,setPData] = React.useState(data);
     const [uploadedMediaYG, setUploadedMediaYG] = useState([]);
     const [uploadedMediaWG, setUploadedMediaWG] = useState([]);
     const [uploadedMediaRG, setUploadedMediaRG] = useState([]);
@@ -42,7 +43,7 @@ function FormComponent({data}) {
         <>
             <Form
                 onSubmit={onSubmit}
-                initialValues={{ ...data }} initialValuesEqual={() => true}
+                initialValues={{ ...productData,category:[productData.category],collection:[productData.collection],solitaireSize:productData.solitaireSize.split(',').map(size => size.trim()),metalColour:productData.metalColour.split(',').map(size => size.trim()),metalPurity:productData.metalPurity.split(',').map(size => size.trim())}} initialValuesEqual={() => true}
                 render={({ handleSubmit, invalid }) => (
                     <>
                         <Box sx={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between', mb: 2 ,mt:2}}>

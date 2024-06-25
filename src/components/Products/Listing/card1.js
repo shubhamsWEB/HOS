@@ -9,9 +9,14 @@ import styles from './style.module.scss';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
+import {useRouter} from 'next/navigation';
+import EnduireBtn from '@/components/Common/EnquireBtn';
+
 function Card({ data }) {
     const sliderRef = useRef(null);
-    const [showIcons, setIcons] = React.useState(false);
+    const [showIcons, setIcons] = React.useState(true);
+    const router = useRouter()
+
     const handleMouseEnter = () => {
         if (sliderRef.current) {
             sliderRef.current.slickPlay();
@@ -38,6 +43,7 @@ function Card({ data }) {
         infinite: false,
         fade: true
     };
+    const imageUrls = data?.media?.filter(url => !url.includes('.mp4'));
 
     return (
         <Box>
@@ -46,19 +52,20 @@ function Card({ data }) {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 sx={{ position: 'relative' }}
+                onClick={() => router.push(`/products/${data.id}`)}
             >
                 <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
-                    {data?.images.map(img => {
+                    {imageUrls.map(img => {
                         return (<div key={img}>
-                            <Image src={`${img}`} alt="Ring 1" width={0} height={300} sizes="100vw" style={{ width: '100%', borderTopLeftRadius: 8, borderTopRightRadius: 8 }} />
+                            <Image src={img} alt="Ring 1" width={0} height={0} sizes="100vw" className={styles.productImgNew} />
                         </div>)
                     })}
 
                 </Slider>
                 {showIcons && (
                     <>
-                        <Box sx={{ position: 'absolute', bottom: 0, width: '100%' }}>
-                            <Button variant="contained" fullWidth sx={{ background: 'black', color: '#fff', p: 1.5 }}>Enquire Now</Button>
+                        <Box sx={{ position: 'absolute', bottom: 0, width: '100%',zIndex:10 }}>
+                        <EnduireBtn data={data}/>
                         </Box>
                         <Box sx={{ position: 'absolute', top: 20, right: 8, display: 'flex', gap: '15px', flexDirection: 'column' }}>
                             <Box sx={{ padding: '5px', background: "black", borderRadius: '50%', margin: 'auto', width: '30px', height: '30px' }}><FavoriteBorderIcon fontSize='small' sx={{ color: "#fff" }} /></Box>
@@ -68,7 +75,7 @@ function Card({ data }) {
                     </>
                 )}
             </Box>
-            <Typography variant='h6' className={styles.productName}>Diamond Ring</Typography>
+            <Typography variant='h6' className={styles.productName}>{data?.productName}</Typography>
         </Box>
     );
 }

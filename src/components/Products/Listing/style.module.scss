@@ -1,6 +1,7 @@
 .productName {
-    font-family: "DM Sans", sans-serif !important;
-    font-weight: 700;
+  font-family: "DM Sans", sans-serif !important;
+    font-weight: 600;
+    margin-top: 8px;
 }
 .icons {
     // padding:5px;
@@ -14,6 +15,7 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+    z-index: 999;
 }
 .selectedIcon {
     color: #fff !important;
@@ -64,13 +66,24 @@
   width: 100% !important;
   border-top-left-radius: 8 !important;
   border-top-right-radius: 8 !important;
-  height: 250px !important;
+  height: 240px !important;
   // height:270px;
   // aspect-ratio: 1/1;
   margin: auto;
   scale: 1.1;
-  object-fit: cover;
-  
+  object-fit: cover; 
+}
+.productImgNew {
+  // width: 78% !important;
+  width: 100% !important;
+  border-top-left-radius: 8 !important;
+  border-top-right-radius: 8 !important;
+  height: 320px !important;
+  // height:270px;
+  // aspect-ratio: 1/1;
+  margin: auto;
+  scale: 1.1;
+  object-fit: cover; 
 }
 .imgContainer {
   display: grid !important;

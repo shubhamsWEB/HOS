@@ -43,6 +43,10 @@ function Card({ data }) {
         fade: true
     };
     const imageUrls = data?.media?.filter(url => !url.includes('.mp4'));
+    const handleOnFavClick = (e,id) => {
+        e.preventDefault();
+        e.stopImmediatePropagation()();
+    }
     return (
         <Box sx={{maxHeight:400}}>
             <Box
@@ -63,7 +67,7 @@ function Card({ data }) {
                 </Slider>
                 {showIcons && (
                     <Box sx={{ position: 'absolute', top: 20, right: 8, display: 'flex', gap: '15px', flexDirection: 'column' }}>
-                        <Box className={`${styles.icons} ${styles.selected}`}><FavoriteBorderIcon fontSize='small' className={styles.selectedIcon} /></Box>
+                        <Box className={`${styles.icons} ${styles.selected}`}><FavoriteBorderIcon fontSize='small' className={styles.selectedIcon} onClick={(e) => handleOnFavClick(e,data.id)}/></Box>
                         <Box className={styles.icons}><ShareOutlinedIcon fontSize='12px' sx={{ color: "black" }} /></Box>
                         {/* <Box className={styles.icons}><UnfoldMoreRoundedIcon fontSize='12px' sx={{ transform: 'rotate(45deg)', color: "black" }} /></Box> */}
                     </Box>
@@ -71,7 +75,7 @@ function Card({ data }) {
             </Box>
             <Box boxShadow={2} p={2} pt={'40%'} sx={{ borderRadius: 2 }}>
                 <Box>
-                    <Typography variant='h6'>{data.productName}</Typography>
+                    <Typography variant='h6' sx={{mt:2}}>{data.productName}</Typography>
                     <EnduireBtn data={data}/>
                 </Box>
             </Box>

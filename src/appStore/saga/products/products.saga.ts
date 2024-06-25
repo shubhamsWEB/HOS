@@ -51,7 +51,7 @@ function* doEditProduct({ payload }: PayloadAction<any>) {
     const response = yield call(editPorduct,payload);
     if(response) {
       // yield put(getAdminProductReducer(response));
-      window.location.href = '/admin/dashboard/products';
+      // window.location.href = '/admin/dashboard/products';
       yield put({ type: "HIDE_LOADER" });
 
 
