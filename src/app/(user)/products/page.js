@@ -9,7 +9,7 @@ function Products(props) {
         <>
             <Box mt={8}>
                 <TopNav data={[{title:'Home',path:'/'},{title:'Products',path:'/products'}]} style={{ background: 'lightgray',p:2,px:14}} />
-                <Subnav />
+                <Subnav searchParams={props?.searchParams}/>
                 <Box p={2} px={{xs:2,sm:10}}>
                     <Divider sx={{ marginTop: '30px', marginBottom: '10px' }} />
                     <Filter/>

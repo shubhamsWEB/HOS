@@ -3,13 +3,12 @@ import React, { Suspense } from 'react';
 import { Box, Typography, Breadcrumbs, Button } from '@mui/material';
 import { productsCategory } from '../../../constants/productsType';
 import { useRouter } from 'next/navigation';
-import { useSearchParams } from 'next/navigation';
 
-function Filter() {
+function Filter({searchParams}) {
     const router = useRouter();
-    const searchParams = useSearchParams();
+    // const searchParams = useSearchParams();
 
-    const collections = searchParams.get('collections') || '';
+    const collections = searchParams?.collections;
 
     const handleCategoryClick = (item) => {
         let path = '/products';
