@@ -39,7 +39,7 @@ function Listing() {
     ) :  <Grid container spacing={4}>
         {
             [1, 2, 3, 4].map((item) => {
-                return <Grid item xs={12} sm={3} key={item.id}><Skeleton key={item} variant='rectangular' width={320} height={320}><Typography variant='h6' textAlign="center" sx={{ fontStyle: 'italic' }}>{`"Crafted for Brilliance"`}</Typography></Skeleton></Grid>
+                return <Grid item xs={12} sm={3} key={item}><Skeleton variant='rectangular' width={320} height={320}><Typography variant='h6' textAlign="center" sx={{ fontStyle: 'italic' }}>{`"Crafted for Brilliance"`}</Typography></Skeleton></Grid>
             })
         }
     </Grid>;
