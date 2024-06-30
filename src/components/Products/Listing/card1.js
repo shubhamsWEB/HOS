@@ -55,9 +55,9 @@ function Card({ data }) {
                 onClick={() => router.push(`/products/${data.id}`)}
             >
                 <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
-                    {imageUrls.map(img => {
+                    {imageUrls.map((img,key) => {
                         return (
-                            <Image src={img} alt="Ring 1" width={0} height={0} sizes="100vw" className={styles.productImgNew} />
+                            <Image key={key} src={img} alt="Ring 1" width={0} height={0} sizes="100vw" className={styles.productImgNew} />
                         )
                     })}
 
