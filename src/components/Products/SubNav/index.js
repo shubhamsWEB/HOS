@@ -1,27 +1,60 @@
 'use client'
-import React from 'react'
-import { Box, Typography, Breadcrumbs,Button } from '@mui/material';
-import { productsCategory } from '../../../constants/productsType'
-import {useRouter} from 'next/navigation';
+import React from 'react';
+import { Box, Typography, Breadcrumbs, Button } from '@mui/material';
+import { productsCategory } from '../../../constants/productsType';
+import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+
 function Filter() {
     const router = useRouter();
+    const searchParams = useSearchParams();
+
+    const collections = searchParams.get('collections') || '';
+
+    const handleCategoryClick = (item) => {
+        let path = '/products';
+
+        // Build query string based on collections and categories
+        const queryParams = [];
+        if (collections) {
+            queryParams.push(`collections=${collections}`);
+        }
+        if(item.title !=='All') {
+        if (item.path) {
+            queryParams.push(`categories=${item.path}`);
+        }
+
+        // If there are query parameters, append them to the path
+        if (queryParams.length > 0) {
+            path += `?${queryParams.join('&')}`;
+        }
+
+        router.push(path);
+    } else {
+        if (queryParams.length > 0) {
+            path += `?${queryParams.join('&')}`;
+        }
+        router.replace(path);
+    }
+    };
+
     return (
-        <Box sx={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center',mt:4}}>
-            <Typography variant='h2'>Products</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
+            <Typography variant='h2'>{collections || 'Products'}</Typography>
             <Breadcrumbs separator="|" id="productSubnav">
-                {productsCategory.map(item => {
-                    return (<Button
+                {productsCategory.map(item => (
+                    <Button
+                        key={item.id}
+                        onClick={() => handleCategoryClick(item)}
                         underline="hover"
                         color="inherit"
-                        key={item.id}
-                        onClick={() => router.push(item.path)}
                     >
                         {item.title}
-                    </Button>)
-                })}
+                    </Button>
+                ))}
             </Breadcrumbs>
         </Box>
-    )
+    );
 }
 
-export default Filter
+export default Filter;

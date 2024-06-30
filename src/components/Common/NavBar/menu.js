@@ -6,7 +6,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import Link from 'next/link';
 import styles from 'yet-another-react-lightbox/styles.css';
-import classes from './style.module.scss'
+import classes from './style.module.scss';
+import Image from 'next/image';
 const options = [
     'None',
     'Atria',
@@ -65,10 +66,18 @@ function LongMenu(props) {
                         px: 0
                     },
                 }}
-                slotProps={{
-                    root: { sx: { '.MuiList-root': { padding: 0,paddingLeft:4,paddingRight:4,paddingTop:1 } } },
+                anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
                 }}
-                sx={{ mt: 2 }}
+                transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                }}
+                slotProps={{
+                    root: { sx: { '.MuiList-root': { padding: 0, paddingLeft: 4} } },
+                }}
+                sx={{ mt: 3 }}
             >
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                     <Box p={2}>
@@ -88,7 +97,7 @@ function LongMenu(props) {
                         <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Bangles</Typography></MenuItem>
                         <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Pendants</Typography></MenuItem>
                         <MenuItem dense><Link href={'/products?categories=Ring'} className={classes.viewMore}>View All<ArrowRightAltIcon fontSize='small' sx={{ color: '#D8C29D' }} /></Link></MenuItem>
-                        </Box>
+                    </Box>
                     <Box p={2}>
                         <Typography variant='subtitle1' sx={{ px: 2, fontWeight: 'bold' }} className={classes.links}>Pendants</Typography>
                         <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Rings</Typography></MenuItem>
@@ -109,8 +118,8 @@ function LongMenu(props) {
                     </Box>
                     <Box p={2}>
                         <Typography variant='subtitle1' sx={{ px: 2, fontWeight: 'bold' }} className={classes.links}>By Categories</Typography>
-                       <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Bracelets</Typography></MenuItem>
-                       <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Rings</Typography></MenuItem>
+                        <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Bracelets</Typography></MenuItem>
+                        <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Rings</Typography></MenuItem>
                         <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Bangles</Typography></MenuItem>
                         <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Pendants</Typography></MenuItem>
                         <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Accessories</Typography></MenuItem>
@@ -125,6 +134,9 @@ function LongMenu(props) {
                         <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Sansa Accessories</Typography></MenuItem>
                         <MenuItem dense><Typography variant='subtitle2' className={classes.links}>Sansa Diamonds</Typography></MenuItem>
                         {/* <Image src='/assets/ring1.jpg' width={0} height={0} sizes={'100vw'} style={{ width: '100%', height: 300,margin:'auto' }} alt='banner' /> */}
+                    </Box>
+                    <Box sx={{height:300,overflow:'hidden'}}>
+                        <Image src='/assets/ring1.jpg' width={0} height={0} sizes={'100vw'} style={{ width: '101%', height: 300 }} alt='banner' />
                     </Box>
                 </Box>
             </Menu>

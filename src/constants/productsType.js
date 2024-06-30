@@ -9,46 +9,46 @@ export const productsCategory = [
         id:1,
         title:'Earring',
         isActive: true,
-        path:'/products?categories=Earrings'
+        path:'Earrings'
     },
     {
         id:2,
         title:'Necklace',
         isActive: false,
-        path:'/products?categories=Necklaces'
+        path:'Necklaces'
     },
     {
         id:3,
         title:'Bracelet',
         isActive: false,
-        path:'/products?categories=Bracelets'
+        path:'Bracelets'
     },
     {
         id:4,
         title:'Ring',
         isActive: false,
-        path:'/products?categories=Rings'
+        path:'Rings'
 
     },
     {
         id:5,
         title:'Pendent',
         isActive: false,
-        path:'/products?categories=Pendants'
+        path:'Pendants'
 
     },
     {
         id:6,
         title:'Bangle',
         isActive: false,
-        path:'/products?categories=Bangles'
+        path:'Bangles'
 
     },
     {
         id:7,
         title:'Accessories',
         isActive: false,
-        path:'/products?categories=Accessories'
+        path:'Accessories'
 
     },
 ]

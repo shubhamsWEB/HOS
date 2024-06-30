@@ -9,7 +9,7 @@ import {typesInjectible} from '../../../appStore/saga/constantTypes';
 function Modal({ open, setOpen, productData }) {
   const dispatch = useDispatch();
   React.useEffect(() => {
-    dispatch({type:'FETCH_TYPES',payload:{type:'all'}});
+    // dispatch({type:'FETCH_TYPES',payload:{type:'all'}});
   },[]);
   return (
     <>

@@ -19,7 +19,7 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { navItems } from './constants';
-import {useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import styles from './style.module.scss';
 import Menu from './menu';
 const drawerWidth = 240;
@@ -34,8 +34,8 @@ function DrawerAppBar(props) {
   const router = useRouter()
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2,cursor:'pointer' }} onClick={() => router.push('/')}>
-       HOUSE OF SANSA
+      <Typography variant="h6" sx={{ my: 2, cursor: 'pointer' }} onClick={() => router.push('/')}>
+        HOUSE OF SANSA
       </Typography>
       <Divider />
       <List>
@@ -53,53 +53,58 @@ function DrawerAppBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box>
       <CssBaseline />
-      <AppBar component="nav" sx={{ background: '#fff', boxShadow: 0,px:{xs:2,sm:14}}}>
-        <Toolbar sx={{ width: '100%',paddingLeft:'100px',padding:'0px !important' }}>
-          <Grid container sx={{display: { xs: 'grid',sm:'none' } }}>
-            <Grid item xs={12} sx={{display:"flex",alignItems:'center'}}>
-            <IconButton
+      <AppBar component="nav" sx={{ background: '#fff', boxShadow: 0 }}>
+        <Box sx={{mt:2}}>
+          <Typography
+            variant="h3"
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' }, color: '#000', textAlign: 'center' }}
+            className={styles.logo}
+            onClick={() => router.push('/')}
+          >
+            HOUSE OF SANSA
+          </Typography>
+        </Box>
+        <Toolbar sx={{ width: '100%' }}>
+          <Grid container sx={{ display: { xs: 'grid', sm: 'none' } }}>
+            <Grid item xs={12} sx={{ display: "flex", alignItems: 'center' }}>
+              <IconButton
                 color="inherit"
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
                 sx={{ mr: 2, display: { sm: 'none' } }}
               >
-                <MenuIcon sx={{color:'#101010'}}/>
+                <MenuIcon sx={{ color: '#101010' }} />
               </IconButton>
-              <Typography variant='h5' sx={{color:"#101010",textAlign:'center',width:'100%'}}>HOUSE OF SANSA</Typography>
+              <Typography variant='h5' sx={{ color: "#101010", textAlign: 'center', width: '100%' }}>HOUSE OF SANSA</Typography>
             </Grid>
           </Grid>
-          <Grid container  sx={{display: { xs: 'none',sm:'flex' } }}>
-            <Grid item xs={4}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex', justifyContent: 'space-evenly', width: '100%',alignItems:'center' } }}>
+            <Box>
+              <Box sx={{ display: { xs: 'none', sm: 'block' }, textAlign: 'right' }}>
+                <Typography variant='subtitle2' sx={{color:'#000'}} className={styles.links}>( +123 ) 456 7890</Typography>
+              </Box>
+            </Box>
+            <Box item>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 {navItems.map((item) => (
                   <Button key={item.id} sx={{ color: '#000' }} className={styles.links} onClick={() => router.push(item.path)}>
-                    {item.dropDown ? <Menu title={item.title}/> : item.title}
+                    {item.dropDown ? <Menu title={item.title} /> : item.title}
                   </Button>
                 ))}
               </Box>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ display: { xs: 'none', sm: 'block' }, color:'#000',textAlign:'center' }}
-                className={styles.logo}
-                onClick={() => router.push('/')}
-              >
-                HOUSE OF SANSA
-              </Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Box sx={{ display: { xs: 'none', sm: 'block' },textAlign:'right' }}>
+            </Box>
+            <Box item>
+              <Box sx={{ display: { xs: 'none', sm: 'block' }, textAlign: 'right' }}>
                 <PersonOutlineOutlinedIcon sx={{ marginX: 1, color: '#000' }} />
                 <LocalMallOutlinedIcon sx={{ marginX: 1, color: '#000' }} />
                 <SearchOutlinedIcon sx={{ marginX: 1, color: '#000' }} />
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Toolbar>
       </AppBar>
       <nav>

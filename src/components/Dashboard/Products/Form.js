@@ -20,33 +20,41 @@ import SettingInfoField from '../../Common/Fields/SettingInfoField';
 import SizeInfoField from '../../Common/Fields/SizeInfoField';
 import SolitaireShapeField from '../../Common/Fields/SolitaireShapeField';
 import SolitaireSizeFiled from '../../Common/Fields/SolitaireSizeFiled';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import withDuck from '@/components/HOC/withDuck';
-import {productsInjectible} from '../../../appStore/saga/products';
-import {loaderInjectible} from '../../../appStore/saga/loader';
-import {createData} from '../../../utils/createNewProductData';
-function FormComponent({data}) {
+import { productsInjectible } from '../../../appStore/saga/products';
+import { loaderInjectible } from '../../../appStore/saga/loader';
+import { createData } from '../../../utils/createNewProductData';
+function FormComponent({ data }) {
     const options = useSelector(state => state.constantTypes);
-    const [productData,setPData] = React.useState(data);
+    const [productData, setPData] = React.useState(data);
     const [uploadedMediaYG, setUploadedMediaYG] = useState([]);
     const [uploadedMediaWG, setUploadedMediaWG] = useState([]);
     const [uploadedMediaRG, setUploadedMediaRG] = useState([]);
     const dispatch = useDispatch();
     const onSubmit = (values) => {
-        const productData = {
+        const productDatas = {
             ...values,
             mediaNew: [...uploadedMediaYG, ...uploadedMediaRG, ...uploadedMediaWG]
         }
-        dispatch({type:'EDIT_PRODUCT',payload:createData(productData)})
+        dispatch({ type: 'EDIT_PRODUCT', payload: {productName:productDatas.productName,id:productDatas.id,offer:productDatas.offer} })
     }
     return (
         <>
             <Form
                 onSubmit={onSubmit}
-                initialValues={{ ...productData,category:[productData.category],collection:[productData.collection],solitaireSize:productData.solitaireSize.split(',').map(size => size.trim()),metalColour:productData.metalColour.split(',').map(size => size.trim()),metalPurity:productData.metalPurity.split(',').map(size => size.trim())}} initialValuesEqual={() => true}
+                initialValues={{
+                    ...productData,
+                    // category: [productData.category],
+                    // collection: [productData.collection],
+                    // solitaireSize: productData.solitaireSize.split(',').map(size => size.trim()),
+                    // metalColour: productData.metalColour.split(',').map(size => size.trim()),
+                    // metalPurity: productData.metalPurity.split(',').map(size => size.trim())
+                }}
+                initialValuesEqual={() => true}
                 render={({ handleSubmit, invalid }) => (
                     <>
-                        <Box sx={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between', mb: 2 ,mt:2}}>
+                        <Box sx={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between', mb: 2, mt: 2 }}>
                             <Typography variant='h5'>{data.productName} ({data.productCode})</Typography>
                             <Button variant='contained' color='success' onClick={handleSubmit} disabled={invalid}>SAVE</Button>
                         </Box>
@@ -145,5 +153,5 @@ function FormComponent({data}) {
         </>
     )
 }
-const sagainjectibels = [productsInjectible,loaderInjectible]
+const sagainjectibels = [productsInjectible, loaderInjectible]
 export default withDuck(sagainjectibels)(FormComponent);

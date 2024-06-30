@@ -11,20 +11,19 @@ import Skeleton from '@mui/material/Skeleton';
 function Listing() {
     const dispatch = useDispatch();
     const searchParams = useSearchParams();
-
+    const categories = searchParams.get('categories') || '';
+    const collections = searchParams.get('collections') || '';
     useEffect(() => {
-        const categories = searchParams.get('categories') || '';
-        const collections = searchParams.get('collections') || '';
         let payload = {};
-        if(categories) payload.categories = categories;
-        if(collections) payload.collections = collections;
+        if (categories) payload.categories = categories;
+        if (collections) payload.collections = collections;
         dispatch({ type: "FETCH_PRODUCTS", payload });
     }, [dispatch, searchParams]);
-
-    const {products,loading,state} = useSelector(state => ({products:state.products,loading:state.loader.loading,state}));
+    
+    const { products, loading, state } = useSelector(state => ({ products: state.products, loading: state.loader.loading, state }));
 
     return !loading ? (
-        <Box mt={2} p={1}>
+        <Box mt={2} p={1} mb={10}>
             {products?.data?.length > 0 ?
                 <Grid container spacing={4}>
                     {products?.data?.map(item => (
@@ -37,6 +36,12 @@ function Listing() {
                 <Typography variant='h6' textAlign='center'>No Products Available</Typography>
             }
         </Box>
-    ): <Skeleton variant='rectangular' width={320} height={320}><Typography variant='h6' textAlign="center" sx={{ fontStyle: 'italic' }}>{`"Crafted for Brilliance"`}</Typography></Skeleton>;
+    ) :  <Grid container spacing={4}>
+        {
+            [1, 2, 3, 4].map((item) => {
+                return <Grid item xs={12} sm={3} key={item.id}><Skeleton key={item} variant='rectangular' width={320} height={320}><Typography variant='h6' textAlign="center" sx={{ fontStyle: 'italic' }}>{`"Crafted for Brilliance"`}</Typography></Skeleton></Grid>
+            })
+        }
+    </Grid>;
 }
-export default withDuck([productsInjectible,loaderInjectible])(Listing);
+export default withDuck([productsInjectible, loaderInjectible])(Listing);
