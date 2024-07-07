@@ -7,6 +7,11 @@
 .logo {
     font-family: "Playfair Display", serif  !important;
     cursor: pointer;
+    transition: transform ease-in .5s;
+}
+.logoShrink {
+    font-size: 24px !important;
+    transition: transform ease-in .5s !important;
 }
 .viewMore {
     font-family: "Playfair Display", serif  !important;

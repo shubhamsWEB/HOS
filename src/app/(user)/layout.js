@@ -16,7 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <StoreProvider>
-          <NavBar />{children}<Loader/><Footer />
+          <NavBar />
+          <div style={{paddingTop:'7%'}}>
+            {children}
+          </div>
+          <Loader /><Footer />
         </StoreProvider></body>
     </html>
   );

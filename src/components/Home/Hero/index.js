@@ -2,20 +2,21 @@ import React from 'react'
 import { Box, Typography, Button } from '@mui/material';
 import styles from './style.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
 function Hero() {
   return (
     //   <Box
     //   component="div"
     //   sx={{
     //     height: '100vh',
-    //     width: '100vw',
-    //     maxHeight: '100%',
+    //     width: '100%',
+    //     // maxHeight: '100%',
     //     maxWidth: '100%',
     //     backgroundAttachment:'fixed',
     //     backgroundPosition:'center',
     //     backgroundRepeat:'no-repeat',
     //     backgroundSize:'cover',
-    //     backgroundImage:'url("./assets/main.mp4")',
+    //     backgroundImage:'url("./assets/maincreative.jpg")',
     //     textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center',
     //     flexDirection:'column'
     //   }}
@@ -28,10 +29,10 @@ function Hero() {
     // </Box>
     <Box className="video-container" sx={{ position: 'relative' }}>
       <video className='videoTag' autoPlay muted loop style={{ width: "100vw", height: '100vh', objectFit: 'cover' }}>
-        <source src='./assets/main.mp4' type='video/mp4' />
+        <source src='./assets/banner.mp4' type='video/mp4' />
       </video>
       <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',width:'100%' }}>
-        <Box sx={{ display: 'flex', flexDirection: "column", alignItems: "center", textAlign: 'center' }} px={{xs:2,sm:30}}>
+        <Box sx={{ display: 'flex', flexDirection: "column", alignItems: "center", textAlign: 'center' }} px={{xs:2,sm:32}}>
           <Typography variant='h1' sx={{ color: '#fff' }} className={styles.main}>Discover Sparkel With Style and Luxury</Typography>
           <Typography variant='p' sx={{ color: '#fff' }} className={styles.sub}>Whether casual or formal, find the perfect jewelry for every occasion with us.</Typography>
           <Link href={'/products'}>
@@ -40,6 +41,57 @@ function Hero() {
         </Box>
       </Box>
     </Box>
+    // <Box className="video-container" sx={{ position: 'relative', background: '#F1E6D9' }}>
+    //   <Image
+    //     width={0}
+    //     height={0}
+    //     sizes={"100vw"}
+    //     alt="Min banner"
+    //     src='/assets/maincreative.png'
+    //     style={{ width: '100vw', height: '100vh' }}
+    //   />
+    //   <Box
+    //     sx={{
+    //       position: 'absolute',
+    //       top: '50%',
+    //       left: '50%',
+    //       transform: 'translate(-50%, -50%)',
+    //       width: '100%',
+    //       textAlign: 'center'
+    //     }}
+    //   >
+    //     <Box
+    //       sx={{
+    //         display: 'flex',
+    //         flexDirection: 'column',
+    //         alignItems: 'center',
+    //         textAlign: 'center'
+    //       }}
+    //       px={{ xs: 2, sm: 30 }}
+    //     >
+    //       <Typography variant='h1' sx={{ color: '#fff' }} className={styles.main}>
+    //         Discover Sparkel With Style and Luxury
+    //       </Typography>
+    //       <Typography variant='p' sx={{ color: '#fff' }} className={styles.sub}>
+    //         Whether casual or formal, find the perfect jewelry for every occasion with us.
+    //       </Typography>
+    //       <Link href='/products'>
+    //         <Button
+    //           variant='outlined'
+    //           sx={{
+    //             marginTop: 2,
+    //             border: '1px solid #fff',
+    //             color: '#fff'
+    //           }}
+    //           className={styles.sub}
+    //         >
+    //           Shop Now
+    //         </Button>
+    //       </Link>
+    //     </Box>
+    //   </Box>
+    // </Box>
+
   )
 }
 

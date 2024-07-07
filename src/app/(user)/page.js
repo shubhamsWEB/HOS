@@ -4,6 +4,7 @@ import NewArrival from '@/components/Home/NewArrival';
 import Faq from '@/components/Home/Faq';
 import Banner from '@/components/Home/Banner'
 import TrendingProducts from '@/components/Home/TrendingProducts';
+import ReadToShip from '@/components/Home/ReadyToShip';
 import { Box } from '@mui/material'
 export default function Home() {
   return (
@@ -15,6 +16,9 @@ export default function Home() {
       <NewArrival />
       <Box p={5} px={{ xs: 2, sm: 20 }}>
         <Banner />
+      </Box>
+      <Box p={5} px={{ xs: 2, sm: 20 }}>
+        <ReadToShip />
       </Box>
       <Box p={5} px={{ xs: 2, sm: 20 }} sx={{ background: '#FAF9F7' }}>
         <TrendingProducts />

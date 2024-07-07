@@ -22,15 +22,43 @@ import { navItems } from './constants';
 import { useRouter } from 'next/navigation';
 import styles from './style.module.scss';
 import Menu from './menu';
+import {usePathname} from 'next/navigation';
 const drawerWidth = 240;
 
 function DrawerAppBar(props) {
-  const { window } = props;
+  // const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  const pathName = usePathname();
+  React.useEffect(() => {
+   
+    const resizeHeaderOnScroll = () => {
+      const distanceY = window.pageYOffset || document.documentElement.scrollTop;
+      const shrinkOn = 500;
+      const headerEl = document.getElementById("logo");
+  
+      if (headerEl && distanceY > shrinkOn) {
+        headerEl.classList.add(`${styles.logoShrink}`);
+      } else if (headerEl) {
+        headerEl.classList.remove(`${styles.logoShrink}`);
+      }
+    };
+  
+    if (typeof window !== 'undefined') {
+      window.addEventListener("scroll", resizeHeaderOnScroll);
+    }
+  
+    // Clean up the event listener on component unmount
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener("scroll", resizeHeaderOnScroll);
+      }
+    };
+  
+  }, []);
   const router = useRouter()
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -50,7 +78,7 @@ function DrawerAppBar(props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  // const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box>
@@ -60,9 +88,10 @@ function DrawerAppBar(props) {
           <Typography
             variant="h3"
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }, color: '#000', textAlign: 'center' }}
+            sx={{ display: { xs: 'none', sm: 'block' }, color: '#000', textAlign: 'center',fontSize:pathName !== '/' && '24px' }}
             className={styles.logo}
             onClick={() => router.push('/')}
+            id="logo"
           >
             HOUSE OF SANSA
           </Typography>
@@ -109,7 +138,7 @@ function DrawerAppBar(props) {
       </AppBar>
       <nav>
         <Drawer
-          container={container}
+          // container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
