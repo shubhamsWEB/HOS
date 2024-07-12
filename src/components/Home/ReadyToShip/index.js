@@ -29,7 +29,7 @@ function ReadToShip() {
                             height={0}
                             sizes={"100vw"}
                             alt="Min banner"
-                            src='/assets/HOS.jpg'
+                            src='/assets/HOS.webp'
                             style={{ width: '100%', height: '50%' }}
                         />
                         <Box
