@@ -15,7 +15,7 @@ export default function AccordionTransition() {
   };
 
   return (
-    <div>
+    <div style={{border: expanded && '1px solid #D8C29D'}}>
       <Accordion
         expanded={expanded}
         onChange={handleExpansion}

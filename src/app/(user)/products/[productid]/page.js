@@ -9,7 +9,7 @@ import {images} from '../../../../utils/decoratedImageData';
 async function ProductDetails(props) {
     const product = await fetchProduct({id:props.params.productid})
     return (
-        <Box mt={8} mb={2} p={2} px={{ xs: 2, sm: 14 }}>
+        <Box mt={8} mb={2} p={2} px={{ xs: 2, sm: 14 }} sx={{paddingTop:'3%'}}>
             <Grid container spacing={4}>
                 <Grid item xs={12} sm={6}>
                     <ImageViewer images={images(product.data.media)} />

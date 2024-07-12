@@ -2,7 +2,7 @@ export const navItems = [
     {
         id:'categories',
         title: 'Categories',
-        path:'/products',
+        path:'',
         dropDown:true
     },
     {

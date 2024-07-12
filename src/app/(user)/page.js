@@ -8,7 +8,7 @@ import ReadToShip from '@/components/Home/ReadyToShip';
 import { Box } from '@mui/material'
 export default function Home() {
   return (
-    <>
+    <Box sx={{paddingTop:'7%'}}>
       <HeroComponent />
       <Box p={5} px={{ xs: 2, sm: 20 }}>
         <Collection />
@@ -26,6 +26,6 @@ export default function Home() {
       <Box p={5} px={{ xs: 2, sm: 20 }}>
         <Faq />
       </Box>
-    </>
+    </Box>
   );
 }

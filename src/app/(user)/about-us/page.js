@@ -9,17 +9,19 @@ import OurTeam from '@/components/About/team';
 // import styles from '@/components/About/style.module.scss';
 function page() {
   return (
+    <>
     <Box mt={8} p={{xs:2,sm:6}} sx={{ position: 'relative' }}>
       <Header />
       <Banner />
       <OurJourney />
       <Divider />
       <OurPromise />
-      <Box sx={{ background: '#D9D9D9', height: '500px' }} />
+      <Box sx={{ background: 'url(/assets/about.png)', height: '600px',backgroundPosition:'center',backgroundSize:'fill' }} />
       <OurValues/>
       <Divider />
       <OurTeam/>
     </Box>
+    </>
   )
 }
 
