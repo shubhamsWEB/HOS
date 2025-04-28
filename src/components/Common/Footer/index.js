@@ -86,12 +86,12 @@ function Footer() {
                     <Grid item xs={6} sm={4} md={2} lg={2} className={styles.footerLinksColumn}>
                         <Typography variant='h6' className={styles.footerColumnTitle}>Products</Typography>
                         <ul className={styles.footerLinks}>
-                            <li><Link href="/jewelry/earrings" className={styles.footerLink}>Earrings</Link></li>
-                            <li><Link href="/jewelry/necklaces" className={styles.footerLink}>Necklaces</Link></li>
-                            <li><Link href="/jewelry/bracelets" className={styles.footerLink}>Bracelets</Link></li>
-                            <li><Link href="/jewelry/rings" className={styles.footerLink}>Rings</Link></li>
-                            <li><Link href="/jewelry/brooches" className={styles.footerLink}>Brooches</Link></li>
-                            <li><Link href="/collections/men" className={styles.footerLink}>Men&apos;s Jewelry</Link></li>
+                            <li><Link href="/products?categories=earrings" className={styles.footerLink}>Earrings</Link></li>
+                            <li><Link href="/products?categories=necklaces" className={styles.footerLink}>Necklaces</Link></li>
+                            <li><Link href="/products?categories=bracelets" className={styles.footerLink}>Bracelets</Link></li>
+                            <li><Link href="/products?categories=rings" className={styles.footerLink}>Rings</Link></li>
+                            <li><Link href="/products?categories=brooches" className={styles.footerLink}>Brooches</Link></li>
+                            <li><Link href="/products?categories=men" className={styles.footerLink}>Men&apos;s Jewelry</Link></li>
                         </ul>
                     </Grid>
                     

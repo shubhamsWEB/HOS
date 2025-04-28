@@ -6,6 +6,155 @@
   font-family: "DM Sans", sans-serif;
 }
 
+.sectionWrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0) 70%);
+    z-index: 0;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0) 70%);
+    z-index: 0;
+  }
+}
+
+.heading {
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 1), rgba(212, 175, 55, 0.1));
+  }
+}
+
+.benefitCard {
+  border-radius: 8px;
+  transition: all 0.4s ease;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid transparent;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-left: 3px solid #D4AF37;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.benefitIcon {
+  background-color: rgba(212, 175, 55, 0.1);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+  
+  svg {
+    color: #D4AF37;
+    transition: all 0.3s ease;
+  }
+  
+  &:hover {
+    background-color: #D4AF37;
+    
+    svg {
+      color: #fff;
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(212, 175, 55, 0.2), transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  img {
+    transition: transform 0.7s ease !important;
+  }
+  
+  &:hover img {
+    transform: scale(1.05) !important;
+  }
+}
+
+.exploreButton {
+  background: linear-gradient(45deg, #D4AF37, #E5C365) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 12px 28px !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+  transition: all 0.3s ease !important;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 7px 20px rgba(212, 175, 55, 0.4) !important;
+    
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
 .infoCard {
   transition: all 0.3s ease;
   

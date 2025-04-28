@@ -161,16 +161,16 @@ export default function CategoryMenu({ anchorEl, open, onClose }) {
             <CategorySection>
               <CategoryTitle>Jewelry</CategoryTitle>
               <Box>
-                <CategoryItem onClick={() => handleCategoryClick('/jewelry/rings')}>
+                <CategoryItem onClick={() => handleCategoryClick('/products?categories=rings')}>
                   Rings
                 </CategoryItem>
-                <CategoryItem onClick={() => handleCategoryClick('/jewelry/necklaces')}>
+                <CategoryItem onClick={() => handleCategoryClick('/products?categories=necklaces')}>
                   Necklaces <FeaturedTag label="New" size="small" />
                 </CategoryItem>
-                <CategoryItem onClick={() => handleCategoryClick('/jewelry/earrings')}>
+                <CategoryItem onClick={() => handleCategoryClick('/products?categories=earrings')}>
                   Earrings
                 </CategoryItem>
-                <CategoryItem onClick={() => handleCategoryClick('/jewelry/bracelets')}>
+                <CategoryItem onClick={() => handleCategoryClick('/products?categories=bracelets')}>
                   Bracelets
                 </CategoryItem>
               </Box>
@@ -217,16 +217,16 @@ export default function CategoryMenu({ anchorEl, open, onClose }) {
             <CategorySection>
               <CategoryTitle>Collections</CategoryTitle>
               <Box>
-                <CategoryItem onClick={() => handleCategoryClick('/collections/signature')}>
+                <CategoryItem onClick={() => handleCategoryClick('/products?collections=luxury')}>
                   Signature Collection
                 </CategoryItem>
-                <CategoryItem onClick={() => handleCategoryClick('/collections/limited')}>
+                <CategoryItem onClick={() => handleCategoryClick('/products?categories=limited')}>
                   Limited Edition <FeaturedTag label="Exclusive" size="small" />
                 </CategoryItem>
-                <CategoryItem onClick={() => handleCategoryClick('/collections/custom')}>
+                <CategoryItem onClick={() => handleCategoryClick('/products?categories=custom')}>
                   Custom Designs
                 </CategoryItem>
-                <CategoryItem onClick={() => handleCategoryClick('/collections/bestsellers')}>
+                <CategoryItem onClick={() => handleCategoryClick('/products?collections=bestsellers')}>
                   Bestsellers
                 </CategoryItem>
               </Box>

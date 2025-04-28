@@ -7,33 +7,11 @@ import StyledButton from '@/components/Common/StyledButton';
 
 function Hero() {
   return (
-    //   <Box
-    //   component="div"
-    //   sx={{
-    //     height: '100vh',
-    //     width: '100%',
-    //     // maxHeight: '100%',
-    //     maxWidth: '100%',
-    //     backgroundAttachment:'fixed',
-    //     backgroundPosition:'center',
-    //     backgroundRepeat:'no-repeat',
-    //     backgroundSize:'cover',
-    //     backgroundImage:'url("./assets/maincreative.jpg")',
-    //     textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center',
-    //     flexDirection:'column'
-    //   }}
-    //   alt="The house from the offer."
-    //   // src="./assets/banner.png"
-    // >
-    //      <Typography variant='h1' px={30} sx={{color:'#fff'}}>Discover Sparkel With Style and Luxury</Typography>
-    //      <Typography variant='p' px={30} sx={{color:'#fff'}}>Discover Sparkel With Style and Luxury</Typography>
-    //      <Button variant="outlined" sx={{marginTop:2}}>Shop Now</Button>
-    // </Box>
-    <Box className="video-container" sx={{ position: 'relative' }}>
-      <video className='videoTag' autoPlay muted loop style={{ width: "100vw", height: '100vh', objectFit: 'cover' }}>
+    <Box className={styles.videoContainer}>
+      <video autoPlay muted loop>
         <source src='./assets/banner.mp4' type='video/mp4' />
       </video>
-      <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',width:'100%' }}>
+      <Box className={styles.contentWrapper}>
         <Box sx={{ display: 'flex', flexDirection: "column", alignItems: "center", textAlign: 'center' }} px={{xs:2,sm:32}}>
           <Typography variant='h1' sx={{ color: '#fff', textShadow: '0px 2px 4px rgba(0,0,0,0.3)' }} className={styles.main}>Discover Sparkel With Style and Luxury</Typography>
           <Typography variant='p' sx={{ color: '#fff', textShadow: '0px 1px 2px rgba(0,0,0,0.3)' }} className={styles.sub}>Whether casual or formal, find the perfect jewelry for every occasion with us.</Typography>
@@ -47,57 +25,6 @@ function Hero() {
         </Box>
       </Box>
     </Box>
-    // <Box className="video-container" sx={{ position: 'relative', background: '#F1E6D9' }}>
-    //   <Image
-    //     width={0}
-    //     height={0}
-    //     sizes={"100vw"}
-    //     alt="Min banner"
-    //     src='/assets/maincreative.png'
-    //     style={{ width: '100vw', height: '100vh' }}
-    //   />
-    //   <Box
-    //     sx={{
-    //       position: 'absolute',
-    //       top: '50%',
-    //       left: '50%',
-    //       transform: 'translate(-50%, -50%)',
-    //       width: '100%',
-    //       textAlign: 'center'
-    //     }}
-    //   >
-    //     <Box
-    //       sx={{
-    //         display: 'flex',
-    //         flexDirection: 'column',
-    //         alignItems: 'center',
-    //         textAlign: 'center'
-    //       }}
-    //       px={{ xs: 2, sm: 30 }}
-    //     >
-    //       <Typography variant='h1' sx={{ color: '#fff' }} className={styles.main}>
-    //         Discover Sparkel With Style and Luxury
-    //       </Typography>
-    //       <Typography variant='p' sx={{ color: '#fff' }} className={styles.sub}>
-    //         Whether casual or formal, find the perfect jewelry for every occasion with us.
-    //       </Typography>
-    //       <Link href='/products'>
-    //         <Button
-    //           variant='outlined'
-    //           sx={{
-    //             marginTop: 2,
-    //             border: '1px solid #fff',
-    //             color: '#fff'
-    //           }}
-    //           className={styles.sub}
-    //         >
-    //           Shop Now
-    //         </Button>
-    //       </Link>
-    //     </Box>
-    //   </Box>
-    // </Box>
-
   )
 }
 

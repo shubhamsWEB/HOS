@@ -2,9 +2,10 @@
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     position: relative;
-    padding: 6px 12px;
+    padding: 4px 10px;
     display: inline-flex;
     align-items: center;
+    font-size: 14px;
     &::after {
         content: '';
         position: absolute;
@@ -140,8 +141,9 @@
 
 .navIcon {
     color: #fff !important;
-    padding: 8px !important;
+    padding: 6px !important;
     transition: all 0.3s ease !important;
+    font-size: 1.1rem !important;
     
     &:hover {
         color: #D8C29D !important;
@@ -185,11 +187,13 @@
 .mobileCategory {
     font-family: "Cormorant Garamond", serif;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #D8C29D;
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease;
+    display: block;
+    padding: 8px 0;
     
     &:hover {
         transform: translateX(5px);
@@ -199,11 +203,12 @@
 .mobileMenuItem {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.85);
     padding: 6px 0;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: block;
     
     &:hover {
         color: #D8C29D;

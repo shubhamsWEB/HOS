@@ -27,7 +27,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CategoryMenu from './menu';
 import Badge from '@mui/material/Badge';
 
-const drawerWidth = 300;
+const drawerWidth = 260;
 
 function DrawerAppBar(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -102,8 +102,8 @@ function DrawerAppBar(props) {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        py: 3,
-        px: 3,
+        py: 2,
+        px: 2,
         borderBottom: '1px solid rgba(255,255,255,0.1)'
       }}>
         <Typography 
@@ -113,7 +113,7 @@ function DrawerAppBar(props) {
             fontWeight: 600, 
             cursor: 'pointer',
             color: '#D8C29D',
-            letterSpacing: '1px'
+            letterSpacing: '1px',
           }} 
           onClick={() => router.push('/')}
         >
@@ -132,7 +132,7 @@ function DrawerAppBar(props) {
         </IconButton>
       </Box>
 
-      <Box sx={{ p: 3 }}>
+      <Box sx={{ p: 2 }}>
         <Typography 
           sx={{ 
             fontFamily: '"Cormorant Garamond", serif',
@@ -173,7 +173,7 @@ function DrawerAppBar(props) {
                 <Typography 
                   className={styles.mobileMenuItem} 
                   onClick={() => {
-                    router.push('/jewelry/rings'); 
+                    router.push('/products?categories=rings'); 
                     handleDrawerToggle();
                   }}
                 >
@@ -184,7 +184,7 @@ function DrawerAppBar(props) {
                 <Typography 
                   className={styles.mobileMenuItem} 
                   onClick={() => {
-                    router.push('/jewelry/necklaces'); 
+                    router.push('/products?categories=necklaces'); 
                     handleDrawerToggle();
                   }}
                 >
@@ -195,7 +195,7 @@ function DrawerAppBar(props) {
                 <Typography 
                   className={styles.mobileMenuItem} 
                   onClick={() => {
-                    router.push('/jewelry/earrings'); 
+                    router.push('/products?categories=earrings'); 
                     handleDrawerToggle();
                   }}
                 >
@@ -206,7 +206,7 @@ function DrawerAppBar(props) {
                 <Typography 
                   className={styles.mobileMenuItem} 
                   onClick={() => {
-                    router.push('/jewelry/bracelets'); 
+                    router.push('/products?categories=bracelets'); 
                     handleDrawerToggle();
                   }}
                 >
@@ -220,7 +220,7 @@ function DrawerAppBar(props) {
             <Typography 
               className={styles.mobileCategory} 
               onClick={() => {
-                router.push('/collections'); 
+                router.push('/products?categories=signature'); 
                 handleDrawerToggle();
               }}
             >
@@ -231,7 +231,7 @@ function DrawerAppBar(props) {
                 <Typography 
                   className={styles.mobileMenuItem} 
                   onClick={() => {
-                    router.push('/collections/signature'); 
+                    router.push('/products?categories=signature'); 
                     handleDrawerToggle();
                   }}
                 >
@@ -242,7 +242,7 @@ function DrawerAppBar(props) {
                 <Typography 
                   className={styles.mobileMenuItem} 
                   onClick={() => {
-                    router.push('/collections/limited'); 
+                    router.push('/products?categories=limited'); 
                     handleDrawerToggle();
                   }}
                 >
@@ -256,7 +256,7 @@ function DrawerAppBar(props) {
 
       <Divider sx={{ background: 'rgba(255,255,255,0.1)' }} />
 
-      <List sx={{ p: 2 }}>
+      <List sx={{ p: 1 }}>
         {navItems.map((item) => (
           item.id !== 'categories' && (
             <ListItem 
@@ -282,8 +282,8 @@ function DrawerAppBar(props) {
       </List>
 
       <Box sx={{ 
-        p: 3, 
-        mt: 2, 
+        p: 2, 
+        mt: 1, 
         borderTop: '1px solid rgba(255,255,255,0.1)',
         display: 'flex',
         justifyContent: 'space-between'
@@ -336,18 +336,17 @@ function DrawerAppBar(props) {
           boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.15)' : 'none',
           transition: { xs: 'none', sm: 'all 0.3s ease' },
           borderBottom: scrolled ? 'none' : '1px solid rgba(255,255,255,0.1)',
-          py: scrolled ? 0 : { xs: 0, sm: 0.5 }
         }}
       >
         <Container maxWidth="xl" disableGutters>
           <Toolbar 
             className={styles.navbarToolbar}
             sx={{ 
-              height: { xs: 70, sm: scrolled ? 70 : 90 },
+              height: { xs: 60, sm: scrolled ? 60 : 70 },
               transition: { xs: 'none', sm: 'all 0.3s ease' },
               margin: '0 auto',
               justifyContent: 'space-between',
-              px: { xs: 2, sm: 4 },
+              px: { xs: 2, sm: 3 },
               position: 'relative'
             }}
           >
@@ -378,12 +377,12 @@ function DrawerAppBar(props) {
                 id="logo"
                 sx={{ 
                   cursor: 'pointer',
-                  fontSize: { xs: '20px', sm: scrolled ? '24px' : '32px' },
+                  fontSize: { xs: '18px', sm: scrolled ? '18px' : '20px' },
                   transition: { xs: 'none', sm: 'all 0.3s ease' },
                   color: '#fff',
                   textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
                   position: { xs: 'absolute', sm: 'static' },
-                  left: { xs: '50%', sm: 'auto' },
+                  left: 'auto',
                   transform: { xs: 'translateX(-50%)', sm: 'none' },
                   zIndex: 10
                 }}
@@ -396,9 +395,9 @@ function DrawerAppBar(props) {
               display: { xs: 'none', sm: 'flex' }, 
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 4,
+              gap: 3,
               flex: 1,
-              marginLeft: 4
+              marginLeft: 3
             }}>
               <Button
                 id="categories-button"
