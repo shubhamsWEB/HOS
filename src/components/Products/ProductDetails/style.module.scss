@@ -1,13 +1,41 @@
+.main {
+    font-family: "Playfair Display", serif;
+}
+
 .sub {
     font-family: "DM Sans", sans-serif !important;
 }
+
 .subMain {
     font-family: "DM Sans", sans-serif !important;
     font-weight: bold;
 }
+
 .btn {
     font-family: "DM Sans", sans-serif !important;
     &:hover {
         background: #101010;
+    }
+}
+
+.infoAccordion {
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    
+    &:before {
+        display: none;
+    }
+}
+
+.productImageThumbnail {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    
+    &:hover, &.active {
+        border-color: #d4af37;
     }
 }

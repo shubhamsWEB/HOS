@@ -2,29 +2,75 @@ import HeroComponent from '@/components/Home/Hero';
 import Collection from '@/components/Home/Collections';
 import NewArrival from '@/components/Home/NewArrival';
 import Faq from '@/components/Home/Faq';
-import Banner from '@/components/Home/Banner'
+import Banner from '@/components/Home/Banner';
 import TrendingProducts from '@/components/Home/TrendingProducts';
 import ReadToShip from '@/components/Home/ReadyToShip';
-import { Box } from '@mui/material'
+import LabGrownSection from '@/components/Home/LabGrownSection';
+import Testimonials from '@/components/Home/Testimonials';
+import { Box, Container, Divider } from '@mui/material';
+
 export default function Home() {
   return (
-    <Box sx={{paddingTop:'7%'}}>
+    <Box>
+      {/* Hero Banner */}
       <HeroComponent />
-      <Box p={5} px={{ xs: 2, sm: 20 }}>
-        <Collection />
+      
+      {/* Trust Indicators */}
+      <Box py={5} sx={{ background: '#fafafa' }}>
+        <Container maxWidth="lg">
+          <Banner />
+        </Container>
       </Box>
-      <NewArrival />
-      <Box p={5} px={{ xs: 2, sm: 20 }}>
-        <Banner />
+      
+      {/* Lab Grown Diamonds Section - New Component */}
+      <Box py={8}>
+        <Container maxWidth="lg">
+          <LabGrownSection />
+        </Container>
       </Box>
-      <Box p={5} px={{ xs: 2, sm: 20 }}>
-        <ReadToShip />
+      
+      <Divider />
+      
+      {/* Collections */}
+      <Box py={8}>
+        <Container maxWidth="lg">
+          <Collection />
+        </Container>
       </Box>
-      <Box p={5} px={{ xs: 2, sm: 20 }} sx={{ background: '#FAF9F7' }}>
-        <TrendingProducts />
+      
+      {/* New Arrivals with Full Width Background */}
+      <Box py={8} sx={{ background: 'linear-gradient(to right, #f9f2ea, #ffffff)' }}>
+        <Container maxWidth="lg">
+          <NewArrival />
+        </Container>
       </Box>
-      <Box p={5} px={{ xs: 2, sm: 20 }}>
-        <Faq />
+      
+      {/* Ready to Ship */}
+      <Box py={8}>
+        <Container maxWidth="lg">
+          <ReadToShip />
+        </Container>
+      </Box>
+      
+      {/* Testimonials - New Component */}
+      <Box py={8} sx={{ background: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Testimonials />
+        </Container>
+      </Box>
+      
+      {/* Trending Products */}
+      <Box py={8}>
+        <Container maxWidth="lg">
+          <TrendingProducts />
+        </Container>
+      </Box>
+      
+      {/* FAQ Section */}
+      <Box py={8} sx={{ background: '#fbfbfb' }}>
+        <Container maxWidth="lg">
+          <Faq />
+        </Container>
       </Box>
     </Box>
   );

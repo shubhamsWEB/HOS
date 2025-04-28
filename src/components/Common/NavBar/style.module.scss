@@ -1,24 +1,231 @@
 .links {
-    font-family: "DM Sans", sans-serif !important;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    position: relative;
+    padding: 6px 12px;
+    display: inline-flex;
+    align-items: center;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: #D8C29D;
+        transition: width 0.3s ease;
+    }
+    &:hover::after {
+        width: 100%;
+    }
 }
+
+.activeLink {
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: #D8C29D;
+    }
+}
+
 .main {
-    font-family: "Playfair Display", serif  !important;
+    font-family: "Cormorant Garamond", serif !important;
+    font-weight: 600;
 }
-.logo {
-    font-family: "Playfair Display", serif  !important;
-    cursor: pointer;
-    transition: transform ease-in .5s;
-}
-.logoShrink {
-    font-size: 24px !important;
-    transition: transform ease-in .5s !important;
-}
-.viewMore {
-    font-family: "Playfair Display", serif  !important;
+
+.logoWrapper {
+    position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -5%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background-color: #D8C29D;
+        border-radius: 50%;
+        opacity: 0.8;
+        display: none;
+        
+        @media (min-width: 768px) {
+            display: block;
+        }
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -5%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background-color: #D8C29D;
+        border-radius: 50%;
+        opacity: 0.8;
+        display: none;
+        
+        @media (min-width: 768px) {
+            display: block;
+        }
+    }
+}
+
+.logo {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: #d4af37;
+        transition: width 0.3s ease;
+    }
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+.logoShrink {
+    font-size: 24px;
+}
+
+.navbarAppBar {
+    clip-path: inset(0 0 -20px 0);
+}
+
+.navbarToolbar {
+    position: relative;
+}
+
+.navLinks {
+    position: relative;
+}
+
+.navActions {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -15px;
+        width: 1px;
+        height: 30px;
+        background: rgba(255, 255, 255, 0.2);
+        
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+}
+
+.navIcon {
+    color: #fff !important;
+    padding: 8px !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+        color: #D8C29D !important;
+        background-color: transparent !important;
+        transform: translateY(-2px);
+    }
+}
+
+.viewMore {
+    color: #D8C29D;
     text-decoration: none;
-    color:#D8C29D;
-    font-weight: bold;
-    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    &:hover {
+        transform: translateX(5px);
+    }
+}
+
+.drawer {
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    height: 100%;
+    
+    .drawerItem {
+        color: #fff;
+        font-family: "Montserrat", sans-serif;
+        padding: 12px 0;
+        transition: all 0.3s ease;
+        
+        &:hover {
+            color: #D8C29D;
+            transform: translateX(5px);
+        }
+    }
+}
+
+.mobileCategory {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #D8C29D;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: translateX(5px);
+    }
+}
+
+.mobileMenuItem {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 6px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        color: #D8C29D;
+        transform: translateX(5px);
+    }
+}
+
+.mobileNavItem {
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    color: #fff !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+        color: #D8C29D !important;
+    }
+}
+
+// Additional mobile styling for better visibility
+@media (max-width: 767px) {
+    .navbarAppBar {
+        clip-path: none;
+    }
 }

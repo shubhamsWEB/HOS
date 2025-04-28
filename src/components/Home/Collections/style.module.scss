@@ -1,0 +1,66 @@
+.collectionSection {
+  background-color: #fff;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(to bottom, rgba(249, 242, 234, 0.5), rgba(255, 255, 255, 0));
+    z-index: 0;
+  }
+}
+
+.overline, 
+.sectionTitle, 
+.featuredTitle {
+  font-family: "Playfair Display", serif;
+}
+
+.sectionDescription,
+.featuredSubtitle, 
+.cardDescription {
+  font-family: "DM Sans", sans-serif;
+}
+
+.collectionCard {
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.cardTitle {
+  font-family: "Playfair Display", serif;
+}
+
+.cardOverline {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+}
+
+.cardButton {
+  font-family: "DM Sans", sans-serif;
+}
+
+.viewAllButton {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+}
+
+.productsGrid {
+  position: relative;
+  z-index: 1;
+  
+  :global(.MuiCard-root) {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    }
+  }
+} 

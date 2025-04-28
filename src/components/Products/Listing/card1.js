@@ -1,7 +1,16 @@
 "use client"
-import React, { useRef } from 'react';
-import { Box, Typography } from '@mui/material';
-import Badge from './badge';
+import React, { useRef, useState } from 'react';
+import { 
+  Box, 
+  Typography, 
+  Card as MuiCard, 
+  CardContent, 
+  CardMedia, 
+  Chip, 
+  IconButton,
+  Fade,
+  Backdrop
+} from '@mui/material';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,82 +18,193 @@ import Image from 'next/image';
 import styles from './style.module.scss';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useRouter } from 'next/navigation';
 import EnduireBtn from '@/components/Common/EnquireBtn';
 import { RWebShare } from "react-web-share";
+import { formatPrice } from '@/utils/productUtils';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import StyledButton from '@/components/Common/StyledButton';
+
 function Card({ data }) {
     const sliderRef = useRef(null);
-    const [showIcons, setIcons] = React.useState(false);
+    const [showIcons, setShowIcons] = useState(false);
+    const [currentSlide, setCurrentSlide] = useState(0);
     const router = useRouter();
 
+    const imageUrls = data?.media?.filter(url => !url.includes('.mp4')) || [];
+
     const handleMouseEnter = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickPlay();
-            setIcons(true);
-        }
+        setShowIcons(true);
     };
 
     const handleMouseLeave = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickPause();
-            sliderRef.current.slickGoTo(0);
-            setIcons(false);
-        }
+        setShowIcons(false);
+    };
+
+    const nextSlide = (e) => {
+        e.stopPropagation();
+        sliderRef.current.slickNext();
+    };
+
+    const prevSlide = (e) => {
+        e.stopPropagation();
+        sliderRef.current.slickPrev();
     };
 
     const settings = {
-        speed: 500,
+        speed: 700,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
-        pauseOnHover: false,
+        pauseOnHover: true,
         autoplay: false,
-        autoplaySpeed: 200,
-        infinite: false,
-        fade: true
+        infinite: true,
+        fade: true,
+        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+        beforeChange: (current, next) => setCurrentSlide(next)
     };
-    const imageUrls = data?.media?.filter(url => !url.includes('.mp4'));
+
+    const navigateToProduct = () => {
+        router.push(`/products/${data.id}`);
+    };
+
+    const BadgeComponent = ({ product }) => {
+        if (product.new) {
+            return (
+                <div className={styles.badgeContainer}>
+                    <div className={styles.newBadge}>New</div>
+                </div>
+            );
+        } else if (product.sale) {
+            return (
+                <div className={styles.badgeContainer}>
+                    <div className={styles.newBadge}>Sale</div>
+                </div>
+            );
+        }
+        return null;
+    };
+
+    const ActionsContainer = ({ onFavClick, onCartClick }) => (
+        <div className={styles.actionsContainer}>
+            <IconButton className={styles.actionButton} onClick={onFavClick} size="small">
+                <FavoriteBorderIcon fontSize="small" />
+            </IconButton>
+            <IconButton className={styles.actionButton} onClick={onCartClick} size="small">
+                <ShoppingCartIcon fontSize="small" />
+            </IconButton>
+        </div>
+    );
 
     return (
-        <Box sx={{ position: 'relative' }} onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}>
-                {data.offer && <Badge text={data.offer}/>}
-            <Box
-                boxShadow={2}
-                onClick={() => router.push(`/products/${data.id}`)}
-            >
-                <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
-                    {imageUrls.map((img,key) => {
-                        return (
-                            <Image key={key} src={img} alt="Ring 1" width={0} height={0} sizes="100vw" className={styles.productImgNew} />
-                        )
-                    })}
-
-                </Slider>
-            </Box>
-            {showIcons && (
-                <>
-                    <Box sx={{ position: 'absolute', bottom: '8%', width: '100%' }}>
-                        <EnduireBtn data={data} />
-                    </Box>
-                    <Box sx={{ position: 'absolute', top: 20, right: 8, display: 'flex', gap: '15px', flexDirection: 'column' }}>
-                        <Box sx={{ padding: '5px', background: "black", borderRadius: '50%', margin: 'auto', width: '30px', height: '30px', cursor: 'pointer' }}><FavoriteBorderIcon fontSize='small' sx={{ color: "#fff" }} /></Box>
-                        <RWebShare data={{
-                            text: "House of Sansa",
-                            url: `${ window.location.origin}/products/${data.id}`,
-                            title: "House of Sansa",
-                        }}
-                            onClick={() => console.log("shared successfully!")}>
-
-                            <Box sx={{ padding: '5px', background: "black", borderRadius: '50%', margin: 'auto', width: '30px', height: '30px' }}><ShareOutlinedIcon fontSize='small' sx={{ color: "#fff" }} /></Box>
-                        </RWebShare>
-                        <Box sx={{ padding: '5px', background: "black", borderRadius: '50%', margin: 'auto', width: '30px', height: '30px' }}><UnfoldMoreRoundedIcon fontSize='small' sx={{ transform: 'rotate(45deg)', color: "#fff" }} /></Box>
-                    </Box>
-                </>
+        <MuiCard 
+            elevation={0}
+            className={styles.luxuryProductCard}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
+            {/* Product Badge */}
+            {data.offer && (
+                <BadgeComponent product={data} />
             )}
-            <Typography variant='h6' className={styles.productName}>{data?.productName}</Typography>
-        </Box>
+            
+            {/* Product Image */}
+            <div className={styles.productImageContainer} onClick={navigateToProduct}>
+                <Slider 
+                    ref={sliderRef} 
+                    {...settings} 
+                    className={styles.productSlider}
+                >
+                    {imageUrls.map((img, index) => (
+                        <div key={index} className={styles.slideWrapper}>
+                            <Image 
+                                src={img} 
+                                alt={data.productName || 'Product image'} 
+                                width={0} 
+                                height={0} 
+                                sizes="100vw" 
+                                className={styles.productImage} 
+                                priority={index === 0}
+                            />
+                        </div>
+                    ))}
+                </Slider>
+                
+                {/* Overlay Elements - Only Show on Hover */}
+                <Fade in={showIcons} timeout={400}>
+                    <div>
+                        {/* Image Navigation Arrows */}
+                        {imageUrls.length > 1 && (
+                            <div className={styles.sliderNavigation}>
+                                <IconButton 
+                                    className={styles.sliderArrow}
+                                    onClick={prevSlide}
+                                    size="medium"
+                                    aria-label="previous slide"
+                                >
+                                    <ArrowBackIosNewIcon fontSize="small" sx={{ marginLeft: "3px" }} />
+                                </IconButton>
+                                <IconButton 
+                                    className={styles.sliderArrow}
+                                    onClick={nextSlide}
+                                    size="medium"
+                                    aria-label="next slide"
+                                >
+                                    <ArrowForwardIosIcon fontSize="small" />
+                                </IconButton>
+                            </div>
+                        )}
+                        
+                        {/* Image Pagination Dots */}
+                        {imageUrls.length > 1 && (
+                            <div className={styles.sliderPagination}>
+                                {imageUrls.map((_, index) => (
+                                    <div 
+                                        key={index} 
+                                        className={`${styles.paginationDot} ${currentSlide === index ? styles.activeDot : ''}`}
+                                    />
+                                ))}
+                            </div>
+                        )}
+
+                        {/* Action Buttons */}
+                        <ActionsContainer onFavClick={() => {}} onCartClick={() => {}} />
+                        
+                        {/* Enquire Button */}
+                        <div className={styles.enquireButtonContainer}>
+                            <EnduireBtn data={data} className={styles.enquireButton} />
+                        </div>
+                    </div>
+                </Fade>
+            </div>
+            
+            {/* Product Info */}
+            <div className={styles.productInfo}>
+                <Typography variant="h3" className={styles.productName}>
+                    {data?.productName || 'Product Name'}
+                </Typography>
+                
+                {data.price && (
+                    <Typography variant="body1" className={styles.productPrice}>
+                        {formatPrice(data.price)}
+                    </Typography>
+                )}
+                
+                <div className={styles.productLine}></div>
+                
+                <div className={styles.viewDetailsButtonContainer}>
+                    <StyledButton
+                        variant="text"
+                        onClick={navigateToProduct}
+                    >
+                        View Details
+                    </StyledButton>
+                </div>
+            </div>
+        </MuiCard>
     );
 }
 

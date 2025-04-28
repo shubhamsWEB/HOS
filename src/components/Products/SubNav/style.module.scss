@@ -1,0 +1,84 @@
+@import "../../../styles/variables.scss";
+
+.subNavContainer {
+  padding: 12px 0;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.collectionHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.collectionTitle {
+  font-family: $font-family-cormorant;
+  font-size: 42px !important;
+  font-weight: 500 !important;
+  color: #333;
+  margin-bottom: 16px !important;
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: $color-primary;
+  }
+}
+
+.collectionSubtitle {
+  font-family: $font-family-nunito;
+  font-size: 16px !important;
+  color: #777;
+  max-width: 600px;
+  margin: 0 auto 24px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+}
+
+.divider {
+  width: 120px;
+  margin: 0 auto 30px !important;
+  background-color: rgba(212, 175, 55, 0.2) !important;
+  height: 1px !important;
+}
+
+.categoryNav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.categoryChip {
+  background-color: #f8f8f8 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #555 !important;
+  font-family: $font-family-nunito !important;
+  font-size: 13px !important;
+  height: 32px !important;
+  padding: 0 16px !important;
+  transition: all 0.2s ease !important;
+  
+  &:hover {
+    background-color: rgba(212, 175, 55, 0.08) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+    color: #222 !important;
+  }
+  
+  &.active {
+    background-color: $color-primary !important;
+    color: #fff !important;
+    border-color: $color-primary !important;
+    font-weight: 500 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
+}

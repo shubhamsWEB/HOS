@@ -1,38 +1,49 @@
 "use client"
-import React from 'react';
+import React, { useRef } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Box, Typography } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import Card from './card';
 import { products } from '../../../constants/products';
+import styles from './style.module.scss';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+
 function SliderComp() {
-    var settings = {
-        // dots: true,
+    const sliderRef = useRef(null);
+
+    const next = () => {
+        sliderRef.current.slickNext();
+    };
+    
+    const previous = () => {
+        sliderRef.current.slickPrev();
+    };
+
+    const settings = {
+        dots: false,
         infinite: true,
-        // centerMode: true,
-        centerPadding: "60px",
         speed: 500,
         slidesToScroll: 1,
         slidesToShow: 2,
         autoplay: true,
+        autoplaySpeed: 3000,
         arrows: false,
+        pauseOnHover: true,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
+                    slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 1
+                    slidesToScroll: 1
                 }
             },
             {
@@ -44,17 +55,34 @@ function SliderComp() {
             }
         ]
     };
+
     return (
-        <Box px={{ xs: 2, sm: 4 }}>
-            <Slider {...settings}>
-                {products.map(item => {
-                    return (<Box key={item.id} sx={{p:{xs:0,sm:1}}}>
+        <Box className={styles.sliderWrapper}>
+            <Slider ref={sliderRef} {...settings}>
+                {products.map(item => (
+                    <Box key={item.id} sx={{ p: 2 }}>
                         <Card data={item} />
-                    </Box>)
-                })}
+                    </Box>
+                ))}
             </Slider>
+            
+            <Box className={styles.sliderControls}>
+                <IconButton 
+                    onClick={previous} 
+                    className={styles.sliderArrow}
+                >
+                    <ArrowBackIosNewIcon fontSize="small" />
+                </IconButton>
+                
+                <IconButton 
+                    onClick={next} 
+                    className={styles.sliderArrow}
+                >
+                    <ArrowForwardIosIcon fontSize="small" />
+                </IconButton>
+            </Box>
         </Box>
-    )
+    );
 }
 
-export default SliderComp
+export default SliderComp;

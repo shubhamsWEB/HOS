@@ -1,0 +1,64 @@
+@import "../../../styles/variables.scss";
+
+.productsPage {
+  margin-top: 100px; // Account for fixed navbar
+  min-height: calc(100vh - 100px);
+  background-color: #fff;
+  @media (max-width: 960px) {
+    margin-top: 70px;
+    min-height: calc(100vh - 70px);
+  }
+}
+
+.breadcrumbWrapper {
+  padding: 12px 0;
+  background-color: #f9f7f3;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mainContent {
+  padding: 40px 0 80px;
+  
+  @media (max-width: 960px) {
+    padding: 20px 0 60px;
+  }
+}
+
+.sidebarWrapper {
+  padding-right: 30px;
+  
+  @media (max-width: 1200px) {
+    padding-right: 20px;
+  }
+}
+
+.stickyFilters {
+  position: sticky;
+  // top: 100px;
+  padding-right: 15px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
+  }
+}
+
+.mobileFilterBar {
+  margin-bottom: 30px;
+} 

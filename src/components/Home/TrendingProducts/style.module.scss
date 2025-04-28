@@ -1,41 +1,383 @@
 .productName {
     font-weight: 700;
     color: '#222222';
-    font-family: "DM Sans", sans-serif !important;
+    font-family: "Cormorant Garamond", serif !important;
     font-size: 18px !important;
     margin-top: 10px;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -4px;
+        left: 0;
+        background-color: #D8C29D;
+        transition: width 0.3s ease;
+    }
+    
+    &:hover::after {
+        width: 100%;
+    }
 }
 
 .btn {
     padding: .8rem;
     background: black !important;
     color: #fff !important;
-    font-family: "DM Sans", sans-serif !important;
-}
-
-.btn:hover {
-    background: #fff;
-    color: black
+    font-family: "Montserrat", sans-serif !important;
+    letter-spacing: 1px;
+    text-transform: none !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+        background: #D8C29D !important;
+        color: black !important;
+        transform: translateY(-3px);
+    }
 }
 
 .icons {
     padding: 5px;
-    background: black;
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 50%;
     margin: auto;
-    width: 30px;
-    height: 30px
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: #D8C29D;
+        transform: translateY(-2px);
+    }
+}
+
+// New styles for the redesigned section
+.trendingSection {
+    padding: 100px 0;
+    background-color: #fcfcfc;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('/assets/pattern.png');
+        background-repeat: repeat;
+        background-size: 200px;
+        opacity: 0.03;
+        pointer-events: none;
+    }
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.decorativeLine {
+    width: 40px;
+    height: 1px;
+    background-color: #D8C29D;
+    margin: 0 16px;
 }
 
 .sub {
-    color: #d8c29d;
-    font-family: "DM Sans", sans-serif !important;
-    letter-spacing: 2px;
+    color: #D8C29D;
+    font-family: "Montserrat", sans-serif !important;
+    letter-spacing: 3px;
+    font-size: 14px !important;
+    font-weight: 500 !important;
 }
 
-.main {
-    font-family: "Playfair Display", serif !important;
+.mainTitle {
+    font-family: "Cormorant Garamond", serif !important;
+    text-align: center;
+    font-size: 48px !important;
+    margin-bottom: 60px !important;
+    color: #111;
+    font-weight: 600 !important;
+    position: relative;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background-color: #D8C29D;
+    }
 }
+
+.infoBox {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 100%;
+    position: relative;
+    
+    @media (min-width: 768px) {
+        padding: 40px 20px;
+    }
+}
+
+.imageWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.decorativeImage {
+    filter: brightness(0) saturate(100%) invert(84%) sepia(13%) saturate(839%) hue-rotate(358deg) brightness(88%) contrast(87%);
+    opacity: 0.9;
+}
+
 .desc {
-    font-family: "DM Sans", sans-serif !important;
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.viewAllButton {
+    align-self: flex-start;
+    border: 1px solid #D8C29D !important;
+    color: #111 !important;
+    padding: 10px 24px !important;
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 14px !important;
+    text-transform: none !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+        background-color: #D8C29D !important;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(216, 194, 157, 0.3);
+    }
+}
+
+.sliderContainer {
+    position: relative;
+    padding: 20px 0;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100px;
+        width: 200px;
+        height: 200px;
+        background-color: rgba(216, 194, 157, 0.05);
+        border-radius: 50%;
+        z-index: -1;
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -50px;
+        right: -50px;
+        width: 150px;
+        height: 150px;
+        background-color: rgba(216, 194, 157, 0.05);
+        border-radius: 50%;
+        z-index: -1;
+    }
+}
+
+.trendingLabel {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    transform: translateY(-50%);
+    background-color: #D8C29D;
+    padding: 8px 20px;
+    border-radius: 2px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.labelText {
+    color: #fff;
+    font-family: "Cormorant Garamond", serif !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.sliderWrapper {
+    position: relative;
+    padding: 0 10px;
+}
+
+.sliderControls {
+    position: absolute;
+    top: -60px;
+    right: 20px;
+    display: flex;
+    gap: 12px;
+    
+    @media (max-width: 767px) {
+        top: auto;
+        bottom: -30px;
+        right: 20px;
+    }
+}
+
+.sliderArrow {
+    width: 40px !important;
+    height: 40px !important;
+    border: 1px solid rgba(216, 194, 157, 0.4) !important;
+    color: #111 !important;
+    background-color: #fff !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+    
+    &:hover {
+        background-color: #D8C29D !important;
+        color: #fff !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(216, 194, 157, 0.3) !important;
+    }
+    
+    svg {
+        font-size: 16px !important;
+    }
+}
+
+// Product Card Styles
+.productCard {
+    position: relative;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.productImageContainer {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    width: 100%;
+}
+
+.productImage {
+    cursor: pointer;
+    height: 320px;
+    
+    @media (max-width: 767px) {
+        height: 260px;
+    }
+}
+
+.sliderImageWrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.productActions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    transform: translateY(100%);
+    animation: slideUp 0.3s forwards;
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+    }
+}
+
+.quickActions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateX(60px);
+    animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
+
+.newLabel, .discountLabel {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.newLabel {
+    background-color: #D8C29D;
+    color: #fff;
+}
+
+.discountLabel {
+    background-color: #d95555;
+    color: #fff;
+}
+
+.productInfo {
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.productPrice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.originalPrice {
+    text-decoration: line-through;
+    color: #999;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+}
+
+.currentPrice {
+    color: #111;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
 }

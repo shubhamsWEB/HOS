@@ -1,0 +1,343 @@
+@import "../../../styles/variables.scss";
+
+.filterContainer {
+  padding: 20px 0;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.resultsInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pageInfo {
+  font-family: $font-family-nunito;
+  color: #888;
+  font-size: 13px !important;
+  position: relative;
+  padding-right: 16px;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.activeFilterCount {
+  font-family: $font-family-nunito;
+  color: $color-primary;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.actionButton {
+  width: 36px !important;
+  height: 36px !important;
+  color: #666 !important;
+  transition: all 0.2s ease !important;
+  
+  &:hover {
+    color: $color-primary !important;
+    background-color: rgba(212, 175, 55, 0.05) !important;
+  }
+  
+  &.active {
+    color: $color-primary !important;
+    background-color: rgba(212, 175, 55, 0.08) !important;
+  }
+}
+
+.divider {
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  margin: 0 4px !important;
+}
+
+.filterOptions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+  
+  .dropdown {
+    min-width: 180px;
+    
+    @media (max-width: 768px) {
+      min-width: 150px;
+    }
+    
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+}
+
+.activeFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.filterChip {
+  background-color: #f7f4ed !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: #333 !important;
+  font-family: $font-family-nunito !important;
+  font-size: 12px !important;
+  height: 28px !important;
+  transition: all 0.2s ease !important;
+  
+  &:hover {
+    background-color: #f0e9d8 !important;
+  }
+  
+  svg {
+    color: rgba(0, 0, 0, 0.5) !important;
+    
+    &:hover {
+      color: rgba(0, 0, 0, 0.8) !important;
+    }
+  }
+}
+
+.clearButton {
+  margin: 0 32px 24px !important;
+  font-size: 14px !important;
+  color: #666 !important;
+  text-transform: none !important;
+  letter-spacing: 0.5px !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+  background-color: rgba(212, 175, 55, 0.05) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  
+  @media (max-width: 768px) {
+    margin: 0 16px 16px !important;
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+    width: calc(100% - 32px) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  &:hover {
+    color: $color-primary !important;
+    background-color: rgba(212, 175, 55, 0.08) !important;
+    border-color: $color-primary !important;
+    transform: translateY(-1px);
+    
+    &::before {
+      opacity: 0;
+    }
+  }
+  
+  .MuiSvgIcon-root {
+    font-size: 18px !important;
+    margin-right: 8px !important;
+    
+    @media (max-width: 768px) {
+      font-size: 16px !important;
+      margin-right: 6px !important;
+    }
+  }
+}
+
+// Compact Filter Styles for Sidebar
+.compactFilter {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 24px 0 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
+  
+  @media (max-width: 768px) {
+    padding: 12px 0 8px;
+    max-height: calc(100vh - 80px);
+    border-radius: 8px;
+    margin: 0 16px;
+  }
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(212, 175, 55, 0.3);
+    border-radius: 3px;
+    
+    &:hover {
+      background-color: rgba(212, 175, 55, 0.5);
+    }
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $color-primary, rgba(212, 175, 55, 0.5));
+  }
+}
+
+.compactTitle {
+  font-family: $font-family-cormorant !important;
+  font-size: 24px !important;
+  color: #222 !important;
+  margin-bottom: 32px !important;
+  padding: 0 32px !important;
+  position: relative;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px;
+  
+  @media (max-width: 768px) {
+    font-size: 18px !important;
+    margin-bottom: 20px !important;
+    padding: 0 16px !important;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 32px;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, $color-primary, rgba(212, 175, 55, 0.3));
+    
+    @media (max-width: 768px) {
+      left: 16px;
+      bottom: -12px;
+      width: 40px;
+    }
+  }
+}
+
+.filterSection {
+  padding: 0 32px;
+  margin-bottom: 24px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.filterAccordion {
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  background-color: transparent !important;
+  
+  &::before {
+    display: none !important;
+  }
+  
+  .MuiAccordionSummary-root {
+    padding: 0 32px !important;
+    min-height: 48px !important;
+    
+    @media (max-width: 768px) {
+      padding: 0 16px !important;
+      min-height: 40px !important;
+    }
+  }
+  
+  .MuiAccordionDetails-root {
+    padding: 0 32px 16px !important;
+    
+    @media (max-width: 768px) {
+      padding: 0 16px 12px !important;
+    }
+  }
+  
+  .filterGroupTitle {
+    font-family: $font-family-nunito !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    
+    @media (max-width: 768px) {
+      font-size: 14px !important;
+    }
+  }
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  @media (max-width: 768px) {
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .filterOption {
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-family: $font-family-nunito;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    
+    @media (max-width: 768px) {
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+    
+    &:hover {
+      background-color: rgba(212, 175, 55, 0.05);
+      color: #333;
+    }
+    
+    &.active {
+      background-color: rgba(212, 175, 55, 0.08);
+      color: $color-primary;
+      border-color: rgba(212, 175, 55, 0.3);
+      font-weight: 500;
+    }
+  }
+} 

@@ -1,31 +1,101 @@
-import React from 'react'
-import { Box, Typography, Button } from '@mui/material'
+'use client'
+import React, { useState } from 'react'
+import { Box, Typography, Container, IconButton } from '@mui/material'
 import styles from './style.module.scss'
+import Image from 'next/image'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import VideocamIcon from '@mui/icons-material/Videocam'
+import PhotoIcon from '@mui/icons-material/Photo'
+import StyledButton from '@/components/Common/StyledButton'
+
 function NewArrival() {
+    const [showVideo, setShowVideo] = useState(true);
+    
+    const toggleMediaType = () => {
+        setShowVideo(!showVideo);
+    };
+    
     return (
-        // <Box sx={{
-        //     textAlign: 'center', minHeight: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundAttachment: 'fixed',
-        //     backgroundPosition: 'center',
-        //     backgroundRepeat: 'no-repeat',
-        //     backgroundSize: 'cover',
-        //     backgroundImage: 'url("./assets/banner.png")',
-        //     flexDirection:'column'
-        // }}>
-        //     <Typography variant='h2'>New Arrival</Typography>
-        //     <Typography variant='p' px={30}>Discover Sparkel With Style and Luxury</Typography>
-        //     <Button variant="outlined" sx={{ marginTop: 2 }}>Shop Now</Button>
-        // </Box>
-        <Box className="video-container" sx={{ position: 'relative' }}>
-            <video className='videoTag' autoPlay muted loop style={{ width: "100%", height: '650px', objectFit: 'cover' }}>
-                <source src='./assets/main.mp4' type='video/mp4' />
-            </video>
-            <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-                <Box sx={{display:'flex',flexDirection:"column",alignItems:"center",textAlign:'center'}}>
-                <Typography variant='h1' sx={{color:'#fff',fontSize:'6rem'}} className={styles.main}>New Arrival</Typography>
-                <Typography variant='p' px={{xs:2,sm:30}} sx={{color:'#fff'}} className={styles.sub}>Discover Sparkel With Style and Luxury</Typography>
-                <Button variant="outlined" sx={{ marginTop: 2,color:'#fff',border:'1px solid black' }}>Shop Now</Button>
+        <Box className={styles.container}>
+            <Container maxWidth="lg">
+                {/* Decorative elements */}
+                <Box className={`${styles.decorationElement} ${styles.topRight}`}></Box>
+                <Box className={`${styles.decorationElement} ${styles.bottomLeft}`}></Box>
+                
+                <Box className={styles.contentWrapper}>
+                    {/* Image/Video side */}
+                    <Box className={styles.imageContainer}>
+                        {showVideo ? (
+                            <Box className={styles.videoWrapper}>
+                                <video autoPlay muted loop>
+                                    <source src='/assets/main.mp4' type='video/mp4' />
+                                </video>
+                                <IconButton 
+                                    onClick={toggleMediaType}
+                                    sx={{
+                                        position: 'absolute',
+                                        bottom: 16,
+                                        right: 16,
+                                        backgroundColor: 'rgba(255,255,255,0.7)',
+                                        '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' }
+                                    }}
+                                >
+                                    <PhotoIcon />
+                                </IconButton>
+                            </Box>
+                        ) : (
+                            <>
+                                <Image
+                                    src="/assets/new-arrival.jpg" // Update with actual image path
+                                    alt="New Arrival Collection"
+                                    width={600}
+                                    height={700}
+                                    className={styles.image}
+                                    priority
+                                />
+                                <IconButton 
+                                    onClick={toggleMediaType}
+                                    sx={{
+                                        position: 'absolute',
+                                        bottom: 16,
+                                        right: 16,
+                                        zIndex: 3,
+                                        backgroundColor: 'rgba(255,255,255,0.7)',
+                                        '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' }
+                                    }}
+                                >
+                                    <VideocamIcon />
+                                </IconButton>
+                            </>
+                        )}
+                    </Box>
+                    
+                    {/* Text content side */}
+                    <Box className={styles.textContent}>
+                        <Typography variant="subtitle1" className={styles.subtitle}>
+                            Just Arrived
+                        </Typography>
+                        
+                        <Typography variant="h2" className={styles.title}>
+                            New Arrivals Collection
+                        </Typography>
+                        
+                        <Typography variant="body1" className={styles.description}>
+                            Discover our latest arrivals, crafted with exquisite attention to detail. 
+                            Each piece reflects our commitment to timeless design and exceptional craftsmanship. 
+                            Elevate your style with our luxurious new collection.
+                        </Typography>
+                        
+                        <StyledButton 
+                            variant="outlined" 
+                            endIcon={<ArrowForwardIcon />}
+                            href="/products?new=true"
+                        >
+                            Explore Collection
+                        </StyledButton>
+                    </Box>
                 </Box>
-            </Box>
+            </Container>
         </Box>
     )
 }

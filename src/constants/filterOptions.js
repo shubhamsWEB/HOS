@@ -1,122 +1,62 @@
-export const sizeOptions = [
-    {
-        id: 1,
-        title: '1/2ct',
-        value: '1/2',
-        isSelected: true,
-    },
-    {
-        id: 2,
-        title: '1ct',
-        value: '1',
-        isSelected: false,
-    },
-    {
-        id: 3,
-        title: '1.5ct',
-        value: '1.5',
-        isSelected: false,
-    },
-    {
-        id: 4,
-        title: '1.8ct',
-        value: '1.8',
-        isSelected: false,
-    },
-    {
-        id: 5,
-        title: '2ct',
-        value: '2',
-        isSelected: false,
-    },
-    {
-        id: 6,
-        title: '2.5ct',
-        value: '2.5',
-        isSelected: false,
-    },
-    {
-        id: 7,
-        title: '2.8ct',
-        value: '2.8',
-        isSelected: false,
-    },
-    {
-        id: 8,
-        title: '3ct',
-        value: '3',
-        isSelected: false,
-    },
-]
-export const brandOptions = [
-    {
-        id:1,
-        title:'Brand1',
-        value:'b1',
-        isSelected:false
-    },
-    {
-        id:2,
-        title:'Brand2',
-        value:'b2',
-        isSelected:false
-    },
-    {
-        id:3,
-        title:'Brand3',
-        value:'b3',
-        isSelected:false
-    },
-    {
-        id:4,
-        title:'Brand4',
-        value:'b4',
-        isSelected:true
-    },
-]
-export const materialOptions = [
-    {
-        id:1,
-        title:'Yellow Gold',
-        value:'YG',
-        isSelected:true
-    },
-    {
-        id:1,
-        title:'White Gold',
-        value:'WG',
-        isSelected:false
-    },
-    {
-        id:1,
-        title:'Rose Gold',
-        value:'RG',
-        isSelected:false
-    },
-]
+import dummyProducts from './dummyProducts';
+
+// Extract unique categories from dummy products
+const extractUniqueValues = (products, property) => {
+  const allValues = products.flatMap(product => product[property] || []);
+  return [...new Set(allValues)];
+};
+
+// Get unique categories and collections
+const uniqueCategories = extractUniqueValues(dummyProducts, 'categories');
+const uniqueCollections = extractUniqueValues(dummyProducts, 'collections');
+
+// Price ranges for filtering
 export const priceOptions = [
-    {
-        id:1,
-        title:'<50k',
-        value:'less then 500000',
-        isSelected:true,
-    },
-    {
-        id:2,
-        title:'<100k',
-        value:'less then 500000',
-        isSelected:false,
-    },
-    {
-        id:3,
-        title:'<250k',
-        value:'less then 500000',
-        isSelected:false,
-    },
-    {
-        id:4,
-        title:'>250k',
-        value:'less then 500000',
-        isSelected:false,
-    }
-]
+  { name: 'Under ₹50,000', value: 'under-50000' },
+  { name: '₹50,000 - ₹100,000', value: '50000-100000' },
+  { name: '₹100,000 - ₹200,000', value: '100000-200000' },
+  { name: 'Above ₹200,000', value: 'above-200000' },
+];
+
+// Category options for filtering
+export const categoryOptions = uniqueCategories.map(category => ({
+  name: category.charAt(0).toUpperCase() + category.slice(1),
+  value: category
+}));
+
+// Collection options for filtering
+export const collectionOptions = uniqueCollections.map(collection => ({
+  name: collection.charAt(0).toUpperCase() + collection.slice(1),
+  value: collection
+}));
+
+// Material options for filtering
+export const materialOptions = [
+  { name: 'Yellow Gold', value: 'yellow-gold' },
+  { name: 'White Gold', value: 'white-gold' },
+  { name: 'Rose Gold', value: 'rose-gold' },
+  { name: 'Platinum', value: 'platinum' },
+];
+
+// Brand options (if applicable)
+export const brandOptions = [
+  { name: 'House of Sansa', value: 'hos' },
+];
+
+// Size options for rings
+export const sizeOptions = [
+  { name: 'Size 5', value: '5' },
+  { name: 'Size 6', value: '6' },
+  { name: 'Size 7', value: '7' },
+  { name: 'Size 8', value: '8' },
+  { name: 'Size 9', value: '9' },
+];
+
+// Diamond cut options
+export const cutOptions = [
+  { name: 'Round', value: 'round' },
+  { name: 'Princess', value: 'princess' },
+  { name: 'Emerald', value: 'emerald' },
+  { name: 'Oval', value: 'oval' },
+  { name: 'Cushion', value: 'cushion' },
+];

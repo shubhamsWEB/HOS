@@ -1,0 +1,98 @@
+@import "../../../styles/variables.scss";
+
+.styledButton {
+  font-family: "DM Sans", sans-serif !important;
+  background-color: transparent !important;
+  color: #333 !important;
+  border: 1px solid $color-primary !important;
+  padding: 10px 28px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  line-height: 1 !important;
+  
+  // Fix svg icon alignment
+  .MuiButton-startIcon,
+  .MuiButton-endIcon {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    
+    .MuiSvgIcon-root {
+      font-size: 18px !important;
+      vertical-align: middle !important;
+    }
+  }
+  
+  .MuiButton-startIcon {
+    margin-right: 6px !important;
+  }
+  
+  .MuiButton-endIcon {
+    margin-left: 6px !important;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 0;
+    height: 100%;
+    background-color: $color-primary;
+    transform: skewX(-15deg);
+    z-index: -1;
+    transition: all 0.5s ease;
+  }
+  
+  &:hover {
+    color: #fff !important;
+    
+    &::before {
+      width: 120%;
+    }
+  }
+  
+  // Variant: contained
+  &[class*="MuiButton-contained"] {
+    background-color: $color-primary !important;
+    color: #fff !important;
+    
+    &::before {
+      background-color: $color-primary-dark;
+    }
+  }
+  
+  // Variant: text
+  &[class*="MuiButton-text"] {
+    border: none !important;
+    padding: 8px 16px !important;
+    
+    &::before {
+      opacity: 0.15;
+    }
+  }
+  
+  // White variation for dark backgrounds
+  &.onDark {
+    color: #fff !important;
+    border-color: #fff !important;
+    
+    &::before {
+      background-color: #fff;
+    }
+    
+    &:hover {
+      color: #333 !important;
+    }
+  }
+} 

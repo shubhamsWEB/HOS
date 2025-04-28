@@ -1,37 +1,37 @@
 export const collections = [
     {
         id: 1,
-        title: 'Sansa Diamonds',
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. `,
-        path: '/products?collections=Sansa Diamonds',
+        title: 'luxury',
+        description: 'Explore our luxury collection featuring exquisite pieces crafted with the finest materials and expert craftsmanship.',
+        path: '/products?collections=luxury',
         media:'./assets/diamond.png'
     },
     {
         id: 2,
-        title: 'Sansa Polki',
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. `,
-        path: '/products?collections=Sansa Polki',
+        title: 'wedding',
+        description: 'Discover our stunning wedding collection, perfect for the most special day of your life. From engagement rings to bridal accessories.',
+        path: '/products?collections=wedding',
         media:'./assets/diamondbg.png'
     },
     {
         id: 3,
-        title: 'Sansa Gold',
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. `,
-        path: '/products?collections=Sansa Gold',
+        title: 'classic',
+        description: 'Timeless elegance defines our classic collection. These pieces transcend trends and will be treasured for generations.',
+        path: '/products?collections=classic',
         media:'./assets/goldbg.png'
     },
     {
         id: 4,
-        title: 'Sansa Gems',
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. `,
-        path: '/products?collections=Sansa Gems',
+        title: 'gemstone',
+        description: 'Our gemstone collection showcases the vibrant beauty of precious and semi-precious stones set in stunning designs.',
+        path: '/products?collections=gemstone',
         media:'./assets/gemstonebg.png'
     },
     {
         id: 5,
-        title: 'Sansa Accessories',
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. `,
-        path: '/products?collections=Sansa Accessories',
+        title: 'casual',
+        description: 'Everyday elegance is yours with our casual collection. Beautiful pieces designed for daily wear without compromising on quality.',
+        path: '/products?collections=casual',
         media:'./assets/accessoriesbg.png'
     }
 ]

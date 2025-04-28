@@ -1,14 +1,29 @@
 'use client'
-import React, { Suspense } from 'react';
-import { Box, Typography, Breadcrumbs, Button } from '@mui/material';
+import React, { Suspense, useState, useEffect } from 'react';
+import { Box, Typography, Container, Chip } from '@mui/material';
 import { productsCategory } from '../../../constants/productsType';
 import { useRouter } from 'next/navigation';
+import StyledButton from '@/components/Common/StyledButton';
+import styles from './style.module.scss';
 
-function Filter({searchParams}) {
+function SubNav({ searchParams }) {
     const router = useRouter();
-    // const searchParams = useSearchParams();
-
+    const [activeCategory, setActiveCategory] = useState('All');
+    
     const collections = searchParams?.collections;
+    const categories = searchParams?.categories;
+    
+    useEffect(() => {
+        // Set active category based on URL params
+        if (categories) {
+            const matchingCategory = productsCategory.find(item => item.path === categories);
+            if (matchingCategory) {
+                setActiveCategory(matchingCategory.title);
+            }
+        } else {
+            setActiveCategory('All');
+        }
+    }, [categories]);
 
     const handleCategoryClick = (item) => {
         let path = '/products';
@@ -39,23 +54,23 @@ function Filter({searchParams}) {
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
-                <Typography variant='h2'>{collections || 'Products'}</Typography>
-                <Breadcrumbs separator="|" id="productSubnav">
-                    {productsCategory.map(item => (
-                        <Button
-                            key={item.id}
-                            onClick={() => handleCategoryClick(item)}
-                            underline="hover"
-                            color="inherit"
-                        >
-                            {item.title}
-                        </Button>
-                    ))}
-                </Breadcrumbs>
+            <Box className={styles.subNavContainer}>
+                <Container maxWidth="lg">
+                    <Box className={styles.categoryNav}>
+                        {productsCategory.map(item => (
+                            <Chip
+                                key={item.id}
+                                label={item.title}
+                                onClick={() => handleCategoryClick(item)}
+                                className={`${styles.categoryChip} ${activeCategory === item.title ? styles.active : ''}`}
+                                clickable
+                            />
+                        ))}
+                    </Box>
+                </Container>
             </Box>
         </Suspense>
     );
 }
 
-export default Filter;
+export default SubNav;

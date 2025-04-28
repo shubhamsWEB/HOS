@@ -4,11 +4,6 @@ import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import EditIcon from '@mui/icons-material/Edit';
-import Divider from '@mui/material/Divider';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const StyledMenu = styled((props) => (
@@ -26,7 +21,7 @@ const StyledMenu = styled((props) => (
     />
 ))(({ theme }) => ({
     '& .MuiPaper-root': {
-        maxHeight:170,
+        maxHeight: 250,
         borderRadius: 6,
         marginTop: theme.spacing(1),
         minWidth: 180,
@@ -38,11 +33,6 @@ const StyledMenu = styled((props) => (
             padding: '4px 0',
         },
         '& .MuiMenuItem-root': {
-            '& .MuiSvgIcon-root': {
-                fontSize: 18,
-                color: theme.palette.text.secondary,
-                marginRight: theme.spacing(1.5),
-            },
             '&:active': {
                 backgroundColor: alpha(
                     theme.palette.primary.main,
@@ -53,21 +43,38 @@ const StyledMenu = styled((props) => (
     },
 }));
 
-export default function CustomizedMenus(props) {
+export default function CustomizedMenus({ title, options, onChange, value }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [selectOption, setOption] = React.useState();
     const open = Boolean(anchorEl);
-    const { title, options } = props;
+    
+    // Find the selected option based on the value prop
+    const selectedOption = React.useMemo(() => {
+        if (!value) return null;
+        return options.find(option => option.value === value);
+    }, [options, value]);
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+    
     const handleClose = () => {
         setAnchorEl(null);
     };
+    
     const handleOnSelect = (option) => {
-        setOption(option);
+        if (onChange) {
+            onChange(option.value);
+        }
         handleClose();
-    }
+    };
+    
+    const handleClear = () => {
+        if (onChange) {
+            onChange(null);
+        }
+        handleClose();
+    };
+    
     return (
         <div>
             <Button
@@ -79,10 +86,26 @@ export default function CustomizedMenus(props) {
                 disableElevation
                 onClick={handleClick}
                 endIcon={<KeyboardArrowDownIcon />}
-                sx={{border:'none',color:'#000',fontSize:'12px'}}
+                sx={{
+                    border: '1px solid #e0e0e0',
+                    color: selectedOption ? 'primary.main' : '#000',
+                    fontSize: '12px',
+                    px: 2,
+                    '&:hover': {
+                        borderColor: 'primary.main',
+                        backgroundColor: 'rgba(212, 175, 55, 0.04)'
+                    }
+                }}
             >
-                {selectOption ? <>{title}: <b>{selectOption.title}</b></> : title}
+                {selectedOption ? (
+                    <>
+                        {title}: <strong>{selectedOption.name}</strong>
+                    </>
+                ) : (
+                    title
+                )}
             </Button>
+            
             <StyledMenu
                 id="demo-customized-menu"
                 MenuListProps={{
@@ -92,14 +115,24 @@ export default function CustomizedMenus(props) {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem onClick={() => setOption()} disableRipple>
-                        Select {title}
+                <MenuItem onClick={handleClear} disableRipple sx={{ fontSize: '13px', fontWeight: 'bold' }}>
+                    All {title}
+                </MenuItem>
+                
+                {options.map((option, index) => (
+                    <MenuItem 
+                        onClick={() => handleOnSelect(option)} 
+                        disableRipple 
+                        key={option.value || index}
+                        selected={value === option.value}
+                        sx={{ 
+                            fontSize: '13px',
+                            backgroundColor: value === option.value ? 'rgba(212, 175, 55, 0.1)' : 'inherit' 
+                        }}
+                    >
+                        {option.name}
                     </MenuItem>
-                {options.map(opt => {
-                    return (<MenuItem onClick={() => handleOnSelect(opt)} disableRipple key={opt.id}>
-                        {opt.title}
-                    </MenuItem>)
-                })}
+                ))}
             </StyledMenu>
         </div>
     );
