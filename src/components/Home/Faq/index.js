@@ -38,7 +38,7 @@ const FAQ = () => {
           Frequently Asked Questions
         </Typography>
         <Typography variant="body1" className={styles.sectionDescription}>
-          Discover answers to common questions about our collections, services, and policies. If you have additional questions, please don't hesitate to contact us.
+          Discover answers to common questions about our collections, services, and policies. If you have additional questions, please don&apos;t hesitate to contact us.
         </Typography>
         
         <Grid container spacing={4} className={styles.faqGrid}>

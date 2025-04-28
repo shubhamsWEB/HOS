@@ -2,10 +2,12 @@ import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../utils/firebaseConfig";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import Image from 'next/image';
 
 export default function Upload({uploadedMedia, setUploadedMedia,color,values,backgroundC}) {
     const [files, setFiles] = useState([]); // State to store the selected files
     const [uploading, setUploading] = useState(false); // State to indicate the upload status
+    const [preview, setPreview] = useState(null);
 
     const handleFileChange = (event) => {
         const selectedFiles = Array.from(event.target.files); // Convert FileList to array
@@ -50,10 +52,12 @@ export default function Upload({uploadedMedia, setUploadedMedia,color,values,bac
                     {uploadedMedia.map((media, index) => (
                         <Grid item xs={6} key={index}>
                             {media.type === 'image' ? (
-                                <img
+                                <Image
                                     src={media.mediaLink}
                                     alt={`Uploaded image ${index + 1}`}
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    width={100}
+                                    height={100}
+                                    className={styles.previewImage}
                                 />
                             ) : (
                                 <video

@@ -14,6 +14,7 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 import { Box, Grid, useTheme, useMediaQuery, IconButton } from '@mui/material';
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 import styles from './style.module.scss';
+import Image from 'next/image';
 
 import {advancedSlides,slides} from '../../../constants/slides';
 
@@ -65,7 +66,16 @@ function ImageViewer({ images }) {
             }
           }}
           index={selectedImage}
-        />
+        >
+          <Image
+            src={images[selectedImage].src}
+            alt="Product"
+            width={500}
+            height={500}
+            className={styles.mainImage}
+            priority
+          />
+        </Lightbox>
         
         {/* Fullscreen button */}
         <IconButton
@@ -108,14 +118,13 @@ function ImageViewer({ images }) {
                 }}
                 className={`${styles.productImageThumbnail} ${selectedImage === index ? styles.active : ''}`}
               >
-                <img 
-                  src={image.src} 
+                <Image
+                  src={image.src}
                   alt={`Product thumbnail ${index + 1}`}
-                  style={{ 
-                    width: '100%', 
-                    height: '100%',
-                    objectFit: 'cover'
-                  }}
+                  width={100}
+                  height={70}
+                  className={styles.productImageThumbnail}
+                  priority
                 />
               </Box>
             </Grid>
@@ -130,7 +139,16 @@ function ImageViewer({ images }) {
         slides={images}
         plugins={[Fullscreen, Thumbnails, Video, Zoom, Slideshow, Captions]}
         index={selectedImage}
-      />
+      >
+        <Image
+          src={images[selectedImage].src}
+          alt="Product"
+          width={500}
+          height={500}
+          className={styles.mainImage}
+          priority
+        />
+      </Lightbox>
     </Box>
   );
 }

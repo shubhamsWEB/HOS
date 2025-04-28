@@ -91,7 +91,7 @@ function Footer() {
                             <li><Link href="/jewelry/bracelets" className={styles.footerLink}>Bracelets</Link></li>
                             <li><Link href="/jewelry/rings" className={styles.footerLink}>Rings</Link></li>
                             <li><Link href="/jewelry/brooches" className={styles.footerLink}>Brooches</Link></li>
-                            <li><Link href="/collections/men" className={styles.footerLink}>Men's Jewelry</Link></li>
+                            <li><Link href="/collections/men" className={styles.footerLink}>Men&apos;s Jewelry</Link></li>
                         </ul>
                     </Grid>
                     
@@ -152,8 +152,8 @@ function Footer() {
                 
                 {/* Copyright Section */}
                 <Box className={styles.copyrightSection}>
-                    <Typography variant='body2' className={styles.copyrightText}>
-                        © {new Date().getFullYear()} House of Sansa. All rights reserved.
+                    <Typography variant='body2' className={styles.copyright}>
+                        © {new Date().getFullYear()} House of Sansa. All rights reserved. Crafted with love in India&apos;s heart.
                     </Typography>
                     <Typography variant='body2' className={styles.designedBy}>
                         Designed with <span className={styles.heart}>♥</span> for Elegance

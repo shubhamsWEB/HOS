@@ -187,7 +187,7 @@ const TestimonialCard = ({ testimonial }) => {
       
       <Typography
         variant="body1"
-        className={styles.sub}
+        className={styles.testimonialText}
         sx={{
           fontStyle: 'italic',
           color: 'text.secondary',
@@ -196,7 +196,7 @@ const TestimonialCard = ({ testimonial }) => {
           flexGrow: 1
         }}
       >
-        "{testimonial.text}"
+        &ldquo;{testimonial.text}&rdquo;
       </Typography>
     </Paper>
   );
