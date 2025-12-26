@@ -1,11 +1,19 @@
 import React from 'react'
 import {Field} from 'react-final-form';
-import {TextareaAutosize} from '@mui/material';
+import {TextField} from '@mui/material';
 function metalInfo() {
     return (
         <Field name="metal">
             {({ input, meta }) => (
-                <TextareaAutosize id="outlined-basic" placeholder="Enter Metal Info" variant="outlined" {...input} minRows={4} />
+                <TextField
+                    id="metal-info"
+                    placeholder="Enter Metal Info"
+                    variant="outlined"
+                    multiline
+                    rows={4}
+                    fullWidth
+                    {...input}
+                />
             )}
         </Field>
     )

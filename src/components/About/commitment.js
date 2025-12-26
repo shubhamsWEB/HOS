@@ -5,7 +5,7 @@ import styles from './style.module.scss';
 
 function Commitment() {
     return (
-        <Grid container spacing={4} p={4}>
+        <Grid container spacing={{xs: 2, sm: 4}} p={{xs: 2, sm: 3, md: 4}}>
             <Grid item xs={12} sm={6}>
                 <Typography variant='h3' className={styles.mainTitle}>⁠Our Promise & Commitment </Typography>
             </Grid>

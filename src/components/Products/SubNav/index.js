@@ -1,14 +1,17 @@
 'use client'
 import React, { Suspense } from 'react';
-import { Box, Typography, Breadcrumbs, Button } from '@mui/material';
+import { Box, Typography, Breadcrumbs } from '@mui/material';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { productsCategory } from '../../../constants/productsType';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import styles from './style.module.scss';
 
-function Filter({searchParams}) {
+function Filter() {
     const router = useRouter();
-    // const searchParams = useSearchParams();
+    const searchParams = useSearchParams();
 
-    const collections = searchParams?.collections;
+    const collections = searchParams.get('collections');
+    const activeCategory = searchParams.get('categories');
 
     const handleCategoryClick = (item) => {
         let path = '/products';
@@ -39,20 +42,31 @@ function Filter({searchParams}) {
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
-                <Typography variant='h2'>{collections || 'Products'}</Typography>
-                <Breadcrumbs separator="|" id="productSubnav">
-                    {productsCategory.map(item => (
-                        <Button
-                            key={item.id}
-                            onClick={() => handleCategoryClick(item)}
-                            underline="hover"
-                            color="inherit"
-                        >
-                            {item.title}
-                        </Button>
-                    ))}
-                </Breadcrumbs>
+            <Box className={styles.subNavContainer}>
+                <Typography variant='h2' className={styles.title}>
+                    {collections || 'Products'}
+                </Typography>
+                {/* <Breadcrumbs 
+                    separator={<NavigateNextIcon className={styles.separator} />} 
+                    className={styles.breadcrumbs}
+                    id="productSubnav"
+                >
+                    {productsCategory.map(item => {
+                        const isActive = item.title === 'All' 
+                            ? !activeCategory 
+                            : activeCategory === item.path;
+                        
+                        return (
+                            <button
+                                key={item.id}
+                                onClick={() => handleCategoryClick(item)}
+                                className={`${styles.categoryButton} ${isActive ? styles.active : ''}`}
+                            >
+                                {item.title}
+                            </button>
+                        );
+                    })}
+                </Breadcrumbs> */}
             </Box>
         </Suspense>
     );

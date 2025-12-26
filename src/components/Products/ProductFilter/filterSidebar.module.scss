@@ -1,0 +1,455 @@
+/* Filter Sidebar - Elegant Luxury Design */
+.filterSidebar {
+  min-width: 280px;
+  max-width: 280px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* Filtered By Section */
+.filteredBy {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.filteredByHeader {
+  padding: 16px 20px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filteredByTitle {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  color: #888 !important;
+}
+
+.clearAllBtn {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  font-size: 12px !important;
+  color: #c9a962 !important;
+  text-transform: none !important;
+  padding: 0 !important;
+  min-width: auto !important;
+  font-weight: 500 !important;
+  
+  &:hover {
+    background: transparent !important;
+    color: #a88942 !important;
+    text-decoration: underline;
+  }
+}
+
+.filterChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 20px 16px;
+}
+
+.filterChip {
+  background-color: #faf9f7 !important;
+  border: 1px solid #e5e5e5 !important;
+  border-radius: 0 !important;
+  font-size: 12px !important;
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  color: #1a1a1a !important;
+  height: 28px !important;
+  font-weight: 400 !important;
+  transition: all 0.2s ease !important;
+  
+  &:hover {
+    background-color: #f0efed !important;
+    border-color: #ccc !important;
+  }
+  
+  :global(.MuiChip-label) {
+    padding: 0 10px !important;
+    font-size: 12px !important;
+  }
+  
+  :global(.MuiChip-deleteIcon) {
+    color: #999 !important;
+    font-size: 16px !important;
+    margin: 0 4px 0 -4px !important;
+    transition: color 0.2s ease !important;
+    
+    &:hover {
+      color: #1a1a1a !important;
+    }
+  }
+}
+
+/* Filters Header */
+.filtersHeader {
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filtersIcon {
+  color: #c9a962;
+  font-size: 20px;
+}
+
+.filtersTitle {
+  font-family: var(--font-playfair), "Playfair Display", serif !important;
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  color: #1a1a1a !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Accordion Styles */
+.accordion {
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  margin: 0 !important;
+  background: #fff !important;
+  border-radius: 0 !important;
+  
+  &::before {
+    display: none !important;
+  }
+  
+  &:last-of-type {
+    border-bottom: none !important;
+  }
+  
+  &.Mui-expanded {
+    margin: 0 !important;
+  }
+}
+
+.accordionSummary {
+  padding: 0 20px !important;
+  min-height: 52px !important;
+  
+  &:hover {
+    background-color: #faf9f7 !important;
+  }
+  
+  :global(.MuiAccordionSummary-content) {
+    margin: 0 !important;
+  }
+  
+  :global(.MuiAccordionSummary-expandIconWrapper) {
+    color: #c9a962 !important;
+    
+    svg {
+      font-size: 20px !important;
+    }
+  }
+}
+
+.filterSectionTitle {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  color: #1a1a1a !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.accordionDetails {
+  padding: 0 20px 20px !important;
+}
+
+.filterOption {
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+  padding: 8px 0;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  
+  &:hover {
+    .filterLabel {
+      color: #1a1a1a;
+    }
+  }
+  
+  :global(.MuiFormControlLabel-label) {
+    flex: 1;
+  }
+}
+
+.checkbox {
+  padding: 0 !important;
+  margin-right: 12px !important;
+  color: #ccc !important;
+  
+  &:hover {
+    background-color: transparent !important;
+  }
+  
+  &.Mui-checked {
+    color: #1a1a1a !important;
+  }
+  
+  :global(.MuiSvgIcon-root) {
+    font-size: 18px !important;
+  }
+}
+
+.filterLabel {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  font-size: 13px !important;
+  color: #666 !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  transition: color 0.15s ease !important;
+}
+
+.count {
+  color: #bbb;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+/* Mobile Filter Button */
+.mobileFilterButton {
+  display: block;
+  
+  @media (min-width: 961px) {
+    display: none;
+  }
+}
+
+.filterButton {
+  background: #fff !important;
+  border: 1px solid #1a1a1a !important;
+  border-radius: 0 !important;
+  color: #1a1a1a !important;
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  padding: 12px 24px !important;
+  transition: all 0.25s ease !important;
+  
+  &:hover {
+    background: #1a1a1a !important;
+    color: #fff !important;
+  }
+  
+  :global(.MuiButton-startIcon) {
+    margin-right: 10px;
+    
+    svg {
+      font-size: 18px !important;
+    }
+  }
+}
+
+/* Desktop Sidebar */
+.desktopSidebar {
+  display: block;
+  position: sticky;
+  top: 140px;
+  
+  @media (max-width: 960px) {
+    display: none;
+  }
+}
+
+/* Mobile Drawer */
+.mobileDrawer {
+  :global(.MuiDrawer-paper) {
+    width: 100%;
+    max-width: 360px;
+    background: #fff;
+  }
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: #faf9f7;
+}
+
+.drawerTitle {
+  font-family: var(--font-playfair), "Playfair Display", serif !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  color: #1a1a1a !important;
+  letter-spacing: 0.5px !important;
+}
+
+.closeButton {
+  color: #666 !important;
+  padding: 8px !important;
+  
+  &:hover {
+    color: #1a1a1a !important;
+    background-color: rgba(0, 0, 0, 0.04) !important;
+  }
+  
+  svg {
+    font-size: 22px !important;
+  }
+}
+
+.drawerContent {
+  overflow-y: auto;
+  height: calc(100vh - 81px);
+  
+  .filterSidebar {
+    min-width: 100%;
+    max-width: 100%;
+    border: none;
+  }
+}
+
+.drawerFooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 24px;
+  background: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: 12px;
+}
+
+.clearButton {
+  flex: 1;
+  background: transparent !important;
+  border: 1px solid #1a1a1a !important;
+  border-radius: 0 !important;
+  color: #1a1a1a !important;
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  padding: 14px 20px !important;
+  
+  &:hover {
+    background: rgba(0, 0, 0, 0.04) !important;
+  }
+}
+
+.applyButton {
+  flex: 1;
+  background: #1a1a1a !important;
+  border: 1px solid #1a1a1a !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  padding: 14px 20px !important;
+  
+  &:hover {
+    background: #c9a962 !important;
+    border-color: #c9a962 !important;
+  }
+}
+
+/* Results count (for mobile) */
+.resultsCount {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  font-size: 13px !important;
+  color: #888 !important;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  
+  strong {
+    color: #1a1a1a;
+    font-weight: 500;
+  }
+}
+
+/* Color swatches for metal color filter */
+.colorSwatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.colorSwatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  
+  &:hover::before {
+    border-color: #ccc;
+  }
+  
+  &.active {
+    &::before {
+      border-color: #1a1a1a;
+    }
+    
+    &::after {
+      content: '✓';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+  }
+  
+  &.gold {
+    background: linear-gradient(135deg, #d4af37 0%, #c9a962 100%);
+  }
+  
+  &.roseGold {
+    background: linear-gradient(135deg, #b76e79 0%, #e8a9b4 100%);
+  }
+  
+  &.whiteGold {
+    background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%);
+    border-color: #ddd;
+  }
+  
+  &.platinum {
+    background: linear-gradient(135deg, #c0c0c0 0%, #e5e5e5 100%);
+  }
+}
+
+/* Empty state */
+.emptyFilters {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.emptyText {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+  font-size: 13px !important;
+  color: #999 !important;
+}

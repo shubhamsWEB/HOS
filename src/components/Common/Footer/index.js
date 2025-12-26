@@ -1,102 +1,196 @@
+'use client'
 import React from 'react'
-import { Grid, Box, Typography, TextField, Divider } from '@mui/material';
+import { Grid, Box, Typography, Divider, IconButton } from '@mui/material';
 import styles from './style.module.scss';
 import PlaceIcon from '@mui/icons-material/Place';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-function Footer() {
-    return (
-        <Box p={4} px={{ xs: 2, sm: 14 }} sx={{ background: '#222222', color: '#fff' }}>
-            {/* <Grid container spacing={4} alignItems="center">
-                <Grid item sm={6}>
-                    <Typography variant='subtitle1' className={styles.subtitle}>NEWSLETTER</Typography>
-                    <Typography variant='h4'>Get Monthly Updates</Typography>
-                </Grid>
-                <Grid item sm={6}>
-                    <TextField
-                        id="standard-multiline-flexible"
-                        label="Enter your email address to get updates directly to your email"
-                        variant="standard"
-                        fullWidth
-                        sx={{border:'#fff'}}
-                    />
-                </Grid>
-            </Grid>
-            <Divider sx={{ mt: 4,background:'#fff' }} /> */}
-            <Grid container spacing={2} mt={2}>
-                <Grid item sm={4}>
-                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                        <Typography variant='h6' className={styles.title}>HOUSE OF SANSA</Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <PlaceIcon />
-                            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                <Typography variant='subtitle1' sx={{ fontWeight: 'bolder' }}>Location</Typography>
-                                <Typography variant='subtitle2'>123 Main Street Chicago, IL
-                                    60601 United States</Typography>
-                            </Box>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <PhoneIcon />
-                            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                <Typography variant='subtitle1' sx={{ fontWeight: 'bolder' }}>Phone</Typography>
-                                <Typography variant='subtitle2'>+91-999999999</Typography>
-                            </Box>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { useRouter } from 'next/navigation';
 
-                            <EmailIcon/>
-                            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                <Typography variant='subtitle1' sx={{ fontWeight: 'bolder' }}>E-mail</Typography>
-                                <Typography variant='subtitle2'>hosraipur@gmail.com</Typography>
+function Footer() {
+    const router = useRouter();
+    
+    const productLinks = [
+        { label: 'Earrings', path: '/products?categories=Earrings' },
+        { label: 'Necklace', path: '/products?categories=Necklaces' },
+        { label: 'Bracelet', path: '/products?categories=Bracelets' },
+        { label: 'Ring', path: '/products?categories=Rings' },
+        { label: 'Pendant', path: '/products?categories=Pendants' },
+        { label: 'Bangle', path: '/products?categories=Bangles' },
+    ];
+
+    const companyLinks = [
+        { label: 'About Us', path: '/about-us' },
+        { label: 'Testimonials', path: '#' },
+        { label: 'Best Seller', path: '#' },
+        { label: 'New Arrival', path: '#' },
+        { label: 'Terms & Conditions', path: '#' },
+        { label: 'Latest Updates', path: '#' },
+    ];
+
+    const supportLinks = [
+        { label: 'Size Charts', path: '#' },
+        { label: 'Payment Guide', path: '#' },
+        { label: 'Help Center', path: '#' },
+        { label: 'Privacy Policy', path: '#' },
+        { label: 'Return Policy', path: '#' },
+        { label: 'FAQs', path: '#' },
+    ];
+
+    return (
+        <Box className={styles.footer}>
+            {/* Main Footer Content */}
+            <Box className={styles.mainFooter}>
+                <Grid container spacing={{ xs: 4, md: 6 }} className={styles.footerGrid}>
+                    {/* Company Info */}
+                    <Grid item xs={12} sm={6} md={4}>
+                        <Box className={styles.companySection}>
+                            <Typography variant='h5' className={styles.companyTitle}>
+                                HOUSE OF SANSA
+                            </Typography>
+                            <Typography variant='body2' className={styles.companyDescription}>
+                                Crafting timeless elegance with exquisite jewelry that reflects your unique style and sophistication.
+                            </Typography>
+                            
+                            <Box className={styles.contactInfo}>
+                                <Box className={styles.contactItem}>
+                                    <Box className={styles.contactIcon}>
+                                        <PlaceIcon />
+                                    </Box>
+                                    <Box className={styles.contactDetails}>
+                                        <Typography variant='subtitle2' className={styles.contactLabel}>Location</Typography>
+                                        <Typography variant='body2' className={styles.contactValue}>
+                                            123 Main Street Chicago, IL<br />
+                                            60601 United States
+                                        </Typography>
+                                    </Box>
+                                </Box>
+                                
+                                <Box className={styles.contactItem}>
+                                    <Box className={styles.contactIcon}>
+                                        <PhoneIcon />
+                                    </Box>
+                                    <Box className={styles.contactDetails}>
+                                        <Typography variant='subtitle2' className={styles.contactLabel}>Phone</Typography>
+                                        <Typography variant='body2' className={styles.contactValue}>
+                                            +91-999999999
+                                        </Typography>
+                                    </Box>
+                                </Box>
+                                
+                                <Box className={styles.contactItem}>
+                                    <Box className={styles.contactIcon}>
+                                        <EmailIcon />
+                                    </Box>
+                                    <Box className={styles.contactDetails}>
+                                        <Typography variant='subtitle2' className={styles.contactLabel}>E-mail</Typography>
+                                        <Typography variant='body2' className={styles.contactValue}>
+                                            hosraipur@gmail.com
+                                        </Typography>
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
-                    </Box>
-                </Grid>
-                <Grid item sm={2}>
-                    <Box>
-                        <Typography variant='h6' className={styles.title}>Products</Typography>
-                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <Typography variant='subtitle2' className={styles.links}>Earrings</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Necklace</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Bracelet</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Ring</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Brooche</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Men`s Jewelery</Typography>
+                    </Grid>
+
+                    {/* Products Links */}
+                    <Grid item xs={6} sm={3} md={2}>
+                        <Box className={styles.linksSection}>
+                            <Typography variant='h6' className={styles.sectionTitle}>Products</Typography>
+                            <Box className={styles.linksList}>
+                                {productLinks.map((link, index) => (
+                                    <Typography 
+                                        key={index}
+                                        variant='body2' 
+                                        className={styles.footerLink}
+                                        onClick={() => router.push(link.path)}
+                                    >
+                                        {link.label}
+                                    </Typography>
+                                ))}
+                            </Box>
                         </Box>
-                    </Box>
-                </Grid>
-                <Grid item sm={2}>
-                    <Box>
-                        <Typography variant='h6' className={styles.title}>Company</Typography>
-                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <Typography variant='subtitle2' className={styles.links}>About us</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Testimonials</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Best Seller</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>New Arrival</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Tems&Conditions</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Latest Updates</Typography>
+                    </Grid>
+
+                    {/* Company Links */}
+                    <Grid item xs={6} sm={3} md={2}>
+                        <Box className={styles.linksSection}>
+                            <Typography variant='h6' className={styles.sectionTitle}>Company</Typography>
+                            <Box className={styles.linksList}>
+                                {companyLinks.map((link, index) => (
+                                    <Typography 
+                                        key={index}
+                                        variant='body2' 
+                                        className={styles.footerLink}
+                                        onClick={() => router.push(link.path)}
+                                    >
+                                        {link.label}
+                                    </Typography>
+                                ))}
+                            </Box>
                         </Box>
-                    </Box>
-                </Grid>
-                <Grid item sm={2}>
-                    <Box>
-                        <Typography variant='h6' className={styles.title}>Support</Typography>
-                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <Typography variant='subtitle2' className={styles.links}>Size Charts</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Payment Guide</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Help Center</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Privecy Policy</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>Return Policy</Typography>
-                            <Typography variant='subtitle2' className={styles.links}>FAQs</Typography>
+                    </Grid>
+
+                    {/* Support Links */}
+                    <Grid item xs={6} sm={3} md={2}>
+                        <Box className={styles.linksSection}>
+                            <Typography variant='h6' className={styles.sectionTitle}>Support</Typography>
+                            <Box className={styles.linksList}>
+                                {supportLinks.map((link, index) => (
+                                    <Typography 
+                                        key={index}
+                                        variant='body2' 
+                                        className={styles.footerLink}
+                                        onClick={() => router.push(link.path)}
+                                    >
+                                        {link.label}
+                                    </Typography>
+                                ))}
+                            </Box>
                         </Box>
-                    </Box>
+                    </Grid>
+
+                    {/* Social Media */}
+                    <Grid item xs={6} sm={3} md={2}>
+                        <Box className={styles.socialSection}>
+                            <Typography variant='h6' className={styles.sectionTitle}>Follow Us</Typography>
+                            <Box className={styles.socialIcons}>
+                                <IconButton className={styles.socialIcon} aria-label="Facebook">
+                                    <FacebookIcon />
+                                </IconButton>
+                                <IconButton className={styles.socialIcon} aria-label="Instagram">
+                                    <InstagramIcon />
+                                </IconButton>
+                                <IconButton className={styles.socialIcon} aria-label="Twitter">
+                                    <TwitterIcon />
+                                </IconButton>
+                                <IconButton className={styles.socialIcon} aria-label="LinkedIn">
+                                    <LinkedInIcon />
+                                </IconButton>
+                            </Box>
+                        </Box>
+                    </Grid>
                 </Grid>
-                <Grid item sm={2}>
-                    <Box>
-                        <Typography variant='h6' className={styles.title}>Social</Typography>
+            </Box>
+
+            {/* Footer Bottom */}
+            <Box className={styles.footerBottom}>
+                <Divider className={styles.divider} />
+                <Box className={styles.bottomContent}>
+                    <Typography variant='body2' className={styles.copyright}>
+                        © {new Date().getFullYear()} House of Sansa. All rights reserved.
+                    </Typography>
+                    <Box className={styles.bottomLinks}>
+                        <Typography variant='body2' className={styles.bottomLink}>Privacy Policy</Typography>
+                        <Typography variant='body2' className={styles.bottomLink}>Terms of Service</Typography>
+                        <Typography variant='body2' className={styles.bottomLink}>Cookie Policy</Typography>
                     </Box>
-                </Grid>
-            </Grid>
+                </Box>
+            </Box>
         </Box>
     )
 }

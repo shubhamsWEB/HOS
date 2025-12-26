@@ -1,44 +1,95 @@
 'use client'
 import React from 'react'
-import { Box, Typography, Grid } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import './style.css';
-import Image from 'next/image';
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import withDuck from '@/components/HOC/withDuck';
 import { productsInjectible } from '../../../appStore/saga/products';
 import Products from './Products';
 import { collections } from './constants';
+
 function Collection() {
     const [selected, setSelected] = React.useState('Sansa Diamonds');
+    const [hoveredId, setHoveredId] = React.useState(null);
     const dispatch = useDispatch();
+    
     React.useEffect(() => {
         dispatch({ type: "FETCH_PRODUCTS", payload: { collections: selected } });
     }, [selected]);
+
     return (
-        <Box>
-            <Grid container className="collections-grid">
-                {collections.map(item => {
+        <Box className="collections-wrapper">
+            {/* Section Header */}
+            <Box className="collections-header">
+                <Typography variant="overline" className="collections-label">
+                    Curated Collections
+                </Typography>
+                <Typography variant="h2" className="collections-title">
+                    Discover Our World
+                </Typography>
+            </Box>
+
+            {/* Gallery Grid Layout - Single Row */}
+            <Box className="collections-grid">
+                {collections.map((item) => {
+                    const isHovered = hoveredId === item.id;
+                    
                     return (
-                        <Grid item xs={12} sm={item.id > 3 ? 6 : 4} key={item.id} onMouseEnter ={() => setSelected(item.title)}>
-                            <Box className="grid" sx={{backgroundImage:`url(${item.media})`}}>
-                                <Typography variant='subtitle2' className='main' sx={{ letterSpacing: '2px', mb: 4 }}>COLLECTION</Typography>
-                                {/* <Image src="/assets/Vector1.png" width={65} height={65} alt="Sansa Diamonds" className='img' /> */}
-                                <Typography variant='h4' className='main'>{item.title}</Typography>
-                                <Typography variant='caption' className='sub'>Embrace your inner allure with the timeless elegance and radiant beauty of ancient Egypt, now available exclusively on AXELS Jewelry.</Typography>
-                                <Link href={item.path} style={{ textDecoration: 'none' }}>
-                                    <Typography variant='caption' fontWeight={'bold'} mt={2} className='sub' sx={{ display: 'flex', alignItems: 'center', gap: 1, color: '#222222' }}>View Products <ArrowRightAltIcon sx={{ color: '#D8C29D' }} /></Typography>
-                                </Link>
+                        <Link 
+                            href={item.path} 
+                            key={item.id}
+                            className="collection-card"
+                            onMouseEnter={() => {
+                                setSelected(item.title);
+                                setHoveredId(item.id);
+                            }}
+                            onMouseLeave={() => setHoveredId(null)}
+                        >
+                            <Box className="collection-card__border" />
+                            <Box 
+                                className="collection-card__image"
+                                sx={{ backgroundImage: `url(${item.media})` }}
+                            />
+                            <Box className="collection-card__overlay" />
+                            <Box className="collection-card__shine" />
+                            <Box className="collection-card__content">
+                                <Typography variant="overline" className="collection-card__label">
+                                    Collection
+                                </Typography>
+                                <Typography variant="h4" className="collection-card__title">
+                                    {item.title}
+                                </Typography>
+                                {item.tagline && (
+                                    <Typography variant="body2" className="collection-card__tagline">
+                                        {item.tagline}
+                                    </Typography>
+                                )}
+                                <Box className={`collection-card__cta ${isHovered ? 'collection-card__cta--visible' : ''}`}>
+                                    <span className="collection-card__cta-text">Explore</span>
+                                    <span className="collection-card__cta-line" />
+                                </Box>
                             </Box>
-                        </Grid>
-                    )
+                        </Link>
+                    );
                 })}
-            </Grid>
-            <Box sx={{ mt: 10 }}>
-                <Box sx={{ display: 'flex', alignItems:'center', justifyContent: 'space-between',mb:4 }}>
-                    <Typography variant='h4'>{selected}</Typography>
-                    <Link variant='caption' href={`/products`} style={{textDecoration:'none',display:'flex',alignItems:'center',color:'#101010'}}>Explore All <ArrowRightAltIcon sx={{ color: '#D8C29D' }} /></Link>
+            </Box>
+
+            {/* Selected Collection Products */}
+            <Box className="collections-products">
+                <Box className="collections-products__header">
+                    <Box>
+                        <Typography variant="overline" className="collections-products__label">
+                            From the Collection
+                        </Typography>
+                        <Typography variant="h3" className="collections-products__title">
+                            {selected}
+                        </Typography>
+                    </Box>
+                    <Link href="/products" className="collections-products__link">
+                        <span>View All</span>
+                        <span className="collections-products__link-line" />
+                    </Link>
                 </Box>
                 <Products />
             </Box>

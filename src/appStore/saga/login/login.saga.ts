@@ -5,6 +5,7 @@ import {deleteProductReducer} from '../../reducers/Products/productSlice';
 import {login} from '../../../services/apiHelperClient';
 import Cookies from 'universal-cookie';
 import {useRouter} from 'next/navigation';
+import {showSnackbar} from '../../reducers/Snackbar/snackbarSlice';
 
 // Generator function
 function* doLogin({ payload }: PayloadAction<any>) {
@@ -19,7 +20,9 @@ function* doLogin({ payload }: PayloadAction<any>) {
 
     }
   } catch (error) {
-    // yield put(getUserErrorAction(error));
+    yield put({ type: "HIDE_LOADER" });
+    const errorMessage = error?.message || "API is failing: Request failed with status code 500";
+    yield put(showSnackbar({ message: errorMessage, severity: "error" }));
   }
 }
 

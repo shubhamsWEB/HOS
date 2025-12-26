@@ -1,13 +1,494 @@
+// Luxury Footer Styles
+.footer {
+  background: #222222;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(216, 194, 157, 0.3),
+      transparent
+    );
+  }
+}
+
+// Newsletter Section
+.newsletterSection {
+  background: linear-gradient(135deg, rgba(216, 194, 157, 0.1) 0%, rgba(216, 194, 157, 0.05) 100%);
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+  
+  @media (max-width: 480px) {
+    padding: 40px 16px;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(216, 194, 157, 0.1) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+  }
+}
+
+.newsletterContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletterLabel {
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #D8C29D !important;
+  margin-bottom: 12px !important;
+  display: block;
+}
+
+.newsletterTitle {
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 42px !important;
+  letter-spacing: -1px !important;
+  margin-bottom: 16px !important;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  @media (max-width: 600px) {
+    font-size: 32px !important;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 24px !important;
+    letter-spacing: -0.5px !important;
+    margin-bottom: 12px !important;
+  }
+}
+
+.newsletterDescription {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 16px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  margin-bottom: 32px !important;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @media (max-width: 480px) {
+    font-size: 14px !important;
+    margin-bottom: 24px !important;
+  }
+}
+
+.newsletterForm {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.emailInput {
+  :global(.MuiOutlinedInput-root) {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    &.Mui-focused {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 0 2px rgba(216, 194, 157, 0.3);
+    }
+    
+    :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: rgba(216, 194, 157, 0.2);
+      transition: border-color 0.3s ease;
+    }
+    
+    &:hover :global(.MuiOutlinedInput-notchedOutline),
+    &.Mui-focused :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: rgba(216, 194, 157, 0.5);
+    }
+  }
+  
+  :global(.MuiInputBase-input) {
+    color: #fff;
+    font-family: "DM Sans", sans-serif !important;
+    padding: 16px 20px;
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+.sendButton {
+  color: #D8C29D !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  
+  &:hover {
+    background: rgba(216, 194, 157, 0.1) !important;
+    transform: translateX(4px);
+    color: #E4C38B !important;
+  }
+}
+
+// Main Footer
+.mainFooter {
+  padding: 80px 20px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  @media (max-width: 480px) {
+    padding: 50px 16px 40px;
+  }
+}
+
+.footerGrid {
+  @media (max-width: 600px) {
+    gap: 40px !important;
+  }
+}
+
+// Company Section
+.companySection {
+  max-width: 400px;
+}
+
+.companyTitle {
+  font-family: var(--font-cinzel), "Cinzel Decorative", serif !important;
+  font-weight: 700 !important;
+  font-size: 28px !important;
+  letter-spacing: 1px !important;
+  color: #D8C29D !important;
+  margin-bottom: 20px !important;
+  position: relative;
+  
+  @media (max-width: 480px) {
+    font-size: 22px !important;
+    margin-bottom: 16px !important;
+    letter-spacing: 0.5px !important;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #D8C29D, transparent);
+    
+    @media (max-width: 480px) {
+      width: 40px;
+      height: 1px;
+      bottom: -6px;
+    }
+  }
+}
+
+.companyDescription {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  margin-bottom: 32px !important;
+  
+  @media (max-width: 480px) {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px !important;
+  }
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contactItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateX(4px);
+  }
+}
+
+.contactIcon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(216, 194, 157, 0.1);
+  border-radius: 50%;
+  color: #D8C29D;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  .contactItem:hover & {
+    background: rgba(216, 194, 157, 0.2);
+    transform: scale(1.1);
+  }
+}
+
+.contactDetails {
+  flex: 1;
+}
+
+.contactLabel {
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  color: #D8C29D !important;
+  margin-bottom: 4px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contactValue {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 14px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  line-height: 1.6 !important;
+}
+
+// Links Sections
+.linksSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  letter-spacing: 0.5px !important;
+  color: #D8C29D !important;
+  margin-bottom: 24px !important;
+  position: relative;
+  
+  @media (max-width: 480px) {
+    font-size: 14px !important;
+    margin-bottom: 18px !important;
+    letter-spacing: 0.3px !important;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 1px;
+    background: rgba(216, 194, 157, 0.5);
+    
+    @media (max-width: 480px) {
+      width: 30px;
+      bottom: -6px;
+    }
+  }
+}
+
+.linksList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footerLink {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 14px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  
+  @media (max-width: 480px) {
+    font-size: 12px !important;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #D8C29D;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  &:hover {
+    color: #D8C29D !important;
+    transform: translateX(4px);
+    
+    &::before {
+      width: 100%;
+    }
+  }
+}
+
+// Social Section
+.socialSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.socialIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(216, 194, 157, 0.2);
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  svg {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 20px !important;
+  }
+  
+  &:hover {
+    background: rgba(216, 194, 157, 0.15);
+    border-color: rgba(216, 194, 157, 0.5);
+    color: #D8C29D !important;
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 4px 12px rgba(216, 194, 157, 0.2);
+    
+    svg {
+      color: #D8C29D !important;
+    }
+  }
+}
+
+// Footer Bottom
+.footerBottom {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(216, 194, 157, 0.2),
+    transparent
+  ) !important;
+  height: 1px !important;
+  margin-bottom: 32px !important;
+}
+
+.bottomContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  
+  @media (max-width: 600px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.copyright {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 13px !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.bottomLinks {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  
+  @media (max-width: 600px) {
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
+.bottomLink {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 13px !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #D8C29D;
+    transition: width 0.3s ease;
+  }
+  
+  &:hover {
+    color: #D8C29D !important;
+    
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// Legacy styles for backward compatibility
 .title {
     font-weight: bold;
-    color:#D8C29D;
+  color: #D8C29D;
     font-family: "DM Sans", sans-serif !important;
 }
+
 .subtitle {
-    // font-weight: bold;
-    color:#D8C29D;
+  color: #D8C29D;
     font-family: "DM Sans", sans-serif !important;
 }
+
 .links {
     font-family: "DM Sans", sans-serif !important;
 }

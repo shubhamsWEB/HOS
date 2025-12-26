@@ -1,24 +1,390 @@
-.links {
-    font-family: "DM Sans", sans-serif !important;
+/* AppBar */
+.appBar {
+    background: #fff !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1100 !important;
 }
-.main {
-    font-family: "Playfair Display", serif  !important;
+
+.appBarShrink {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
 }
+
+/* Logo Section - Brand First */
+.logoSection {
+    padding: 1rem 0 0.75rem;
+    text-align: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    
+    @media (min-width: 600px) {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    
+    @media (min-width: 1200px) {
+        padding-left: 6rem;
+        padding-right: 6rem;
+    }
+}
+
+.logoSectionShrink {
+    padding: 0.5rem 0 !important;
+}
+
 .logo {
-    font-family: "Playfair Display", serif  !important;
+    font-family: var(--font-cinzel), "Cinzel Decorative", serif !important;
     cursor: pointer;
-    transition: transform ease-in .5s;
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    font-style: normal;
+    color: #1a1a1a;
+    line-height: 32px !important;
+    letter-spacing: 1px !important;
+    transition: font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.3s ease,
+                opacity 0.3s ease;
+    
+    &:hover {
+        opacity: 0.8;
+    }
 }
-.logoShrink {
+
+.logoDesktop {
+    display: none;
+    
+    @media (min-width: 600px) {
+        display: block;
+        font-size: 36px !important;
+        line-height: 32px !important;
+    }
+}
+
+.logoMobile {
+    display: block;
     font-size: 24px !important;
-    transition: transform ease-in .5s !important;
+    line-height: 28px !important;
+    flex: 1;
+    text-align: center;
+    
+    @media (min-width: 600px) {
+        display: none;
+    }
 }
+
+.logoShrink {
+    font-size: 28px !important;
+    line-height: 24px !important;
+    transition: font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Toolbar */
+.toolbar {
+    padding: 0 2rem !important;
+    min-height: 56px !important;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    transition: min-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    @media (min-width: 600px) {
+        padding: 0 4rem !important;
+        min-height: 64px !important;
+    }
+    
+    @media (min-width: 1200px) {
+        padding: 0 6rem !important;
+    }
+}
+
+.toolbarShrink {
+    min-height: 48px !important;
+    
+    @media (min-width: 600px) {
+        min-height: 56px !important;
+    }
+}
+
+/* Mobile Menu Button */
+.menuButton {
+    display: block;
+    
+    @media (min-width: 600px) {
+        display: none !important;
+    }
+}
+
+.menuIcon {
+    color: #1a1a1a;
+    font-size: 1.5rem;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+    display: none;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    
+    @media (min-width: 600px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+}
+
+/* Left Nav Section - Login/Signup or User Name */
+.leftNavSection {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    min-width: 0;
+}
+
+.authButtons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.authButton {
+    font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+    color: #1a1a1a !important;
+    text-transform: none !important;
+    font-size: 0.875rem !important;
+    letter-spacing: 0.5px;
+    font-weight: 400 !important;
+    padding: 0.5rem 1rem !important;
+    min-width: auto !important;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    
+    &:hover {
+        color: #1a1a1a !important;
+        opacity: 0.7;
+        background: transparent !important;
+    }
+}
+
+.signupButton {
+    border: 1px solid #1a1a1a !important;
+    border-radius: 4px;
+    
+    &:hover {
+        background: rgba(26, 26, 26, 0.05) !important;
+        border-color: #1a1a1a !important;
+    }
+}
+
+.userName {
+    font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+    font-size: 0.875rem !important;
+    color: #1a1a1a !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px;
+}
+
+.userAccountSection {
+    display: flex;
+    align-items: center;
+}
+
+.userAccountButton {
+    font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+    font-size: 0.875rem !important;
+    color: #1a1a1a !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px;
+    text-transform: none !important;
+    padding: 0.5rem 1rem !important;
+    min-width: auto !important;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    
+    &:hover {
+        color: #1a1a1a !important;
+        opacity: 0.7;
+        background: transparent !important;
+    }
+}
+
+.accountMenu {
+    margin-top: 0.5rem;
+}
+
+.accountMenuPaper {
+    min-width: 200px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    margin-top: 0.5rem !important;
+}
+
+.accountMenuItem {
+    font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.875rem !important;
+    color: #1a1a1a !important;
+    transition: background 0.2s ease;
+    
+    &:hover {
+        background: rgba(0, 0, 0, 0.04) !important;
+    }
+}
+
+/* Navigation Links - Centered */
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-wrap: nowrap;
+    
+    @media (min-width: 900px) {
+        gap: 0.5rem;
+    }
+}
+
+.navLink {
+    font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+    color: #1a1a1a !important;
+    text-transform: none !important;
+    font-size: 0.875rem !important;
+    letter-spacing: 0.5px;
+    font-weight: 400 !important;
+    padding: 0.75rem 1rem !important;
+    position: relative;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    white-space: nowrap;
+    
+    @media (min-width: 900px) {
+        padding: 0.75rem 1.25rem !important;
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 60%;
+        height: 1px;
+        background: #1a1a1a;
+        transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+        color: #1a1a1a !important;
+        opacity: 0.7;
+        
+        &::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+    }
+}
+
+.navLinkActive {
+    font-weight: 500 !important;
+    
+    &::after {
+        transform: translateX(-50%) scaleX(1);
+    }
+}
+
+/* Right Nav Section - User Account */
+.rightNavSection {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Mobile Drawer */
+.drawerContainer {
+    .MuiDrawer-paper {
+        background: #fff;
+        border-right: 1px solid rgba(0, 0, 0, 0.06);
+    }
+}
+
+.drawer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawerHeader {
+    padding: 2rem 1.5rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.drawerDivider {
+    margin: 0.5rem 0 !important;
+    border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.drawerUserName {
+    font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+    font-size: 1rem !important;
+    color: #1a1a1a !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px;
+}
+
+.drawerList {
+    padding: 1.5rem 0;
+    flex: 1;
+}
+
+.drawerItem {
+    padding: 1rem 2rem !important;
+    transition: background 0.3s ease;
+    
+    &:hover {
+        background: rgba(0, 0, 0, 0.02) !important;
+    }
+}
+
+.drawerItemText {
+    font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+    font-size: 0.95rem !important;
+    color: #1a1a1a !important;
+    letter-spacing: 0.5px;
+    font-weight: 400 !important;
+    text-align: left;
+}
+
+/* Legacy classes */
+.links {
+    font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+}
+
+.main {
+    font-family: var(--font-playfair), "Playfair Display", serif !important;
+}
+
 .viewMore {
-    font-family: "Playfair Display", serif  !important;
+    font-family: var(--font-playfair), "Playfair Display", serif !important;
     display: flex;
     align-items: center;
     text-decoration: none;
-    color:#D8C29D;
+    color: #D8C29D;
     font-weight: bold;
-    font-size: .8rem;
+    font-size: 0.8rem;
 }
+
+.viewMoreMenuItem {
+    &:hover {
+        background: rgba(216, 194, 157, 0.1) !important;
+    }
+}
+

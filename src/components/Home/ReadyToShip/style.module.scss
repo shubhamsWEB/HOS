@@ -1,3 +1,181 @@
+/* Ready to Ship Section */
+.readyToShipWrapper {
+    padding: 5rem 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    position: relative;
+
+    @media (max-width: 480px) {
+        padding: 3rem 1.5rem;
+    }
+
+    @media (min-width: 600px) {
+        padding: 5rem 4rem;
+    }
+
+    @media (min-width: 1200px) {
+        padding: 6rem 6rem;
+    }
+}
+
+/* Header Section */
+.headerSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.title {
+    font-family: "Playfair Display", serif !important;
+    font-weight: 400;
+    color: #1a1a1a;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    
+    @media (max-width: 480px) {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        line-height: 1.15;
+        letter-spacing: -0.3px;
+    }
+}
+
+.exploreLink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    font-family: var(--font-dm-sans), "DM Sans", sans-serif !important;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
+    padding-bottom: 4px;
+
+    &:hover {
+        color: #9a8a78;
+
+        .linkLine {
+            width: 60px;
+            background: #d8c29d;
+        }
+    }
+}
+
+.linkLine {
+    width: 40px;
+    height: 1px;
+    background: #1a1a1a;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+}
+
+/* Image Section */
+.imageSection {
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #faf9f7 0%, #ffffff 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.brandImage {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    display: block;
+}
+
+.imageOverlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        transparent 100%
+    );
+    text-align: center;
+}
+
+.overlayContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.overlayTitle {
+    font-family: "Playfair Display", serif !important;
+    color: #fff !important;
+    font-weight: 400 !important;
+    font-size: clamp(1.125rem, 2vw, 1.5rem) !important;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.overlaySubtitle {
+    font-family: "DM Sans", sans-serif !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.875rem !important;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 280px;
+}
+
+.shopButton {
+    margin-top: 0.5rem !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    font-family: "DM Sans", sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 0.75rem !important;
+    padding: 0.75rem 2rem !important;
+    border-radius: 4px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-color: #fff !important;
+        color: #fff !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Legacy styles for backward compatibility */
 .main {
     font-family: "Playfair Display", serif !important;
+}
+
+.sub {
+    font-family: "DM Sans", sans-serif !important;
 }

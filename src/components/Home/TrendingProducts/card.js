@@ -44,10 +44,20 @@ function Card({ data }) {
     return (
         <Box>
             <Box
-                boxShadow={2}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                sx={{ position: 'relative',width:'90%' }}
+                sx={{ 
+                    position: 'relative',
+                    width:'90%',
+                    border: '1px solid #D8C29D',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                        boxShadow: '0 8px 24px rgba(216, 194, 157, 0.25)',
+                        borderColor: '#C4A87C',
+                    }
+                }}
             >
                 <Box  onClick={() => router.push(`/products/${data.id}`)}>
                 <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field } from 'react-final-form';
 import { Select, MenuItem, Typography } from '@mui/material'
-function metalColour({options}) {
+function metalPurity({options}) {
     const required = value => (value ? undefined : 'Required')
     return (
         <Field name="metalPurity" validate={required}>
@@ -31,4 +31,4 @@ function metalColour({options}) {
     )
 }
 
-export default metalColour
+export default metalPurity

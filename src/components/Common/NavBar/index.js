@@ -2,7 +2,9 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -15,35 +17,137 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { navItems } from './constants';
 import { useRouter } from 'next/navigation';
 import styles from './style.module.scss';
-import Menu from './menu';
+import CategoryMenu from './CategoryMenu';
+import CollectionsMenu from './CollectionsMenu';
 import {usePathname} from 'next/navigation';
-const drawerWidth = 240;
+import Cookies from 'universal-cookie';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCustomerAuth } from '@/appStore/reducers/CustomerAuth/customerAuthSlice';
+import withDuck from '@/components/HOC/withDuck';
+import { customerAuthInjectible } from '@/appStore/saga/customerAuth';
+import CustomerLoginModal from '@/components/Common/CustomerLoginModal';
+
+const drawerWidth = 280;
 
 function DrawerAppBar(props) {
-  // const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [userName, setUserName] = React.useState('');
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [mobileMenuAnchor, setMobileMenuAnchor] = React.useState(null);
+  const [authModalOpen, setAuthModalOpen] = React.useState(false);
+  const [authModalMode, setAuthModalMode] = React.useState('signup'); // 'signup' or 'login'
+  const router = useRouter();
+  const pathName = usePathname();
+  const dispatch = useDispatch();
+  const customerAuth = useSelector((state) => state.customerAuth);
+
+  // Parse JWT token to get user info
+  const parseJwt = (token) => {
+    try {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+      );
+      return JSON.parse(jsonPayload);
+    } catch (e) {
+      return null;
+    }
+  };
+
+  React.useEffect(() => {
+    // Check if customer is logged in
+    // User-facing pages use 'hos_customer_token' cookie (not admin token)
+    const cookies = new Cookies();
+    const customerToken = cookies.get('hos_customer_token');
+    const isAuthenticated = customerAuth?.isAuthenticated || customerToken;
+    
+    if (isAuthenticated) {
+      setIsLoggedIn(true);
+      if (customerAuth?.user?.name) {
+        setUserName(customerAuth.user.name);
+      } else if (customerToken) {
+        const decoded = parseJwt(customerToken);
+        if (decoded) {
+          // Try common JWT fields for username
+          setUserName(decoded.username || decoded.name || decoded.email || 'User');
+        }
+      }
+    } else {
+      setIsLoggedIn(false);
+      setUserName('');
+    }
+  }, [customerAuth]);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const pathName = usePathname();
+
+  const handleAccountMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleAccountMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileMenuAnchor(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileMenuAnchor(null);
+  };
+
+  const openLoginModal = () => {
+    setAuthModalMode('login');
+    setAuthModalOpen(true);
+    setMobileOpen(false);
+  };
+
+  const openSignupModal = () => {
+    setAuthModalMode('signup');
+    setAuthModalOpen(true);
+    setMobileOpen(false);
+  };
+
+  const handleAuthModalClose = () => {
+    setAuthModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    const cookies = new Cookies();
+    cookies.remove('hos_customer_token', { path: '/' });
+    dispatch(clearCustomerAuth());
+    setIsLoggedIn(false);
+    setUserName('');
+    setAnchorEl(null);
+    setMobileMenuAnchor(null);
+    router.push('/');
+  };
+
   React.useEffect(() => {
-   
     const resizeHeaderOnScroll = () => {
       const distanceY = window.pageYOffset || document.documentElement.scrollTop;
-      const shrinkOn = 500;
+      const shrinkOn = 100;
       const headerEl = document.getElementById("logo");
   
-      if (headerEl && distanceY > shrinkOn) {
-        headerEl.classList.add(`${styles.logoShrink}`);
-      } else if (headerEl) {
-        headerEl.classList.remove(`${styles.logoShrink}`);
+      if (distanceY > shrinkOn) {
+        setIsScrolled(true);
+        if (headerEl) headerEl.classList.add(`${styles.logoShrink}`);
+      } else {
+        setIsScrolled(false);
+        if (headerEl) headerEl.classList.remove(`${styles.logoShrink}`);
       }
     };
   
@@ -51,26 +155,105 @@ function DrawerAppBar(props) {
       window.addEventListener("scroll", resizeHeaderOnScroll);
     }
   
-    // Clean up the event listener on component unmount
     return () => {
       if (typeof window !== 'undefined') {
         window.removeEventListener("scroll", resizeHeaderOnScroll);
       }
     };
-  
   }, []);
-  const router = useRouter()
+
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2, cursor: 'pointer' }} onClick={() => router.push('/')}>
-        HOUSE OF SANSA
-      </Typography>
-      <Divider />
-      <List>
+    <Box className={styles.drawer} onClick={handleDrawerToggle}>
+      <Box className={styles.drawerHeader}>
+        <Typography 
+          variant="h6" 
+          className={styles.logo}
+          onClick={() => {
+            router.push('/');
+            setMobileOpen(false);
+          }}
+        >
+          HOUSE OF SANSA
+        </Typography>
+      </Box>
+      <Divider className={styles.drawerDivider} />
+      <List className={styles.drawerList}>
+        {!isLoggedIn && (
+          <>
+            <ListItem disablePadding>
+              <ListItemButton 
+                className={styles.drawerItem}
+                onClick={openLoginModal}
+              >
+                <ListItemText 
+                  primary="Login" 
+                  primaryTypographyProps={{ className: styles.drawerItemText }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton 
+                className={styles.drawerItem}
+                onClick={openSignupModal}
+              >
+                <ListItemText 
+                  primary="Sign Up" 
+                  primaryTypographyProps={{ className: styles.drawerItemText }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <Divider className={styles.drawerDivider} />
+          </>
+        )}
+        {isLoggedIn && (
+          <>
+            <ListItem disablePadding>
+              <ListItemButton className={styles.drawerItem}>
+                <AccountCircleIcon sx={{ mr: 1.5, color: '#1a1a1a' }} />
+                <ListItemText 
+                  primary={userName} 
+                  primaryTypographyProps={{ className: styles.drawerUserName }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton 
+                className={styles.drawerItem}
+                onClick={handleLogout}
+              >
+                <LogoutIcon sx={{ mr: 1.5, color: '#1a1a1a' }} />
+                <ListItemText 
+                  primary="Logout" 
+                  primaryTypographyProps={{ className: styles.drawerItemText }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <Divider className={styles.drawerDivider} />
+          </>
+        )}
         {navItems.map((item) => (
-          <ListItem key={item.id} disablePadding onClick={() => router.push(item.path)}>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item.title} />
+          <ListItem key={item.id} disablePadding>
+            <ListItemButton 
+              className={styles.drawerItem}
+              onClick={() => {
+                if (item.path && item.path !== '#' && !item.dropDown) {
+                  router.push(item.path);
+                  setMobileOpen(false);
+                } else if (item.dropDown && item.type === 'category') {
+                  // For categories, navigate to the category page
+                  router.push(`/products?categories=${item.category}`);
+                  setMobileOpen(false);
+                } else if (item.dropDown && item.type === 'collections') {
+                  // For collections, navigate to products page
+                  router.push('/products');
+                  setMobileOpen(false);
+                }
+              }}
+            >
+              <ListItemText 
+                primary={item.title} 
+                primaryTypographyProps={{ className: styles.drawerItemText }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -78,91 +261,163 @@ function DrawerAppBar(props) {
     </Box>
   );
 
-  // const container = window !== undefined ? () => window().document.body : undefined;
-
   return (
     <Box>
       <CssBaseline />
-      <AppBar component="nav" sx={{ background: '#fff', boxShadow: 0 }}>
-        <Box sx={{mt:2}}>
+      <AppBar 
+        component="nav" 
+        position="fixed"
+        className={`${styles.appBar} ${isScrolled ? styles.appBarShrink : ''}`}
+      >
+        {/* Logo Section - Brand First */}
+        <Box className={`${styles.logoSection} ${isScrolled ? styles.logoSectionShrink : ''}`}>
           <Typography
-            variant="h3"
+            variant="h2"
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }, color: '#000', textAlign: 'center',fontSize:pathName !== '/' && '24px' }}
-            className={styles.logo}
+            className={`${styles.logo} ${styles.logoDesktop}`}
             onClick={() => router.push('/')}
             id="logo"
           >
             HOUSE OF SANSA
           </Typography>
         </Box>
-        <Toolbar sx={{ width: '100%' }}>
-          <Grid container sx={{ display: { xs: 'grid', sm: 'none' } }}>
-            <Grid item xs={12} sx={{ display: "flex", alignItems: 'center' }}>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: 'none' } }}
-              >
-                <MenuIcon sx={{ color: '#101010' }} />
-              </IconButton>
-              <Typography variant='h5' sx={{ color: "#101010", textAlign: 'center', width: '100%' }}>HOUSE OF SANSA</Typography>
-            </Grid>
-          </Grid>
-          <Box sx={{ display: { xs: 'none', sm: 'flex', justifyContent: 'space-evenly', width: '100%',alignItems:'center' } }}>
-            <Box>
-              <Box sx={{ display: { xs: 'none', sm: 'block' }, textAlign: 'right' }}>
-                <Typography variant='subtitle2' sx={{color:'#000'}} className={styles.links}>( +123 ) 456 7890</Typography>
-              </Box>
+
+        {/* Desktop Navigation */}
+        <Toolbar className={`${styles.toolbar} ${isScrolled ? styles.toolbarShrink : ''}`}>
+          {/* Mobile Menu Button */}
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={styles.menuButton}
+          >
+            <MenuIcon className={styles.menuIcon} />
+          </IconButton>
+
+          {/* Mobile Logo */}
+          <Typography 
+            variant="h5" 
+            className={`${styles.logo} ${styles.logoMobile}`}
+            onClick={() => router.push('/')}
+          >
+            HOUSE OF SANSA
+          </Typography>
+
+          {/* Desktop Navigation Content */}
+          <Box className={styles.desktopNav}>
+            {/* Left Side - Empty (for spacing) */}
+            <Box className={styles.leftNavSection}></Box>
+
+            {/* Navigation Links - Center */}
+            <Box className={styles.navLinks}>
+              {navItems.map((item) => (
+                <Button 
+                  key={item.id} 
+                  className={`${styles.navLink} ${pathName === item.path ? styles.navLinkActive : ''}`}
+                  onClick={() => {
+                    if (item.path && item.path !== '#' && !item.dropDown) {
+                      router.push(item.path);
+                    }
+                  }}
+                >
+                  {item.dropDown && item.type === 'collections' ? (
+                    <CollectionsMenu title={item.title} />
+                  ) : item.dropDown && item.type === 'category' ? (
+                    <CategoryMenu title={item.title} category={item.category} />
+                  ) : (
+                    item.title
+                  )}
+                </Button>
+              ))}
             </Box>
-            <Box item>
-              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                {navItems.map((item) => (
-                  <Button key={item.id} sx={{ color: '#000' }} className={styles.links} onClick={() => router.push(item.path)}>
-                    {item.dropDown ? <Menu title={item.title} /> : item.title}
+
+            {/* Right Side - User Account Menu (replaces utility icons) */}
+            <Box className={styles.rightNavSection}>
+              {isLoggedIn ? (
+                <Box className={styles.userAccountSection}>
+                  <Button
+                    className={styles.userAccountButton}
+                    onClick={handleAccountMenuOpen}
+                    startIcon={<AccountCircleIcon />}
+                  >
+                    {userName}
                   </Button>
-                ))}
-              </Box>
-            </Box>
-            <Box item>
-              <Box sx={{ display: { xs: 'none', sm: 'block' }, textAlign: 'right' }}>
-                <PersonOutlineOutlinedIcon sx={{ marginX: 1, color: '#000' }} />
-                <LocalMallOutlinedIcon sx={{ marginX: 1, color: '#000' }} />
-                <SearchOutlinedIcon sx={{ marginX: 1, color: '#000' }} />
-              </Box>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleAccountMenuClose}
+                    className={styles.accountMenu}
+                    PaperProps={{
+                      className: styles.accountMenuPaper,
+                    }}
+                  >
+                    <MenuItem onClick={handleAccountMenuClose} className={styles.accountMenuItem}>
+                      <AccountCircleIcon sx={{ mr: 1.5, fontSize: '1.2rem' }} />
+                      <Typography variant="body2">{userName}</Typography>
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem onClick={handleLogout} className={styles.accountMenuItem}>
+                      <LogoutIcon sx={{ mr: 1.5, fontSize: '1.2rem' }} />
+                      <Typography variant="body2">Logout</Typography>
+                    </MenuItem>
+                  </Menu>
+                </Box>
+              ) : (
+                <Box className={styles.authButtons}>
+                  <Button 
+                    className={styles.authButton}
+                    onClick={openLoginModal}
+                  >
+                    Login
+                  </Button>
+                  <Button 
+                    className={`${styles.authButton} ${styles.signupButton}`}
+                    onClick={openSignupModal}
+                  >
+                    Sign Up
+                  </Button>
+                </Box>
+              )}
             </Box>
           </Box>
         </Toolbar>
       </AppBar>
+
+      {/* Mobile Drawer */}
       <nav>
         <Drawer
-          // container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
+          className={styles.drawerContainer}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { 
+              boxSizing: 'border-box', 
+              width: drawerWidth,
+            },
           }}
         >
           {drawer}
         </Drawer>
       </nav>
+
+      {/* Login/Signup Modal */}
+      <CustomerLoginModal 
+        open={authModalOpen} 
+        onClose={handleAuthModalClose}
+        initialMode={authModalMode}
+      />
     </Box>
   );
 }
 
 DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
-export default DrawerAppBar;
+export default withDuck([customerAuthInjectible])(DrawerAppBar);

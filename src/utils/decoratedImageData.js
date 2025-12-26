@@ -19,6 +19,9 @@ export const images = (imageArr) => {
     //         },
     //     ],
     // },
+    if (!imageArr || !Array.isArray(imageArr)) {
+        return [];
+    }
     const imgObj = [];
 imageArr.map(img => {
     if(img.includes('.mp4')) {

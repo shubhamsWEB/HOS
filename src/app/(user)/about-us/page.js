@@ -10,7 +10,7 @@ import OurTeam from '@/components/About/team';
 function page() {
   return (
     <>
-    <Box mt={8} p={{xs:2,sm:6}} sx={{ position: 'relative' }}>
+    <Box p={{xs:1.5, sm:3, md:4, lg:6}} sx={{ position: 'relative' }}>
       <Header />
       <Banner />
       <OurJourney />

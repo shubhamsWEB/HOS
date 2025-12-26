@@ -1,13 +1,27 @@
 .sub {
     font-family: "DM Sans", sans-serif !important;
+    
+    @media (max-width: 480px) {
+        font-size: 0.875rem !important;
+    }
 }
 .content {
     font-family: "DM Sans", sans-serif !important;
     margin-bottom: 6px;
+    
+    @media (max-width: 480px) {
+        font-size: 0.8125rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 4px;
+    }
 }
 .intro {
     font-family: "DM Sans", sans-serif !important;
     color: #B59A6C;
+    
+    @media (max-width: 480px) {
+        font-size: 0.625rem !important;
+    }
 }
 .main {
     font-family: "Playfair Display", serif !important;
@@ -18,7 +32,10 @@
     top:0;
     top: 18%;
     z-index: -1;
-    // @media screen and (max-width: 480px) {
-    //     font-size: 36px;
-    // }
+    
+    @media (max-width: 480px) {
+        font-size: 1.5rem !important;
+        position: static !important;
+        margin-bottom: 1.5rem !important;
+    }
 }

@@ -1,26 +1,61 @@
 export const navItems = [
     {
-        id:'categories',
-        title: 'Categories',
+        id:'collections',
+        title: 'Collections',
         path:'',
-        dropDown:true
+        dropDown:true,
+        type: 'collections'
     },
     {
-        id:'about',
-        title: 'About',
-        path:'/about-us',
-        dropDown:false,
+        id:'rings',
+        title: 'Rings',
+        path:'',
+        dropDown:true,
+        type: 'category',
+        category: 'Rings'
     },
     {
-        id:'blog',
-        title: 'Blog',
-        path:'#',
-        dropDown:false,
+        id:'necklaces',
+        title: 'Necklaces',
+        path:'',
+        dropDown:true,
+        type: 'category',
+        category: 'Necklaces'
     },
     {
-        id:'contact',
-        title: 'Contact',
-        path:'#',
-        dropDown:false,
-    }
+        id:'earrings',
+        title: 'Earrings',
+        path:'',
+        dropDown:true,
+        type: 'category',
+        category: 'Earrings'
+    },
+    {
+        id:'bracelets',
+        title: 'Bracelets',
+        path:'',
+        dropDown:true,
+        type: 'category',
+        category: 'Bracelets'
+    },
+    {
+        id:'pendants',
+        title: 'Pendants',
+        path:'',
+        dropDown:true,
+        type: 'category',
+        category: 'Pendants'
+    },
+    // {
+    //     id:'about',
+    //     title: 'About Us',
+    //     path:'/about-us',
+    //     dropDown:false,
+    // },
+    // {
+    //     id:'contact',
+    //     title: 'Contact',
+    //     path:'/contact',
+    //     dropDown:false,
+    // }
 ]

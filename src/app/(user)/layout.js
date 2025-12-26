@@ -1,11 +1,24 @@
-import { Inter } from "next/font/google";
+import { Cinzel_Decorative, DM_Sans, Playfair_Display } from "next/font/google";
 import "../globals.css";
 import NavBar from '@/components/Common/NavBar';
 import Footer from '@/components/Common/Footer';
 import StoreProvider from "@/appStore/StoreProvider";
 import Loader from "@/components/Common/Loader/DiamondLoader";
 import {Box} from '@mui/material';
-const inter = Inter({ subsets: ["latin"] });
+
+const cinzelDecorative = Cinzel_Decorative({ 
+  subsets: ["latin"],
+  weight: ['400', '700', '900'],
+  variable: '--font-cinzel'
+});
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: '--font-dm-sans'
+});
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: '--font-playfair'
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -15,10 +28,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${dmSans.className} ${cinzelDecorative.variable} ${dmSans.variable} ${playfairDisplay.variable}`}>
         <StoreProvider>
           <NavBar />
-          <Box>
+          <Box sx={{ paddingTop: {xs: '100px', sm: '110px', md: '120px'} }}>
             {children}
           </Box>
           <Loader /><Footer />

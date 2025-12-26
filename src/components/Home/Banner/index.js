@@ -5,38 +5,54 @@ import AssuredWorkloadRoundedIcon from '@mui/icons-material/AssuredWorkloadRound
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import DesignServicesRoundedIcon from '@mui/icons-material/DesignServicesRounded';
 import styles from './style.module.scss';
+
+const trustFeatures = [
+    {
+        icon: DiamondOutlinedIcon,
+        title: 'Quality Certified',
+        description: 'Available certificates of authenticity.'
+    },
+    {
+        icon: AssuredWorkloadRoundedIcon,
+        title: 'Secure Transaction',
+        description: 'Certified marketplace since 2017'
+    },
+    {
+        icon: LocalShippingOutlinedIcon,
+        title: 'Delivery Shipping',
+        description: 'Free, fast, and reliable worldwide'
+    },
+    {
+        icon: DesignServicesRoundedIcon,
+        title: 'Transparent Services',
+        description: 'Available certificates of authenticity.'
+    }
+];
+
 function Banner() {
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={6} sm={3} sx={{ textAlign: 'center' }}>
-                <Box>
-                <Box className={`${styles.icons}`}><DiamondOutlinedIcon fontSize='large' sx={{color:"#D8B985"}}/></Box>
-                    <Typography variant='subtitle1' className={styles.title}>Quality Certified</Typography>
-                    <Typography variant='caption' color={'gray'} className={styles.subtitle}>Available certificates of authenticity.</Typography>
-                </Box>
+        <Box className={styles.trustBannerWrapper}>
+            <Grid container spacing={4}>
+                {trustFeatures.map((feature, index) => {
+                    const IconComponent = feature.icon;
+                    return (
+                        <Grid item xs={6} sm={3} key={index}>
+                            <Box className={styles.featureCard}>
+                                <Box className={styles.iconWrapper}>
+                                    <IconComponent className={styles.icon} />
+                                </Box>
+                                <Typography variant='h6' className={styles.title}>
+                                    {feature.title}
+                                </Typography>
+                                <Typography variant='body2' className={styles.description}>
+                                    {feature.description}
+                                </Typography>
+                            </Box>
+                        </Grid>
+                    );
+                })}
             </Grid>
-            <Grid item xs={6} sm={3} sx={{ textAlign: 'center' }}>
-                <Box>
-                <Box className={`${styles.icons}`}><AssuredWorkloadRoundedIcon fontSize='large' sx={{color:"#D8B985"}}/></Box>
-                    <Typography variant='subtitle1' className={styles.title}>Secure Transection</Typography>
-                    <Typography variant='caption' color={'gray'} className={styles.subtitle}>Certified marketplace since 2017</Typography>
-                </Box>
-            </Grid>
-            <Grid item xs={6} sm={3} sx={{ textAlign: 'center' }}>
-                <Box>
-                <Box className={`${styles.icons}`}><LocalShippingOutlinedIcon fontSize='large' sx={{color:"#D8B985"}}/></Box>
-                    <Typography variant='subtitle1' className={styles.title}>Delivery Shipping</Typography>
-                    <Typography variant='caption' color={'gray'} className={styles.subtitle}>Free, fast, and reliable worldwide</Typography>
-                </Box>
-            </Grid>
-            <Grid item xs={6} sm={3} sx={{ textAlign: 'center' }}>
-                <Box>
-                <Box className={`${styles.icons}`}><DesignServicesRoundedIcon fontSize='large' sx={{color:"#D8B985"}}/></Box>
-                    <Typography variant='subtitle1' className={styles.title}>Transparent Services</Typography>
-                    <Typography variant='caption' color={'gray'} className={styles.subtitle}>Available certificates of authenticity.</Typography>
-                </Box>
-            </Grid>
-        </Grid>
+        </Box>
     )
 }
 

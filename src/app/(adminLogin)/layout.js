@@ -1,7 +1,17 @@
-import { Inter } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import StoreProvider from "@/appStore/StoreProvider";
 import Loader from '../../components/Common/Loader/index';
-const inter = Inter({ subsets: ["latin"] });
+import CustomSnackbar from '../../components/Common/Snackbar/index';
+import "../globals.css";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: '--font-dm-sans'
+});
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: '--font-playfair'
+});
 
 export const metadata = {
     title: "Create Next App",
@@ -11,10 +21,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={`${dmSans.className} ${dmSans.variable} ${playfairDisplay.variable}`}>
                 <StoreProvider>
                     {children}
                     <Loader />
+                    <CustomSnackbar />
                 </StoreProvider>
             </body>
         </html>

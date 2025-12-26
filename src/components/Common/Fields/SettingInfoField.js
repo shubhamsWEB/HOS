@@ -1,11 +1,19 @@
 import React from 'react'
 import { Field } from 'react-final-form';
-import { TextareaAutosize, Typography } from '@mui/material';
+import { TextField } from '@mui/material';
 function settingInfo() {
     return (
         <Field name="setting">
             {({ input, meta }) => (
-                <TextareaAutosize id="outlined-basic" placeholder="Enter Setting Info" variant="outlined" {...input} minRows={4} />
+                <TextField
+                    id="setting-info"
+                    placeholder="Enter Setting Info"
+                    variant="outlined"
+                    multiline
+                    rows={4}
+                    fullWidth
+                    {...input}
+                />
             )}
         </Field>
     )

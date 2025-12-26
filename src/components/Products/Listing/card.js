@@ -1,25 +1,26 @@
 "use client"
-import React, { useRef } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import React, { useRef, useState } from 'react';
+import { Box, Typography } from '@mui/material';
+import Badge from './badge';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import styles from './style.module.scss';
-import Badge from './badge';
-import {useRouter} from 'next/navigation';
-import EnduireBtn from '@/components/Common/EnquireBtn';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { useRouter } from 'next/navigation';
+
 function Card({ data }) {
     const sliderRef = useRef(null);
-    const router = useRouter()
+    const [showIcons, setIcons] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
+    const router = useRouter();
 
-    const [showIcons, setIcons] = React.useState(false);
     const handleMouseEnter = () => {
         if (sliderRef.current) {
             sliderRef.current.slickPlay();
-            setIcons(true)
+            setIcons(true);
         }
     };
 
@@ -29,6 +30,16 @@ function Card({ data }) {
             sliderRef.current.slickGoTo(0);
             setIcons(false);
         }
+    };
+
+    const handleFavoriteClick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsFavorite(!isFavorite);
+    };
+
+    const handleCardClick = () => {
+        router.push(`/products/${data.id}`);
     };
 
     const settings = {
@@ -42,43 +53,71 @@ function Card({ data }) {
         infinite: false,
         fade: true
     };
-    const imageUrls = data?.media?.filter(url => !url.includes('.mp4'));
-    const handleOnFavClick = (e,id) => {
-        e.preventDefault();
-        e.stopImmediatePropagation()();
-    }
+
+    const imageUrls = data?.media?.filter(url => !url.includes('.mp4')) || [];
+    const hasVideo = data?.media?.some(url => url.includes('.mp4')) || false;
+
+    const hasDiscount = !!data.offer;
+
     return (
-        <Box sx={{maxHeight:400}}>
             <Box
+            className={`${styles.productCard} ${hasDiscount ? styles.hasDiscount : ''}`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                sx={{ marginBottom: '-40%', position: 'relative' }}
-                onClick={() => router.push(`/products/${data.id}`)}
-            >
-                {data.title==='Celestial Sparkle Earrings' && <Badge text={'-20%'}/>}
-
-                <Slider ref={sliderRef} {...settings} style={{ width: '100%' }}>
-                    {imageUrls?.map(img => {
-                        return (<div key={img} className={styles.imgContainer}>
-                            <Image src={img} alt="Ring 1" width={0} height={0} sizes="100vw" className={styles.productImg}/>
-                        </div>)
-                    })}
-
-                </Slider>
-                {showIcons && (
-                    <Box sx={{ position: 'absolute', top: 20, right: 8, display: 'flex', gap: '15px', flexDirection: 'column' }}>
-                        <Box className={`${styles.icons} ${styles.selected}`}><FavoriteBorderIcon fontSize='small' className={styles.selectedIcon} onClick={(e) => handleOnFavClick(e,data.id)}/></Box>
-                        <Box className={styles.icons}><ShareOutlinedIcon fontSize='12px' sx={{ color: "black" }} /></Box>
-                        {/* <Box className={styles.icons}><UnfoldMoreRoundedIcon fontSize='12px' sx={{ transform: 'rotate(45deg)', color: "black" }} /></Box> */}
+            onClick={handleCardClick}
+        >
+            {/* Discount Badge */}
+            {data.offer && (
+                <Box className={styles.discountBadge}>
+                    <Badge text={data.offer} />
                     </Box>
                 )}
+
+            {/* Heart Icon - Top Left */}
+            <Box 
+                className={`${styles.iconButton} ${styles.heartIcon} ${isFavorite ? styles.favorite : ''}`}
+                onClick={handleFavoriteClick}
+            >
+                <FavoriteBorderIcon fontSize="small" />
             </Box>
-            <Box boxShadow={2} p={2} pt={'40%'} sx={{ borderRadius: 2 }}>
-                <Box>
-                    <Typography variant='h6' sx={{mt:2}}>{data.productName}</Typography>
-                    <EnduireBtn data={data}/>
+
+            {/* Play Button - Top Right (if video exists) */}
+            {hasVideo && (
+                <Box className={`${styles.iconButton} ${styles.playIcon}`}>
+                    <PlayArrowIcon fontSize="small" />
                 </Box>
+            )}
+
+            {/* Product Image Slider */}
+            <Box className={styles.imageContainer}>
+                <Slider ref={sliderRef} {...settings} className={styles.slider}>
+                    {imageUrls.length > 0 ? (
+                        imageUrls.map((img, index) => (
+                            <div key={index} className={styles.slide}>
+                                <Image 
+                                    src={img} 
+                                    alt={data.productName || "Product"} 
+                                    width={400} 
+                                    height={400} 
+                                    className={styles.productImage}
+                                    priority={index === 0}
+                                />
+                            </div>
+                        ))
+                    ) : (
+                        <div className={styles.slide}>
+                            <Box className={styles.placeholderImage}>
+                                <Typography variant="body2">No Image</Typography>
+                            </Box>
+                        </div>
+                    )}
+                </Slider>
             </Box>
+
+            {/* Product Name */}
+            <Typography variant="h6" className={styles.productName}>
+                {data.productName || 'Product Name'}
+            </Typography>
         </Box>
     );
 }
